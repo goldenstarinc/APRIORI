@@ -1,0 +1,25 @@
+﻿<Window x:Class="Interface_Preprocessor_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Interface_Preprocessor_WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="720" Width="1280" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" Height="180" VerticalAlignment="Top" Width="1598" Background="#FF191919">
+            <Label Content="by Golden Star&#xD;&#xA;&#xD;&#xA;" HorizontalAlignment="Left" Height="52" Margin="1396,21,0,0" VerticalAlignment="Top" Width="171" Foreground="White" FontFamily="Segoe UI Variable Display" FontSize="24"/>
+        </Border>
+        <Border BorderThickness="1" CornerRadius="50" HorizontalAlignment="Left" Height="813" Margin="-232,90,0,0" VerticalAlignment="Top" Width="1001" Background="#FF00ACFF">
+            <TextBlock HorizontalAlignment="Left" Height="238" Margin="273,64,0,0" TextWrapping="Wrap" Text="Препроцессор базы данных" VerticalAlignment="Top" Width="766" FontFamily="Segoe UI Variable Display" FontSize="90" FontWeight="Bold" Foreground="Black"/>
+        </Border>
+        <TextBlock HorizontalAlignment="Left" Height="195" Margin="30,470,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="712" FontFamily="Segoe UI Variable Display" FontSize="36" Foreground="Black"><Run/><LineBreak/><Run/><LineBreak/><Run Text="Нажмите на значок, чтобы выбрать БД"/><Run Text=" →"/><LineBreak/><Run Text="Возникли вопросы? "/></TextBlock>
+        <Button Content="Button" HorizontalAlignment="Left" Height="366" Margin="856,287,0,0" VerticalAlignment="Top" Width="356" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="Button_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/93141010b2f80c45f9fc10c82fe2f0c1.jpg" Stretch="UniformToFill"/>
+            </Button.Background>
+        </Button>
+        <Button Name="OpenInfo"  Content="Получить справку." HorizontalAlignment="Left" Height="61" Margin="367,607,0,0" VerticalAlignment="Top" Width="309" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Display" FontSize="36" Click="OpenInfo_Click"/>
+
+    </Grid>
+</Window>

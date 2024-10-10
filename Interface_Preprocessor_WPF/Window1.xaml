@@ -1,0 +1,19 @@
+﻿<Window x:Class="Interface_Preprocessor_WPF.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Interface_Preprocessor_WPF"
+        mc:Ignorable="d"
+        Title="Window1" Height="720" Width="1280" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Center" Height="614" Margin="0,80,0,0" VerticalAlignment="Top" Width="1280" FontSize="23" BorderBrush="{x:Null}"/>
+        <Menu HorizontalAlignment="Center" Height="80" VerticalAlignment="Top" Width="1280" Background="{x:Null}">
+            <Button Content="Отобразить файл" Height="61" Width="386" BorderBrush="#FF00ACFF" BorderThickness="0,0,0,3" Background="{x:Null}" FontFamily="Segoe UI Variable Display" Click="LoadFile_Button_Click" FontSize="22" FontWeight="Bold"/>
+            <Button Content="Зашифровать файл" Height="61" Width="386" BorderBrush="#FF00ACFF" BorderThickness="0,0,0,3" Background="{x:Null}" FontFamily="Segoe UI Variable Display" Click="EncryptFile_Button_Click" FontSize="22" FontWeight="Bold"/>
+            <Button Content="Расшифровать файл" Height="61" Width="386" BorderBrush="#FF00ACFF" BorderThickness="0,0,0,3" Background="{x:Null}" FontFamily="Segoe UI Variable Display" Click="DecryptFile_Button_Click" FontSize="22" FontWeight="Bold"/>
+            <Button Name="OpenInfo" Content="?" Height="61" Width="64" BorderBrush="Black" BorderThickness="0,0,0,3" Background="{x:Null}" FontFamily="Segoe UI Variable Display" FontSize="22" FontWeight="Bold" Click="OpenInfo_Click"/>
+        </Menu>
+
+    </Grid>
+</Window>

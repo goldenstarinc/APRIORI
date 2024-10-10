@@ -1,0 +1,8 @@
+Binary classes:
+Main_attribute0 Main_attribute1 Main_attribute2 Damage0 Damage1 Damage2 Attack_type0 Attack_type1 Move_speed0 Move_speed1 Difficulty0 Difficulty1 Difficulty2 
+Encrypted records list:
+4681
+1353
+1353
+2642
+4500
