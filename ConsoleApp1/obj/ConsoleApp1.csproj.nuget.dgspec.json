@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\otvyagis\\Documents\\GitHub\\PreprocessorDB\\ConsoleApp1\\ConsoleApp1.csproj": {}
+    "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\ConsoleApp1\\ConsoleApp1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\otvyagis\\Documents\\GitHub\\PreprocessorDB\\ConsoleApp1\\ConsoleApp1.csproj": {
+    "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\ConsoleApp1\\ConsoleApp1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\otvyagis\\Documents\\GitHub\\PreprocessorDB\\ConsoleApp1\\ConsoleApp1.csproj",
+        "projectUniqueName": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\ConsoleApp1\\ConsoleApp1.csproj",
         "projectName": "ConsoleApp1",
-        "projectPath": "C:\\Users\\otvyagis\\Documents\\GitHub\\PreprocessorDB\\ConsoleApp1\\ConsoleApp1.csproj",
-        "packagesPath": "C:\\Users\\otvyagis\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\otvyagis\\Documents\\GitHub\\PreprocessorDB\\ConsoleApp1\\obj\\",
+        "projectPath": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\ConsoleApp1\\ConsoleApp1.csproj",
+        "packagesPath": "C:\\Users\\Ruslan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\ConsoleApp1\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\otvyagis\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Ruslan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -32,8 +28,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\otvyagis\\Documents\\GitHub\\PreprocessorDB\\DataProcessor\\DataProcessor.csproj": {
-                "projectPath": "C:\\Users\\otvyagis\\Documents\\GitHub\\PreprocessorDB\\DataProcessor\\DataProcessor.csproj"
+              "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataProcessor.csproj": {
+                "projectPath": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataProcessor.csproj"
               }
             }
           }
@@ -78,20 +74,20 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\otvyagis\\Documents\\GitHub\\PreprocessorDB\\DataProcessor\\DataProcessor.csproj": {
+    "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataProcessor.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\otvyagis\\Documents\\GitHub\\PreprocessorDB\\DataProcessor\\DataProcessor.csproj",
+        "projectUniqueName": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataProcessor.csproj",
         "projectName": "DataProcessor",
-        "projectPath": "C:\\Users\\otvyagis\\Documents\\GitHub\\PreprocessorDB\\DataProcessor\\DataProcessor.csproj",
+        "projectPath": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataProcessor.csproj",
         "frameworks": {
           "net48": {
             "projectReferences": {
-              "C:\\Users\\otvyagis\\Documents\\GitHub\\PreprocessorDB\\HeroesLibrary\\HeroesLibrary.csproj": {
-                "projectPath": "C:\\Users\\otvyagis\\Documents\\GitHub\\PreprocessorDB\\HeroesLibrary\\HeroesLibrary.csproj"
+              "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj": {
+                "projectPath": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj"
               }
             }
           }
@@ -101,11 +97,11 @@
         "net48": {}
       }
     },
-    "C:\\Users\\otvyagis\\Documents\\GitHub\\PreprocessorDB\\HeroesLibrary\\HeroesLibrary.csproj": {
+    "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\otvyagis\\Documents\\GitHub\\PreprocessorDB\\HeroesLibrary\\HeroesLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj",
         "projectName": "HeroesLibrary",
-        "projectPath": "C:\\Users\\otvyagis\\Documents\\GitHub\\PreprocessorDB\\HeroesLibrary\\HeroesLibrary.csproj",
+        "projectPath": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj",
         "frameworks": {
           "net48": {
             "projectReferences": {}

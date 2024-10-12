@@ -14,17 +14,11 @@
         <Border BorderBrush="#FF191919" BorderThickness="3" CornerRadius="30" HorizontalAlignment="Left" Height="133" Margin="25,87,0,0" VerticalAlignment="Top" Width="266">
             <Button Content="Построить правило" HorizontalAlignment="Center" Height="44" VerticalAlignment="Center" Width="202" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18" FontWeight="Bold"/>
         </Border>
-        <Border BorderThickness="1" CornerRadius="30" HorizontalAlignment="Left" Height="60" Margin="338,93,0,0" VerticalAlignment="Top" Width="266" Background="White" BorderBrush="#FF00ACFF">
-            <Button Content="Построить 1" HorizontalAlignment="Center" Height="43" VerticalAlignment="Center" Width="176" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18"/>
+        <Border BorderThickness="1" CornerRadius="30" HorizontalAlignment="Left" Height="60" Margin="338,93,0,0" VerticalAlignment="Top" Width="395" Background="White" BorderBrush="#FF00ACFF">
+            <Button Content="Построить единичные правила" HorizontalAlignment="Center" Height="44" VerticalAlignment="Center" Width="304" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18"/>
         </Border>
-        <Border BorderThickness="1" CornerRadius="30" HorizontalAlignment="Left" Height="60" Margin="338,160,0,0" VerticalAlignment="Top" Width="266" Background="White" BorderBrush="#FF00ACFF">
-            <Button Content="Построить 2" HorizontalAlignment="Center" Height="43" VerticalAlignment="Center" Width="176" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18"/>
-        </Border>
-        <Border BorderBrush="#FF00ACFF" BorderThickness="1" CornerRadius="30" HorizontalAlignment="Left" Height="60" Margin="640,93,0,0" VerticalAlignment="Top" Width="266" Background="White">
-            <Button Content="Построить 3" HorizontalAlignment="Center" Height="43" VerticalAlignment="Center" Width="176" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18"/>
-        </Border>
-        <Border BorderBrush="#FF00ACFF" BorderThickness="1" CornerRadius="30" HorizontalAlignment="Left" Height="60" Margin="640,160,0,0" VerticalAlignment="Top" Width="266" Background="White">
-            <Button Content="Построить 4" HorizontalAlignment="Center" Height="43" VerticalAlignment="Center" Width="148" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18"/>
+        <Border BorderThickness="1" CornerRadius="30" HorizontalAlignment="Left" Height="60" Margin="338,160,0,0" VerticalAlignment="Top" Width="395" Background="White" BorderBrush="#FF00ACFF">
+            <Button Content="Построить все правила" HorizontalAlignment="Center" Height="44" VerticalAlignment="Center" Width="374" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18"/>
         </Border>
         <Border BorderThickness="3" CornerRadius="25" HorizontalAlignment="Left" Height="59" Margin="950,4,0,0" VerticalAlignment="Top" Width="148" BorderBrush="#FFF3F0F0" Background="#FFF3F0F0">
             <Button Content="Главная" HorizontalAlignment="Center" Height="44" VerticalAlignment="Center" Width="148" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18" FontWeight="Bold"/>

@@ -6,20 +6,25 @@
         xmlns:local="clr-namespace:Interface_Preprocessor_WPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" Height="180" VerticalAlignment="Top" Width="1598" Background="#FF191919">
-            <Label Content="by Golden Star&#xD;&#xA;&#xD;&#xA;" HorizontalAlignment="Left" Height="52" Margin="1396,21,0,0" VerticalAlignment="Top" Width="171" Foreground="White" FontFamily="Segoe UI Variable Display" FontSize="24"/>
+    <Grid Background="White">
+        <Border BorderThickness="3" CornerRadius="30" HorizontalAlignment="Center" Height="525" Margin="0,136,0,0" VerticalAlignment="Top" Width="1238" Background="White" BorderBrush="#FF00ACFF">
+            <TextBlock HorizontalAlignment="Left" Height="368" Margin="43,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="785" FontFamily="Segoe UI Variable Display" FontSize="100" FontWeight="Bold" ><Run Text="Препроцессор базы данных "/><Run Foreground="#FF00ACFF" Text="&gt;"/></TextBlock>
         </Border>
-        <Border BorderThickness="1" CornerRadius="50" HorizontalAlignment="Left" Height="813" Margin="-232,90,0,0" VerticalAlignment="Top" Width="1001" Background="#FF00ACFF">
-            <TextBlock HorizontalAlignment="Left" Height="238" Margin="273,64,0,0" TextWrapping="Wrap" Text="Препроцессор базы данных" VerticalAlignment="Top" Width="766" FontFamily="Segoe UI Variable Display" FontSize="90" FontWeight="Bold" Foreground="Black"/>
+        <TextBlock HorizontalAlignment="Left" Height="60" Margin="75,511,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="712" FontFamily="Segoe UI Variable Display" FontSize="36" Foreground="Black" Text="Нажмите на значок, чтобы выбрать БД"/>
+        <Border BorderThickness="1" CornerRadius="30" HorizontalAlignment="Center" Height="59" Margin="0,28,0,0" VerticalAlignment="Top" Width="1238" Background="#FFF3F0F0" BorderBrush="#FFF3F0F0">
+            <Label Content="Golden Star Team" HorizontalAlignment="Left" Height="49" VerticalAlignment="Top" Width="282" Foreground="Black" FontFamily="Cascadia Code SemiBold" FontSize="24" Margin="17,9,0,0" FontWeight="Bold"/>
         </Border>
-        <TextBlock HorizontalAlignment="Left" Height="195" Margin="30,470,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="712" FontFamily="Segoe UI Variable Display" FontSize="36" Foreground="Black"><Run/><LineBreak/><Run/><LineBreak/><Run Text="Нажмите на значок, чтобы выбрать БД"/><Run Text=" →"/><LineBreak/><Run Text="Возникли вопросы? "/></TextBlock>
-        <Button Content="Button" HorizontalAlignment="Left" Height="366" Margin="856,287,0,0" VerticalAlignment="Top" Width="356" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="Button_Click">
-            <Button.Background>
-                <ImageBrush ImageSource="/93141010b2f80c45f9fc10c82fe2f0c1.jpg" Stretch="UniformToFill"/>
-            </Button.Background>
-        </Button>
-        <Button Name="OpenInfo"  Content="Получить справку." HorizontalAlignment="Left" Height="61" Margin="367,607,0,0" VerticalAlignment="Top" Width="309" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Display" FontSize="36" Click="OpenInfo_Click"/>
+        <Border BorderThickness="1" CornerRadius="30" HorizontalAlignment="Left" Height="59" Margin="1062,28,0,0" VerticalAlignment="Top" Width="197" BorderBrush="Black" Background="White">
+            <Button Content="Справка" HorizontalAlignment="Center" Height="44" VerticalAlignment="Top" Width="304" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="22" Margin="0,4,0,0"/>
+        </Border>
+        <Border BorderThickness="1" CornerRadius="30" HorizontalAlignment="Left" Height="525" Margin="865,136,0,0" VerticalAlignment="Top" Width="394" Background="#FF00ACFF">
+            <Button Content="Button" HorizontalAlignment="Center" Height="322" VerticalAlignment="Center" Width="330" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="Button_Click">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/DB_Image_forButton.png"/>
+                </Button.Background>
+            </Button>
+
+        </Border>
 
     </Grid>
 </Window>

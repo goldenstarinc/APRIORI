@@ -63,6 +63,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ConstrRule_forButton.xaml.cs">
+      <DependentUpon>ConstrRule_forButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ConstructionWindow.xaml.cs">
       <DependentUpon>ConstructionWindow.xaml</DependentUpon>
     </Compile>
@@ -81,6 +84,10 @@
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
+    <Page Include="ConstrRule_forButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ConstructionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -165,6 +172,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="InfoPageImg1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DB_Image_New.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DB_Image_forButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DB_Image_forButton2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
