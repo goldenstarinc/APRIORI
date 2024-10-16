@@ -23,5 +23,10 @@ namespace Interface_Preprocessor_WPF
         {
             InitializeComponent();
         }
+
+        private void CreateRule_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -14,9 +14,8 @@
         </Grid.RowDefinitions>
         <TextBlock x:Name="MessageTextBlock" TextWrapping="Wrap" HorizontalAlignment="Center" 
                    FontSize="22" TextAlignment="Center" FontFamily="Segoe UI Variable Display" Margin="0,87,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <Rectangle Stroke="#FF00ACFF" Fill="#FF00ACFF"/>
-        <TextBlock Margin="10,10,10,4" TextWrapping="Wrap" Text="&gt;&gt;&gt; Произошла ошибка!" FontFamily="Segoe UI Variable Display Semibold" FontSize="24"/>
-        <Border BorderBrush="#FF00ACFF" BorderThickness="1" HorizontalAlignment="Right" Height="40" Margin="0,0,6,0" Grid.Row="2" VerticalAlignment="Center" Width="95" CornerRadius="15" Background="#FF00ACFF">
+        <TextBlock Margin="10,10,10,4" TextWrapping="Wrap" FontFamily="Segoe UI Variable Display" FontSize="24" FontWeight="Bold"><Run Text="&gt; " Foreground="Red"/><Run Text="Произошла ошибка!" Foreground="Black"/></TextBlock>
+        <Border BorderThickness="1" HorizontalAlignment="Right" Height="40" Margin="0,0,6,0" Grid.Row="2" VerticalAlignment="Center" Width="95" CornerRadius="15" Background="#FFF3F0F0">
             <Button Content="Окей :(" Width="95" Height="40" VerticalAlignment="Center" 
                 HorizontalAlignment="Center" 
                 Click="OkButton_Click" FontFamily="Segoe UI Variable Display" FontSize="20" BorderBrush="{x:Null}" BorderThickness="0,0,0,3" Background="{x:Null}"/>

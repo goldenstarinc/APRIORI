@@ -7,11 +7,17 @@
         mc:Ignorable="d"
         Title="ConstrRule_forButton" Height="720" Width="1280">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Height="69" Margin="25,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="743" FontFamily="Segoe UI Variable Display" FontSize="45" FontWeight="Bold" Foreground="Black"><Run Text="&gt; " Foreground="#FF00ACFF"/><Run Language="ru-ru" Text="Построить правило"/></TextBlock>
-        <TextBox HorizontalAlignment="Center" Height="257" Margin="0,74,0,0" TextWrapping="Wrap" Text="Заменить на что-то приличное" VerticalAlignment="Top" Width="1260" FontFamily="Segoe UI Variable Display" FontSize="18"/>
-        <TextBox HorizontalAlignment="Center" Height="289" Margin="0,405,0,0" TextWrapping="Wrap" Text="Вывод правил" VerticalAlignment="Top" Width="1260" FontFamily="Segoe UI Variable Display" FontSize="18"/>
-        <Border BorderBrush="#FF191919" BorderThickness="3" CornerRadius="30" HorizontalAlignment="Center" Height="60" VerticalAlignment="Center" Width="530">
-            <Button Content="Задать посылку и получить правило" HorizontalAlignment="Center" Height="44" VerticalAlignment="Center" Width="510" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18" FontWeight="Bold"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64*"/>
+            <RowDefinition Height="271*"/>
+            <RowDefinition Height="71*"/>
+            <RowDefinition Height="299*"/>
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Left" Height="69" Margin="25,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="743" FontFamily="Segoe UI Variable Display" FontSize="45" FontWeight="Bold" Foreground="Black" Grid.RowSpan="2"><Run Text="&gt; " Foreground="#FF00ACFF"/><Run Language="ru-ru" Text="Построить правило"/></TextBlock>
+        <TextBox TextWrapping="Wrap" Text="Заменить на что-то приличное" FontFamily="Segoe UI Variable Display" FontSize="18" Grid.Row="1" Margin="10,10,10,10"/>
+        <TextBox Name="OutputAllRules_TextBox_AddPage" Margin="10,12,10,12" TextWrapping="Wrap" Text="Вывод правил" FontFamily="Segoe UI Variable Display" FontSize="18" Grid.Row="3"/>
+        <Border BorderBrush="#FF191919" BorderThickness="3" CornerRadius="30" HorizontalAlignment="Center" Height="60" VerticalAlignment="Center" Width="530" Grid.Row="2">
+            <Button Name="Do_Button" Content="Задать посылку и получить правило" HorizontalAlignment="Center" Height="44" VerticalAlignment="Center" Width="510" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18" FontWeight="Bold"/>
         </Border>
 
     </Grid>

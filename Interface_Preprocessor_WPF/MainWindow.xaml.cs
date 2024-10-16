@@ -28,33 +28,49 @@ namespace Interface_Preprocessor_WPF
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Кнопка для открытия окна справки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OpenInfo_Click(object sender, RoutedEventArgs e)
+        {
+            InfoPage InfoPage = new InfoPage();
+            InfoPage.Show();
+        }
+
+        /// <summary>
+        /// Кнопка для выбора файла и прехода к странице построения правил
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OpenConstructionWindow_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Excel Files|*.xls;*.xlsx";
-            
+
             if (openFileDialog.ShowDialog() == true)
             {
                 try
                 {
-                    ExcelFile = new ExcelFile(openFileDialog.FileName);
+                    //ExcelFile = new ExcelFile(openFileDialog.FileName);
 
-                    Window1 ViewWindow = new Window1(openFileDialog.FileName, ExcelFile);
-                    ViewWindow.Show();
+                    //Window1 ViewWindow = new Window1(openFileDialog.FileName, ExcelFile);
+                    //ViewWindow.Show();
+                    //this.Close();
+
+                    ConstructionWindow constructionWindow = new ConstructionWindow();
+                    constructionWindow.Show();
                     this.Close();
+
+
                 }
                 catch (Exception ex)
                 {
                     CustomMessageBox customMessageBox = new CustomMessageBox($"Ошибка: {ex.Message}");
                     customMessageBox.ShowDialog();
                 }
-            } 
-        }
-
-        private void OpenInfo_Click(object sender, RoutedEventArgs e)
-        {
-            InfoPage InfoPage = new InfoPage();
-            InfoPage.Show();
+            }
         }
     }
 }

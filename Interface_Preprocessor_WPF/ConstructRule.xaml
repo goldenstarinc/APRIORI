@@ -7,24 +7,38 @@
         mc:Ignorable="d"
         Title="ConstructRule" Height="720" Width="1280">
     <Grid>
-        <Border BorderThickness="4" CornerRadius="25" HorizontalAlignment="Left" Height="59" Margin="1109,5,0,0" VerticalAlignment="Top" Width="148" Background="#FFF3F0F0" BorderBrush="#FFF3F0F0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="67*"/>
+            <RowDefinition Height="91*"/>
+            <RowDefinition Height="84*"/>
+            <RowDefinition Height="463*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="321*"/>
+            <ColumnDefinition Width="481*"/>
+            <ColumnDefinition Width="140*"/>
+            <ColumnDefinition Width="163*"/>
+            <ColumnDefinition Width="161*"/>
+            <ColumnDefinition Width="14*"/>
+        </Grid.ColumnDefinitions>
+        <Border BorderThickness="4" CornerRadius="25" Margin="4,0,9,0" Background="#FFF3F0F0" BorderBrush="#FFF3F0F0" Grid.Column="4" Height="59" VerticalAlignment="Center">
             <TextBlock HorizontalAlignment="Left" Height="42" TextWrapping="Wrap" Text="⌛" VerticalAlignment="Top" Width="32" Margin="6,6,0,0" FontSize="24"/>
         </Border>
-        <TextBlock HorizontalAlignment="Left" Height="69" Margin="25,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="743" FontFamily="Segoe UI Variable Display" FontSize="45" FontWeight="Bold" Foreground="Black"><Run Text="&gt; " Foreground="#FF00ACFF"/><Run Language="ru-ru" Text="Построение правил"/></TextBlock>
-        <Border BorderBrush="#FF191919" BorderThickness="3" CornerRadius="30" HorizontalAlignment="Left" Height="133" Margin="25,87,0,0" VerticalAlignment="Top" Width="266">
-            <Button Content="Построить правило" HorizontalAlignment="Center" Height="44" VerticalAlignment="Center" Width="202" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Height="69" Margin="25,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="743" FontFamily="Segoe UI Variable Display" FontSize="45" FontWeight="Bold" Foreground="Black" Grid.ColumnSpan="2"><Run Text="&gt; " Foreground="#FF00ACFF"/><Run Language="ru-ru" Text="Построение правил"/></TextBlock>
+        <Border BorderBrush="#FF191919" BorderThickness="3" CornerRadius="30" Margin="25,21,30,21" Grid.Row="1" Grid.RowSpan="2">
+            <Button Name="CreateRules_Button" Content="Построить правило" HorizontalAlignment="Center" Height="44" VerticalAlignment="Center" Width="202" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18" FontWeight="Bold"/>
         </Border>
-        <Border BorderThickness="1" CornerRadius="30" HorizontalAlignment="Left" Height="60" Margin="338,93,0,0" VerticalAlignment="Top" Width="395" Background="White" BorderBrush="#FF00ACFF">
-            <Button Content="Построить единичные правила" HorizontalAlignment="Center" Height="44" VerticalAlignment="Center" Width="304" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18"/>
+        <Border BorderThickness="1" CornerRadius="30" Margin="17,26,69,5" Background="White" BorderBrush="#FF00ACFF" Grid.Row="1" Grid.Column="1">
+            <Button Name="CreateSingleRules_Button" Content="Построить единичные правила" HorizontalAlignment="Center" Height="44" VerticalAlignment="Center" Width="304" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18"/>
         </Border>
-        <Border BorderThickness="1" CornerRadius="30" HorizontalAlignment="Left" Height="60" Margin="338,160,0,0" VerticalAlignment="Top" Width="395" Background="White" BorderBrush="#FF00ACFF">
-            <Button Content="Построить все правила" HorizontalAlignment="Center" Height="44" VerticalAlignment="Center" Width="374" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18"/>
+        <Border BorderThickness="1" CornerRadius="30" Margin="17,2,69,22" Background="White" BorderBrush="#FF00ACFF" Grid.Row="2" Grid.Column="1">
+            <Button Name="CreateAllRules_Button" Content="Построить все правила" HorizontalAlignment="Center" Height="44" VerticalAlignment="Center" Width="374" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18"/>
         </Border>
-        <Border BorderThickness="3" CornerRadius="25" HorizontalAlignment="Left" Height="59" Margin="950,4,0,0" VerticalAlignment="Top" Width="148" BorderBrush="#FFF3F0F0" Background="#FFF3F0F0">
-            <Button Content="Главная" HorizontalAlignment="Center" Height="44" VerticalAlignment="Center" Width="148" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18" FontWeight="Bold"/>
+        <Border BorderThickness="3" CornerRadius="25" BorderBrush="#FFF3F0F0" Background="#FFF3F0F0" Grid.Column="3" Margin="8,0,7,0" Height="59" VerticalAlignment="Center">
+            <Button Name="HomePage_Button" Content="Главная" HorizontalAlignment="Center" Height="44" VerticalAlignment="Center" Width="148" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18" FontWeight="Bold"/>
         </Border>
-        <TextBox HorizontalAlignment="Left" Height="30" Margin="1149,20,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="102" FontSize="18" Background="{x:Null}" BorderBrush="{x:Null}"/>
-        <TextBox HorizontalAlignment="Left" Height="399" Margin="25,268,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="1226" FontFamily="Segoe UI Variable Display" FontSize="18" BorderBrush="{x:Null}"/>
+        <TextBox Name="OutputRunningTime_TextBox" HorizontalAlignment="Left" Height="30" Margin="44,20,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="102" FontSize="18" Background="{x:Null}" BorderBrush="{x:Null}" Grid.Column="4"/>
+        <TextBox Name="OutputRules_TextBox" Margin="25,27,15,36" TextWrapping="Wrap" Text="TextBox" FontFamily="Segoe UI Variable Display" FontSize="18" BorderBrush="{x:Null}" Grid.ColumnSpan="5" Grid.Row="3"/>
 
     </Grid>
 </Window>
