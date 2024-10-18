@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Interface_Preprocessor_WPF"
         mc:Ignorable="d"
-        Title="ConstrRule_forButton" Height="720" Width="1280">
+        Title="ConstrRule_forButton" Height="720" Width="1280" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="64*"/>
@@ -14,7 +14,11 @@
             <RowDefinition Height="299*"/>
         </Grid.RowDefinitions>
         <TextBlock HorizontalAlignment="Left" Height="69" Margin="25,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="743" FontFamily="Segoe UI Variable Display" FontSize="45" FontWeight="Bold" Foreground="Black" Grid.RowSpan="2"><Run Text="&gt; " Foreground="#FF00ACFF"/><Run Language="ru-ru" Text="Построить правило"/></TextBlock>
-        <TextBox TextWrapping="Wrap" Text="Заменить на что-то приличное" FontFamily="Segoe UI Variable Display" FontSize="18" Grid.Row="1" Margin="10,10,10,10"/>
+
+        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+            <WrapPanel Name="parametersPanel" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        </ScrollViewer>
+
         <TextBox Name="OutputAllRules_TextBox_AddPage" Margin="10,12,10,12" TextWrapping="Wrap" Text="Вывод правил" FontFamily="Segoe UI Variable Display" FontSize="18" Grid.Row="3"/>
         <Border BorderBrush="#FF191919" BorderThickness="3" CornerRadius="30" HorizontalAlignment="Center" Height="60" VerticalAlignment="Center" Width="530" Grid.Row="2">
             <Button Name="Do_Button" Content="Задать посылку и получить правило" HorizontalAlignment="Center" Height="44" VerticalAlignment="Center" Width="510" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18" FontWeight="Bold"/>

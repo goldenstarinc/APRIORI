@@ -17,6 +17,7 @@ using DataProcessor;
 using System.Numerics;
 using Microsoft.Win32;
 using System.Data.Common;
+using System.Runtime.CompilerServices;
 
 namespace Interface_Preprocessor_WPF
 {
@@ -27,6 +28,7 @@ namespace Interface_Preprocessor_WPF
     {
         private string _filePath; // Путь к файлу
         private ExcelFile _excelFile; // Объект для работы с данными Excel
+        
 
         // Конструктор класса
         public Window1(string filePath, ExcelFile ExcelFile)

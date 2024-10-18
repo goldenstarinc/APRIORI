@@ -53,17 +53,10 @@ namespace Interface_Preprocessor_WPF
             {
                 try
                 {
-                    //ExcelFile = new ExcelFile(openFileDialog.FileName);
-
-                    //Window1 ViewWindow = new Window1(openFileDialog.FileName, ExcelFile);
-                    //ViewWindow.Show();
-                    //this.Close();
-
-                    ConstructionWindow constructionWindow = new ConstructionWindow();
+                    ExcelFile = new ExcelFile(openFileDialog.FileName);
+                    ConstructionWindow constructionWindow = new ConstructionWindow(openFileDialog.FileName, ExcelFile);
                     constructionWindow.Show();
                     this.Close();
-
-
                 }
                 catch (Exception ex)
                 {

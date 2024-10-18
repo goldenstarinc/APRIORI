@@ -62,3 +62,14 @@ C:\Users\Ruslan\Desktop\GitHub\APRIORI\HeroesLibrary\obj\Debug\HeroesLibrary.csp
 C:\Users\Ruslan\Desktop\GitHub\APRIORI\HeroesLibrary\obj\Debug\HeroesLi.FE8B3ACA.Up2Date
 C:\Users\Ruslan\Desktop\GitHub\APRIORI\HeroesLibrary\obj\Debug\HeroesLibrary.dll
 C:\Users\Ruslan\Desktop\GitHub\APRIORI\HeroesLibrary\obj\Debug\HeroesLibrary.pdb
+C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\HeroesLibrary\bin\Debug\HeroesLibrary.dll
+C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\HeroesLibrary\bin\Debug\HeroesLibrary.pdb
+C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\HeroesLibrary\bin\Debug\Aspose.Cells.dll
+C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\HeroesLibrary\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\HeroesLibrary\bin\Debug\Aspose.Cells.xml
+C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\HeroesLibrary\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\HeroesLibrary\obj\Debug\HeroesLibrary.csproj.AssemblyReference.cache
+C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\HeroesLibrary\obj\Debug\HeroesLibrary.csproj.CoreCompileInputs.cache
+C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\HeroesLibrary\obj\Debug\HeroesLi.FE8B3ACA.Up2Date
+C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\HeroesLibrary\obj\Debug\HeroesLibrary.dll
+C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\HeroesLibrary\obj\Debug\HeroesLibrary.pdb
