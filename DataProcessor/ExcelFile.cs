@@ -9,12 +9,15 @@ using System.Security.Policy;
 using System.Numerics;
 using System.Data.SqlTypes;
 using System.Security.Principal;
+using Aspose.Cells.Charts;
 
 namespace DataProcessor
 {
     public class ExcelFile
     {
         private Workbook _workbook;
+
+        public int SubsetsCount { get; private set; }
         public List<string> PropertyNames { get; private set; }
         public List<string> ColumnTypes { get; private set; }
         public List<List<string>> AppropriateValues { get; private set; }
@@ -24,22 +27,25 @@ namespace DataProcessor
             try
             {
                 _workbook = new Workbook(filePath);
+                SubsetsCount = GetSubsetsCount();
+                PropertyNames = GetPropertyNames();
+                ColumnTypes = GetColumnTypes();
+                AppropriateValues = GetAppropriateValues();
+                NamesAndShortNames = GenerateNameToShortNameDictionary();
+                if (SubsetsCount == -1) { throw new Exception("Количество значений целевого столбца указано неверно.\n:)");}
             }
             catch (Exception ex)
             {
                 throw new Exception($"Ошибка при загрузке файла Excel: {ex.Message}");
             }
-
-            PropertyNames = GetPropertyNames();
-            ColumnTypes = GetColumnTypes();
-            AppropriateValues = GetAppropriateValues();
-            NamesAndShortNames = GenerateNameToShortNameDictionary();
         }
 
         public Workbook GetWorkbook()
         {
             return _workbook;
         }
+
+        
 
         /// <summary>
         /// Возвращает список названий классов, основанных на данных файла Excel из колонки "Краткое имя"
@@ -181,6 +187,30 @@ namespace DataProcessor
             }
 
             return dict;
+        }
+        
+        private int GetSubsetsCount()
+        {
+            int count = 0;
+
+            Worksheet worksheet = _workbook.Worksheets[0];
+
+            Cells cells = worksheet.Cells;
+
+            int valueCountColumnIndex = FindColumnIndex("Число значений", cells);
+            int columnIndex = FindColumnIndex("Тип столбца", cells);
+
+            for (int i = 1; i <= cells.MaxDataRow; ++i)
+            {
+                if (cells[i, columnIndex].StringValue == "Целевой")
+                {
+                    count = cells[i, valueCountColumnIndex].IntValue; 
+                    
+                    return count;
+                }
+            }
+
+            return -1;
         }
     }
 }

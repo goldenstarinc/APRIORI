@@ -3,6 +3,7 @@ using DataProcessor;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
+using System.Transactions;
 
 class Program
 {
@@ -22,31 +23,8 @@ class Program
         List<BigInteger> encryptedData = dataEncryptor1.GetEncryptedRecords();
 
         // Создание экземпляра AprioriAlgorithm
-        var apriori = new AprioriAlgorithm(encryptedData, minSupport: 2, PropertyNames); // minSupport: минимальная поддержка
-
-        // Нахождение частых наборов с порогом поддержки 20%
-        List<HashSet<int>> frequentItemsets = apriori.FindFrequentItemsets(2);
-
-        // Вывод частых наборов
-        Console.WriteLine("Frequent Itemsets:");
-        foreach (var freq in frequentItemsets)
-        {
-            foreach (var item in freq)
-            {
-                Console.Write(PropertyNames[item] + " "); // Используем названия свойств для вывода
-            }
-            Console.WriteLine();
-        }
-
-        // Генерация ассоциативных правил
-        Console.WriteLine("\nAssociation Rules:");
-        var associationRules = apriori.GenerateAssociationRules(frequentItemsets);
-        foreach (var rule in associationRules)
-        {
-            string antecedent = string.Join(", ", rule.Item1.Select(i => PropertyNames[i]));
-            string consequent = string.Join(", ", rule.Item2.Select(i => PropertyNames[i]));
-
-            Console.WriteLine($"{antecedent} => {consequent} | Confidence: {rule.Item3:F2}, Lift: {rule.Item4:F2}");
-        }
+        AprioriAlgorithm._transactions = encryptedData;
+        AprioriAlgorithm._propertyNames = PropertyNames;
+        AprioriAlgorithm._subsets = excelFile1.SubsetsCount;
     }
 }

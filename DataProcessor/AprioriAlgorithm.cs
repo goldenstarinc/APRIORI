@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aspose.Cells.Pivot;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -7,185 +8,132 @@ using System.Threading.Tasks;
 
 namespace DataProcessor
 {
-    public class AprioriAlgorithm
+    public static class AprioriAlgorithm
     {
-        private List<BigInteger> _transactions;  // Транзакции в виде двоичных чисел
-        private int _minSupport;                 // Минимальная поддержка
-        private List<string> _propertyNames;     // Имена свойств для элементов
+        public static List<BigInteger> _transactions { get; set; }  // Транзакции в виде двоичных чисел
+        public static List<string> _propertyNames { get; set; }     // Имена свойств для элементов
+        public static List<List<BigInteger>> _subsets { get; set; } // Подмножества
 
-        public AprioriAlgorithm(List<BigInteger> transactions, int minSupport, List<string> propertyNames)
+
+        /// <summary>
+        /// Формирует подмножества на основе принадлежности записи к определенному бинарному свойству целевого столбца
+        /// </summary>
+        /// <param name="index"> Индекс бинарного свойства целевого столбца</param>
+        /// <returns> Подмножество</returns>
+        public static List<BigInteger> FormSubsets(int index, List<BigInteger> _tempTransactions)
         {
-            _transactions = transactions;
-            _minSupport = minSupport;
-            _propertyNames = propertyNames;
-        }
+            // Хранение записи для добавления подмножества
+            List<BigInteger> temp = new List<BigInteger>();
 
-        // Основная функция для поиска частых наборов
-        public List<HashSet<int>> FindFrequentItemsets(double support = 0)
-        {
-            support = (support / 100) * _transactions.Count;
-            List<HashSet<int>> frequentItemsets = new List<HashSet<int>>();
-
-            // Генерируем и фильтруем одноэлементные наборы
-            var singleItemsets = GenerateSingleItemsets();
-            frequentItemsets.AddRange(FilterFrequentItemsets(singleItemsets, support));
-
-            // Генерируем более крупные наборы
-            var largerItemsets = GenerateLargerItemsets(frequentItemsets, support);
-            frequentItemsets.AddRange(largerItemsets);
-
-            return frequentItemsets;
-        }
-
-        private List<HashSet<int>> GenerateSingleItemsets()
-        {
-            List<HashSet<int>> singleItemsets = new List<HashSet<int>>();
-            for (int i = 0; i < _propertyNames.Count; i++)
+            // Проходимся по каждой записи
+            foreach (var transaction in _tempTransactions)
             {
-                singleItemsets.Add(new HashSet<int> { i });
-            }
-            return singleItemsets;
-        }
-
-        private List<HashSet<int>> FilterFrequentItemsets(List<HashSet<int>> itemsets, double support)
-        {
-            var frequentItemsets = new List<HashSet<int>>();
-            foreach (var itemset in itemsets)
-            {
-                int count = CountSupport(itemset);
-                if (count >= support)
+                string item = AprioriAlgorithm.ToBinaryString(transaction);
+                if (item[item.Length - 1 - index] == '1')
                 {
-                    frequentItemsets.Add(itemset);
-                }
-            }
-            return frequentItemsets;
-        }
-
-        private List<HashSet<int>> GenerateLargerItemsets(List<HashSet<int>> previousItemsets, double support)
-        {
-            List<HashSet<int>> largerItemsets = new List<HashSet<int>>();
-            for (int i = 0; i < previousItemsets.Count; i++)
-            {
-                for (int j = i + 1; j < previousItemsets.Count; j++)
-                {
-                    var combined = new HashSet<int>(previousItemsets[i]);
-                    combined.UnionWith(previousItemsets[j]);
-
-                    if (combined.Count == previousItemsets[i].Count + 1) // Добавляем на один элемент больше
-                    {
-                        if (CountSupport(combined) >= support)
-                        {
-                            largerItemsets.Add(combined);
-                        }
-                    }
+                    temp.Add(transaction);
                 }
             }
 
-            if (largerItemsets.Count > 0)
+            // Удаляем записанные записи из основного списка
+            foreach (var delete in temp)
             {
-                largerItemsets.AddRange(GenerateLargerItemsets(largerItemsets, support));
+                _tempTransactions.Remove(delete);
             }
 
-            return largerItemsets;
+            return temp;
         }
 
-        // Подсчет поддержки (support) набора элементов
-        private int CountSupport(HashSet<int> itemset)
+        /// <summary>
+        /// Считает количество вхождений определенного набора бинарных свойств в подмножестве
+        /// </summary>
+        /// <param name="itemset"> Определенный набор бинарных свойств</param>
+        /// <param name="subset"> Подмножество</param>
+        /// <returns> Количество вхождений определенного набора бинарных свойств в подмножестве</returns>
+        public static int CountSupport(HashSet<int> itemset, List<BigInteger> subset)
         {
             int count = 0;
-            foreach (var transaction in _transactions)
+
+            foreach(var set in subset)
             {
-                string binaryTransaction = ToBinaryString(transaction);
-                bool containsAll = true;
-                foreach (var item in itemset)
+                bool isAdequate = true;
+                string binarySet = ToBinaryString(set);
+                foreach(int item in itemset)
                 {
-                    if (item >= binaryTransaction.Length || binaryTransaction[binaryTransaction.Length - 1 - item] != '1')
+
+                    if (binarySet[binarySet.Length - 1 - item] != '1')
                     {
-                        containsAll = false;
+                        isAdequate = false;
                         break;
                     }
                 }
-                if (containsAll)
-                {
-                    count++;
-                }
+
+                if(isAdequate) count++;
             }
+
             return count;
         }
 
-        // Преобразование BigInteger в двоичную строку
-        private string ToBinaryString(BigInteger bigInteger)
+        /// <summary>
+        /// Переводит число в двоичный вид
+        /// </summary>
+        /// <param name="bigInteger"> Число</param>
+        /// <returns> Двоичный вид числа</returns>
+        public static string ToBinaryString(BigInteger bigInteger)
         {
             return Convert.ToString((long)bigInteger, 2).PadLeft(_propertyNames.Count, '0'); // Дополняем нулями слева
         }
 
-        // Функция для генерации ассоциативных правил
-        public List<Tuple<HashSet<int>, HashSet<int>, double, double>> GenerateAssociationRules(List<HashSet<int>> frequentItemsets)
+        /// <summary>
+        /// Вычисляет частоту вхождения определенного набора бинарных свойств в множестве/подмножестве
+        /// </summary>
+        /// <param name="support"> Число вхождения определенного набора бинарных свойств</param>
+        /// <param name="transactionsCount"> Количество записей в множестве/подмножестве</param>
+        /// <returns> Частоту</returns>
+        public static double GetFrequency(int support, int transactionsCount)
         {
-            var rules = new List<Tuple<HashSet<int>, HashSet<int>, double, double>>();
-            foreach (var itemset in frequentItemsets)
-            {
-                if (itemset.Count > 1)
-                {
-                    // Создаем все возможные подмножества для генерации правил
-                    var subsets = GetSubsets(itemset);
-
-                    foreach (var subset in subsets)
-                    {
-                        if (subset.Count > 0 && subset.Count < itemset.Count)
-                        {
-                            var remaining = new HashSet<int>(itemset);
-                            remaining.ExceptWith(subset);
-
-                            // Вычисляем конфиденс и лифт
-                            double confidence = CalculateConfidence(subset, remaining);
-                            double lift = CalculateLift(subset, remaining);
-
-                            rules.Add(new Tuple<HashSet<int>, HashSet<int>, double, double>(subset, remaining, confidence, lift));
-                        }
-                    }
-                }
-            }
-
-            return rules;
+            return ((double)support / transactionsCount);
         }
 
-        // Получение всех подмножеств для генерации ассоциативных правил
-        private List<HashSet<int>> GetSubsets(HashSet<int> itemset)
+        /// <summary>
+        /// Вычисляет достоверность правила
+        /// </summary>
+        /// <param name="itemset"> Набор определенных бинарных свойств</param>
+        /// <param name="subset"> Подмножество</param>
+        /// <returns> Достоверность правила</returns>
+        public static double CalculateConfidence(HashSet<int> itemset, List<BigInteger> subset)
         {
-            List<HashSet<int>> subsets = new List<HashSet<int>>();
-            int[] array = itemset.ToArray();
-            int subsetCount = (int)Math.Pow(2, array.Length);
-
-            for (int i = 1; i < subsetCount - 1; i++) // Пропускаем пустое и полное подмножества
-            {
-                HashSet<int> subset = new HashSet<int>();
-                for (int j = 0; j < array.Length; j++)
-                {
-                    if ((i & (1 << j)) != 0)
-                    {
-                        subset.Add(array[j]);
-                    }
-                }
-                subsets.Add(subset);
-            }
-            return subsets;
+            int subsetSupport = CountSupport(itemset, subset);
+            int setSupport = CountSupport(itemset, _transactions);
+            return (double)subsetSupport / setSupport;
         }
 
-        // Вычисление конфиденса
-        private double CalculateConfidence(HashSet<int> antecedent, HashSet<int> consequent)
+        /// <summary>
+        /// Вычисляет корреляцию между посылкой правила и его значением
+        /// </summary>
+        /// <param name="confidence"> Достоверность правила</param>
+        /// <param name="subset"> Подмножество</param>
+        /// <returns> Корреляция между посылкой правила и его значением</returns>
+        public static double CalculateLift(double confidence, List<BigInteger> subset)
         {
-            int antecedentSupport = CountSupport(antecedent);
-            int combinedSupport = CountSupport(new HashSet<int>(antecedent.Union(consequent)));
-            return (double)combinedSupport / antecedentSupport;
+            return confidence * (_transactions.Count / subset.Count);
         }
 
-        // Вычисление лифта
-        private double CalculateLift(HashSet<int> antecedent, HashSet<int> consequent)
+        /// <summary>
+        /// Вычисляет качество правило
+        /// </summary>
+        /// <param name="f_g"> Вычисляет частоту вхождения определенного набора бинарных свойств в подмножестве</param>
+        /// <param name="f_all"> Вычисляет частоту вхождения определенного набора бинарных свойств в множестве</param>
+        /// <param name="confidence"> Достоверность правила</param>
+        /// <param name="lift"> Корреляция между посылкой правила и его значением</param>
+        /// <param name="p1"> Вес 1</param>
+        /// <param name="p2"> Вес 2</param>
+        /// <param name="p3"> Вес 3</param>
+        /// <param name="p4"> Вес 4</param>
+        /// <returns> Качество правила</returns>
+        public static double CalculateQuality(double f_g , double f_all , double confidence , double lift, double p1 = 1, double p2 = 1, double p3 = 1, double p4 = 1)
         {
-            int consequentSupport = CountSupport(consequent);
-            double confidence = CalculateConfidence(antecedent, consequent);
-            return confidence / ((double)consequentSupport / _transactions.Count);
+            return f_all * p1 + f_g * p2 + confidence * p3 + lift * p4;
         }
     }
 }
