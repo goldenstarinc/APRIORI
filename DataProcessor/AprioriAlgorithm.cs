@@ -10,54 +10,20 @@ namespace DataProcessor
 {
     public static class AprioriAlgorithm
     {
-        public static List<BigInteger> _transactions { get; set; }  // Транзакции в виде двоичных чисел
-        public static List<string> _propertyNames { get; set; }     // Имена свойств для элементов
-        public static List<List<BigInteger>> _subsets { get; set; } // Подмножества
-
-
-        /// <summary>
-        /// Формирует подмножества на основе принадлежности записи к определенному бинарному свойству целевого столбца
-        /// </summary>
-        /// <param name="index"> Индекс бинарного свойства целевого столбца</param>
-        /// <returns> Подмножество</returns>
-        public static List<BigInteger> FormSubsets(int index, List<BigInteger> _tempTransactions)
-        {
-            // Хранение записи для добавления подмножества
-            List<BigInteger> temp = new List<BigInteger>();
-
-            // Проходимся по каждой записи
-            foreach (var transaction in _tempTransactions)
-            {
-                string item = AprioriAlgorithm.ToBinaryString(transaction);
-                if (item[item.Length - 1 - index] == '1')
-                {
-                    temp.Add(transaction);
-                }
-            }
-
-            // Удаляем записанные записи из основного списка
-            foreach (var delete in temp)
-            {
-                _tempTransactions.Remove(delete);
-            }
-
-            return temp;
-        }
-
         /// <summary>
         /// Считает количество вхождений определенного набора бинарных свойств в подмножестве
         /// </summary>
         /// <param name="itemset"> Определенный набор бинарных свойств</param>
         /// <param name="subset"> Подмножество</param>
         /// <returns> Количество вхождений определенного набора бинарных свойств в подмножестве</returns>
-        public static int CountSupport(HashSet<int> itemset, List<BigInteger> subset)
+        public static int CountSupport(HashSet<int> itemset, List<BigInteger> subset, int propertiesCount)
         {
             int count = 0;
 
             foreach(var set in subset)
             {
                 bool isAdequate = true;
-                string binarySet = ToBinaryString(set);
+                string binarySet = DB_Data.ToBinaryString(set, propertiesCount);
                 foreach(int item in itemset)
                 {
 
@@ -72,16 +38,6 @@ namespace DataProcessor
             }
 
             return count;
-        }
-
-        /// <summary>
-        /// Переводит число в двоичный вид
-        /// </summary>
-        /// <param name="bigInteger"> Число</param>
-        /// <returns> Двоичный вид числа</returns>
-        public static string ToBinaryString(BigInteger bigInteger)
-        {
-            return Convert.ToString((long)bigInteger, 2).PadLeft(_propertyNames.Count, '0'); // Дополняем нулями слева
         }
 
         /// <summary>
@@ -101,10 +57,10 @@ namespace DataProcessor
         /// <param name="itemset"> Набор определенных бинарных свойств</param>
         /// <param name="subset"> Подмножество</param>
         /// <returns> Достоверность правила</returns>
-        public static double CalculateConfidence(HashSet<int> itemset, List<BigInteger> subset)
+        public static double CalculateConfidence(HashSet<int> itemset, List<BigInteger> subset, List<BigInteger> transactions, int propertiesCount)
         {
-            int subsetSupport = CountSupport(itemset, subset);
-            int setSupport = CountSupport(itemset, _transactions);
+            int subsetSupport = CountSupport(itemset, subset, propertiesCount);
+            int setSupport = CountSupport(itemset, transactions, propertiesCount);
             return (double)subsetSupport / setSupport;
         }
 
@@ -114,9 +70,9 @@ namespace DataProcessor
         /// <param name="confidence"> Достоверность правила</param>
         /// <param name="subset"> Подмножество</param>
         /// <returns> Корреляция между посылкой правила и его значением</returns>
-        public static double CalculateLift(double confidence, List<BigInteger> subset)
+        public static double CalculateLift(double confidence, List<BigInteger> subset, List<BigInteger> transactions)
         {
-            return confidence * (_transactions.Count / subset.Count);
+            return confidence * (transactions.Count / subset.Count);
         }
 
         /// <summary>

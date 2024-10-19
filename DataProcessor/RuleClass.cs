@@ -4,43 +4,76 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using AA = DataProcessor.AprioriAlgorithm;
 
 namespace DataProcessor
 {
     public class RuleClass
     {
-        public int f_g { get; private set; }
-        public int f_all { get; private set; }
-        public int confidence { get; private set; }
-        public int lift { get; private set; }
-        public int quality { get; private set; }
+        public double f_g { get; private set; }
+        public double f_all { get; private set; }
+        public double confidence { get; private set; }
+        public double lift { get; private set; }
+        public double quality { get; private set; }
+        public int target { get; private set; }
+        public HashSet<int> itemset { get; private set; }
+        public List<string> propertyNames { get; private set; }
+        public List<RuleClass> rules { get; private set; }
 
-        private List<List<BigInteger>> _subsets = AprioriAlgorithm.GetSubsets();
+        List<List<BigInteger>> subsets = DB_Data._subsets;
+        int propertiesCount = DB_Data._propertyNames.Count;
+        List<BigInteger> transactions = DB_Data._transactions;
 
-        public RuleClass(HashSet<int> itemset, int subsetNumber)
+
+        public RuleClass(HashSet<int> Itemset, int subsetNumber)
         {
-            _subsets = AprioriAlgorithm.GetSubsets();
+            this.itemset = Itemset;
+            this.target = subsetNumber;
+            this.propertyNames = DB_Data._propertyNames;
 
-            int support = AprioriAlgorithm.CountSupport(itemset, AprioriAlgorithm._subsets[2]);
-            Console.WriteLine(GetFrequency(CountSupport(itemset, _subsets[2]), _subsets[2].Count));
+            int support = AA.CountSupport(itemset, subsets[target], propertiesCount);
 
-            Console.WriteLine(GetFrequency(CountSupport(itemset, _subsets[2]), _transactions.Count));
-
-            Console.WriteLine(CalculateConfidence(itemset, _subsets[2]));
-
-            Console.WriteLine(CalculateLift(CalculateConfidence(itemset, _subsets[2]), _subsets[2]));
+            this.f_g = AA.GetFrequency(support, subsets[target].Count);
+            this.f_all = AA.GetFrequency(support, transactions.Count);
+            this.confidence = AA.CalculateConfidence(itemset, subsets[target], transactions, propertiesCount);
+            this.lift = AA.CalculateLift(confidence, subsets[target], transactions);
+            this.quality = AA.CalculateQuality(f_g, f_all, confidence, lift);
         }
-        public RuleClass(double quality, double confidence, int subsetNumber)
+        public RuleClass(HashSet<int> Itemset, double quality, double confidence, int subsetNumber)
+        {
+            this.itemset = Itemset;
+            this.target = subsetNumber;
+            this.propertyNames = DB_Data._propertyNames;
+        }
+        public RuleClass(HashSet<int> Itemset, double quality, double confidence, int length, int subsetNumber)
         {
 
         }
-        public RuleClass(double quality, double confidence, int length, int subsetNumber)
-        {
 
-        }
         public override string ToString()
         {
+            string result = "==================================================\n";
 
+            int count = 0;
+            foreach (var set in itemset)
+            {
+                result += propertyNames[set];
+                count++;
+
+                if (count != itemset.Count)
+                    result += ", ";
+                else
+                    result += " ";
+            }
+
+            result += $"=> Goal{target}:\n" +
+                      $"F_g: {Math.Round(f_g, 3)}; " +
+                      $"F_all: {Math.Round(f_all, 3)}; " + 
+                      $"Confidence: {Math.Round(confidence, 3)}; " +
+                      $"Lift: {Math.Round(lift, 3)}; " +
+                      $"Quality: {Math.Round(quality, 3)}";
+
+            return result;
         }
     }
 }

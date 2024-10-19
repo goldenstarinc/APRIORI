@@ -53,7 +53,7 @@ namespace DataProcessor
         /// </summary>
         /// <param name="bigInteger">Число для перевода в двоичную запись</param>
         /// <returns>Двоичная запись переданного числа</returns>
-        private string ToBinaryString(BigInteger bigInteger)
+        public static string ToBinaryString(BigInteger bigInteger)
         {
             return Convert.ToString((long)bigInteger, 2);
         }
