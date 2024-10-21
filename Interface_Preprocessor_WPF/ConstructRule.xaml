@@ -29,10 +29,10 @@
             <Button Name="CreateRules_Button" Content="Построить правило" HorizontalAlignment="Center" Height="44" VerticalAlignment="Center" Width="202" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18" FontWeight="Bold" Click="CreateRules_Button_Click"/>
         </Border>
         <Border BorderThickness="1" CornerRadius="30" Margin="17,26,69,5" Background="White" BorderBrush="#FF00ACFF" Grid.Row="1" Grid.Column="1">
-            <Button Name="CreateSingleRules_Button" Content="Построить единичные правила" HorizontalAlignment="Center" Height="44" VerticalAlignment="Center" Width="304" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18"/>
+            <Button Name="CreateSingleRules_Button" Content="Построить единичные правила" HorizontalAlignment="Center" Height="44" VerticalAlignment="Center" Width="304" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18" Click="CreateSingleRules_Button_Click"/>
         </Border>
         <Border BorderThickness="1" CornerRadius="30" Margin="17,2,69,22" Background="White" BorderBrush="#FF00ACFF" Grid.Row="2" Grid.Column="1">
-            <Button Name="CreateAllRules_Button" Content="Построить все правила" HorizontalAlignment="Center" Height="44" VerticalAlignment="Center" Width="374" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18"/>
+            <Button Name="CreateAllRules_Button" Content="Построить все правила" HorizontalAlignment="Center" Height="44" VerticalAlignment="Center" Width="374" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18" Click="CreateAllRules_Button_Click"/>
         </Border>
         <Border BorderThickness="3" CornerRadius="25" BorderBrush="#FFF3F0F0" Background="#FFF3F0F0" Grid.Column="3" Margin="8,0,7,0" Height="59" VerticalAlignment="Center">
             <Button Name="HomePage_Button" Content="Главная" HorizontalAlignment="Center" Height="44" VerticalAlignment="Center" Width="148" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18" FontWeight="Bold" Click="HomePage_Button_Click"/>

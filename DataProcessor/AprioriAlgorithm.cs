@@ -21,11 +21,11 @@ namespace DataProcessor
         {
             int count = 0;
 
-            foreach(var set in subset)
+            foreach (var set in subset)
             {
                 bool isAdequate = true;
-                string binarySet = DB_Data.ToBinaryString(set, propertiesCount);
-                foreach(int item in itemset)
+                string binarySet = ToBinaryString(set, propertiesCount);
+                foreach (int item in itemset)
                 {
 
                     if (binarySet[binarySet.Length - 1 - item] != '1')
@@ -35,7 +35,7 @@ namespace DataProcessor
                     }
                 }
 
-                if(isAdequate) count++;
+                if (isAdequate) count++;
             }
 
             return count;
@@ -88,31 +88,34 @@ namespace DataProcessor
         /// <param name="p3"> Вес 3</param>
         /// <param name="p4"> Вес 4</param>
         /// <returns> Качество правила</returns>
-        public static double CalculateQuality(double f_g , double f_all , double confidence , double lift, double p1 = 1, double p2 = 1, double p3 = 1, double p4 = 1)
+        public static double CalculateQuality(double f_g, double f_all, double confidence, double lift, double p1 = 1, double p2 = 1, double p3 = 1, double p4 = 1)
         {
             return f_all * p1 + f_g * p2 + confidence * p3 + lift * p4;
         }
+
         /// <summary>
         /// Генерация правил по выбранной посылке
         /// </summary>
         /// <param name="target">Номер подмножества</param>
         /// <param name="itemset">Посылка</param>
-        /// <param name="excelFile1">Файл</param>
-        public static List<RuleClass> GenerateSpecificRules(int target, HashSet<int> itemset, ExcelFile excelFile1)
+        /// <param name="encryptedData">Объект, хранящий информацию о зашифрованном файле</param>
+        public static List<RuleClass> GenerateSpecificRules(int target, HashSet<int> itemset, DataEncryptor encryptedData)
         {
             List<RuleClass> rules = new List<RuleClass>();
+
+            ExcelFile excelFile1 = encryptedData._metaFile;
 
             if (target == -1)
             {
                 for (int i = 0; i < excelFile1.SubsetsCount; ++i)
                 {
-                    RuleClass rule = new RuleClass(new HashSet<int>(itemset), i);
+                    RuleClass rule = new RuleClass(new HashSet<int>(itemset), i, encryptedData);
                     rules.Add(rule);
                 }
             }
             else
             {
-                RuleClass rule = new RuleClass(new HashSet<int>(itemset), target);
+                RuleClass rule = new RuleClass(new HashSet<int>(itemset), target, encryptedData);
                 rules.Add(rule);
             }
             return rules;
@@ -124,10 +127,12 @@ namespace DataProcessor
         /// <param name="target">Номер подмножества</param>
         /// <param name="needConfidence">Достаточная уверенность</param>
         /// <param name="needQuality">Достаточное качество</param>
-        /// <param name="excelFile1">Файл с записями</param>
-        public static List<RuleClass> GenerateSingleRules(int target, double needConfidence, double needQuality, ExcelFile excelFile1)
+        /// <param name="encryptedData">Объект, хранящий информацию о зашифрованном файле</param>
+        public static List<RuleClass> GenerateSingleRules(int target, double needConfidence, double needQuality, DataEncryptor encryptedData)
         {
             List<RuleClass> rules = new List<RuleClass>();
+
+            ExcelFile excelFile1 = encryptedData._metaFile;
 
             HashSet<int> itemset = new HashSet<int>();
 
@@ -138,7 +143,7 @@ namespace DataProcessor
                     for (int i = excelFile1.SubsetsCount; i < excelFile1.PropertyNames.Count; i++)
                     {
                         itemset.Add(i);
-                        RuleClass rule = new RuleClass(new HashSet<int>(itemset), j);
+                        RuleClass rule = new RuleClass(new HashSet<int>(itemset), j, encryptedData);
                         if (rule.confidence > needConfidence & rule.quality > needQuality)
                         {
                             rules.Add(rule);
@@ -152,7 +157,7 @@ namespace DataProcessor
                 for (int i = excelFile1.SubsetsCount; i < excelFile1.PropertyNames.Count; i++)
                 {
                     itemset.Add(i);
-                    RuleClass rule = new RuleClass(new HashSet<int>(itemset), target);
+                    RuleClass rule = new RuleClass(new HashSet<int>(itemset), target, encryptedData);
                     if (rule.confidence > needConfidence & rule.quality > needQuality)
                     {
                         rules.Add(rule);
@@ -166,14 +171,16 @@ namespace DataProcessor
         /// <summary>
         /// Генерация всех правил согласно заданным параметрам
         /// </summary>
-        /// <param name="target"> Номер подмножества</param>
-        /// <param name="needConfidence"> Достаточная уверенность</param>
-        /// <param name="needQuality"> Достаточное качество</param>
-        /// <param name="sendingLength"> Достаточная длина посылки</param>
-        /// <param name="excelFile1"> Файл с записями</param>
-        public static List<RuleClass> GenerateAllRules(int target, double needConfidence, double needQuality, int sendingLength, ExcelFile excelFile1)
+        /// <param name="target">Номер подмножества</param>
+        /// <param name="needConfidence">Достаточная уверенность</param>
+        /// <param name="needQuality">Достаточное качество</param>
+        /// <param name="sendingLength">Достаточная длина посылки</param>
+        /// <param name="encryptedData">Объект, хранящий информацию о зашифрованном файле</param>
+        public static List<RuleClass> GenerateAllRules(int target, double needConfidence, double needQuality, int sendingLength, DataEncryptor encryptedData)
         {
             List<RuleClass> rules = new List<RuleClass>();
+
+            ExcelFile excelFile1 = encryptedData._metaFile;
 
             HashSet<int> itemset = new HashSet<int>();
 
@@ -186,7 +193,7 @@ namespace DataProcessor
                     for (int i = excelFile1.SubsetsCount; i < excelFile1.PropertyNames.Count; i++)
                     {
                         itemset.Add(i);
-                        RuleClass rule = new RuleClass(new HashSet<int>(itemset), j);
+                        RuleClass rule = new RuleClass(new HashSet<int>(itemset), j, encryptedData);
                         if (rule.confidence > needConfidence & rule.quality > needQuality)
                         {
                             rules.Add(rule);
@@ -198,24 +205,25 @@ namespace DataProcessor
                 for (int length = 2; length <= sendingLength; length++)
                 {
                     largerItemsets.AddRange(GenerateLargerItemsets(excelFile1, length));
-                }
-                for (int j = 0; j < excelFile1.SubsetsCount; j++)
-                {
-                    foreach (HashSet<int> largerItemset in largerItemsets)
+                    for (int j = 0; j < excelFile1.SubsetsCount; j++)
                     {
-                        RuleClass rule = new RuleClass(new HashSet<int>(largerItemset), j);
-                        if (rule.confidence > needConfidence & rule.quality > needQuality)
+                        foreach (HashSet<int> largerItemset in largerItemsets)
                         {
-                            rules.Add(rule);
+                            RuleClass rule = new RuleClass(new HashSet<int>(largerItemset), j, encryptedData);
+                            if (rule.confidence > needConfidence & rule.quality > needQuality)
+                            {
+                                rules.Add(rule);
+                            }
                         }
                     }
+                    largerItemsets.Clear();
                 }
             }
             else
             {
                 for (int i = excelFile1.SubsetsCount; i < excelFile1.PropertyNames.Count; i++)
                 {
-                    RuleClass rule = new RuleClass(new HashSet<int>(itemset), target);
+                    RuleClass rule = new RuleClass(new HashSet<int>(itemset), target, encryptedData);
                     if (rule.confidence > needConfidence & rule.quality > needQuality & rule.itemset.Count <= sendingLength)
                     {
                         rules.Add(rule);
@@ -227,7 +235,7 @@ namespace DataProcessor
                 }
                 foreach (HashSet<int> largerItemset in largerItemsets)
                 {
-                    RuleClass rule = new RuleClass(new HashSet<int>(largerItemset), target);
+                    RuleClass rule = new RuleClass(new HashSet<int>(largerItemset), target, encryptedData);
                     if (rule.confidence > needConfidence & rule.quality > needQuality)
                     {
                         rules.Add(rule);
@@ -275,6 +283,10 @@ namespace DataProcessor
                     itemset.Remove(itemset.Last());
                 }
             }
+        }
+        public static string ToBinaryString(BigInteger bigInteger, int propertyNamesCount)
+        {
+            return Convert.ToString((long)bigInteger, 2).PadLeft(propertyNamesCount, '0'); // Дополняем нулями слева
         }
     }
 }

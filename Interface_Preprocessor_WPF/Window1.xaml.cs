@@ -105,7 +105,7 @@ namespace Interface_Preprocessor_WPF
                     Workbook wb = new Workbook(openFileDialog.FileName);
 
                     // Создание объекта шифрования данных
-                    DataEncryptor dataEncryptor = new DataEncryptor(wb, appropriateValues, propertyNames, namesAndShortNames);
+                    DataEncryptor dataEncryptor = new DataEncryptor(wb, _excelFile);
 
                     // Получение зашифрованных записей
                     List<BigInteger> encryptedRecords = dataEncryptor.GetEncryptedRecords();

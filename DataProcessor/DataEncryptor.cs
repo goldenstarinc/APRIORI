@@ -11,23 +11,45 @@ namespace DataProcessor
     public  class DataEncryptor
     {
         // Книга Excel
-        private Workbook _workbook;
+        public Workbook _workbook { get; private set; }
+
+        public ExcelFile _metaFile { get; private set; }
 
         // Список для хранения возможных значений
-        private List<List<string>> _appropriateValues;
+        public List<List<string>> _appropriateValues { get; private set; }
 
         // Список для хранения перечисления имен бинарных свойств
-        private List<string> _propertyNames;
+        public List<string> _propertyNames { get; private set; }
 
         // Словарь, содержащий Имена и Краткие имена в столбцах
-        private Dictionary<string, string> _namesAndShortNames;
-        
-        public DataEncryptor(Workbook workbook, List<List<string>> AppropriateValues, List<string> PropertyNames, Dictionary<string, string> NamesAndShortNames)
+        public Dictionary<string, string> _namesAndShortNames { get; private set; }
+
+        // Зашифрованные записи
+        public List<BigInteger> _transactions { get; private set; }
+        public List<List<BigInteger>> _subsets { get; private set; }
+        public int _propertiesCount { get; private set; }
+
+        private int mult;
+        public DataEncryptor(Workbook workbook, ExcelFile metaFile, int mult = 1)
         {
             _workbook = workbook;
-            _appropriateValues = AppropriateValues;
-            _propertyNames = PropertyNames;
-            _namesAndShortNames = NamesAndShortNames;
+            _metaFile = metaFile;
+
+            _appropriateValues = metaFile.AppropriateValues;
+            _propertyNames = metaFile.PropertyNames;
+            _namesAndShortNames = metaFile.NamesAndShortNames;
+            _propertiesCount = _propertyNames.Count;
+
+            _transactions = GetEncryptedRecords();
+
+            List<BigInteger> _tempTransactions = new List<BigInteger>();
+            _tempTransactions.AddRange(_transactions);
+
+            _subsets = new List<List<BigInteger>>();
+            for (int i = 0; i < metaFile.SubsetsCount; i++)
+            {
+                _subsets.Add(FormSubsets(i, _tempTransactions));
+            }
         }
 
 
@@ -36,7 +58,7 @@ namespace DataProcessor
         /// </summary>
         /// <param name="wb">Файл Excel</param>
         /// <returns>Список зашифрованных записей типа BigInteger</returns>
-        public List<BigInteger> GetEncryptedRecords(int mult = 1)
+        public List<BigInteger> GetEncryptedRecords()
         {
             List<BigInteger> encryptedRecords = new List<BigInteger>();
 
@@ -111,5 +133,38 @@ namespace DataProcessor
             return count;
         }
 
+        /// <summary>
+        /// Формирует подмножества на основе принадлежности записи к определенному бинарному свойству целевого столбца
+        /// </summary>
+        /// <param name="index"> Индекс бинарного свойства целевого столбца</param>
+        /// <returns> Подмножество</returns>
+        public List<BigInteger> FormSubsets(int index, List<BigInteger> _tempTransactions)
+        {
+            // Хранение записи для добавления подмножества
+            List<BigInteger> temp = new List<BigInteger>();
+
+            // Проходимся по каждой записи
+            foreach (var transaction in _tempTransactions)
+            {
+                string item = DataDecryptor.ToBinaryString(transaction);
+                if (item[item.Length - 1 - index] == '1')
+                {
+                    temp.Add(transaction);
+                }
+            }
+
+            // Удаляем записанные записи из основного списка
+            foreach (var delete in temp)
+            {
+                _tempTransactions.Remove(delete);
+            }
+
+            return temp;
+        }
+
+        public static string ToBinaryString(BigInteger bigInteger, int propertyNamesCount)
+        {
+            return Convert.ToString((long)bigInteger, 2).PadLeft(propertyNamesCount, '0'); // Дополняем нулями слева
+        }
     }
 }

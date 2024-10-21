@@ -20,29 +20,28 @@ namespace DataProcessor
         public List<string> propertyNames { get; private set; }
         public List<RuleClass> rules { get; private set; }
 
-        List<List<BigInteger>> subsets = DB_Data._subsets;
-        int propertiesCount = DB_Data._propertyNames.Count;
-        List<BigInteger> transactions = DB_Data._transactions;
 
-
-        public RuleClass(HashSet<int> Itemset, int subsetNumber)
+        public RuleClass(HashSet<int> Itemset, int subsetNumber, DataEncryptor encryptedData)
         {
             this.itemset = Itemset;
             this.target = subsetNumber;
-            this.propertyNames = DB_Data._propertyNames;
+            this.propertyNames = encryptedData._propertyNames;
 
-            int support = AA.CountSupport(itemset, subsets[target], propertiesCount);
+            List<List<BigInteger>> _subsets = encryptedData._subsets;
+            List<BigInteger> transactions = encryptedData._transactions;
 
-            this.f_g = AA.GetFrequency(support, subsets[target].Count);
+            int support = AA.CountSupport(itemset, _subsets[target], encryptedData._propertiesCount);
+
+            this.f_g = AA.GetFrequency(support, _subsets[target].Count);
             this.f_all = AA.GetFrequency(support, transactions.Count);
-            this.confidence = AA.CalculateConfidence(itemset, subsets[target], transactions, propertiesCount);
-            this.lift = AA.CalculateLift(confidence, subsets[target], transactions);
+            this.confidence = AA.CalculateConfidence(itemset, _subsets[target], transactions, encryptedData._propertiesCount);
+            this.lift = AA.CalculateLift(confidence, _subsets[target], transactions);
             this.quality = AA.CalculateQuality(f_g, f_all, confidence, lift);
         }
 
         public override string ToString()
         {
-            string result = "==================================================\n";
+            string result = "";
 
             int count = 0;
             foreach (var set in itemset)
@@ -58,10 +57,10 @@ namespace DataProcessor
 
             result += $"=> Goal{target}:\n" +
                       $"F_g: {Math.Round(f_g, 3)}; " +
-                      $"F_all: {Math.Round(f_all, 3)}; " + 
+                      $"F_all: {Math.Round(f_all, 3)}; " +
                       $"Confidence: {Math.Round(confidence, 3)}; " +
                       $"Lift: {Math.Round(lift, 3)}; " +
-                      $"Quality: {Math.Round(quality, 3)}";
+                      $"Quality: {Math.Round(quality, 3)}\n";
 
             return result;
         }
