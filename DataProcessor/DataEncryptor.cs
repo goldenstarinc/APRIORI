@@ -36,7 +36,7 @@ namespace DataProcessor
         /// </summary>
         /// <param name="wb">Файл Excel</param>
         /// <returns>Список зашифрованных записей типа BigInteger</returns>
-        public List<BigInteger> GetEncryptedRecords()
+        public List<BigInteger> GetEncryptedRecords(int mult = 1)
         {
             List<BigInteger> encryptedRecords = new List<BigInteger>();
 
@@ -65,7 +65,10 @@ namespace DataProcessor
                     }
                 }
                 // Добавляем запись в список записей типа 
-                encryptedRecords.Add(encryptedRecord);
+                for(int j = 0; j <= mult; ++j)
+                {
+                    encryptedRecords.Add(encryptedRecord);
+                }
             }
 
             return encryptedRecords;

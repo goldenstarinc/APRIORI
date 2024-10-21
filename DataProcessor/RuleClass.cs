@@ -39,16 +39,6 @@ namespace DataProcessor
             this.lift = AA.CalculateLift(confidence, subsets[target], transactions);
             this.quality = AA.CalculateQuality(f_g, f_all, confidence, lift);
         }
-        public RuleClass(HashSet<int> Itemset, double quality, double confidence, int subsetNumber)
-        {
-            this.itemset = Itemset;
-            this.target = subsetNumber;
-            this.propertyNames = DB_Data._propertyNames;
-        }
-        public RuleClass(HashSet<int> Itemset, double quality, double confidence, int length, int subsetNumber)
-        {
-
-        }
 
         public override string ToString()
         {
