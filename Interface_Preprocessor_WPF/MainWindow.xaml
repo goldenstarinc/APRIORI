@@ -31,7 +31,7 @@
         <Canvas>
             <Border x:Name="MenuBorder" CornerRadius="15" Background="#FFEBE7E7" Width="340" Height="345" Canvas.Left="-341" 
                     MouseLeave="MenuBorder_MouseLeave" HorizontalAlignment="Center" Canvas.Top="203" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
-
+                
                 <Border.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
