@@ -2,13 +2,9 @@
 using DataProcessor;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Numerics;
-using System.Security;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Transactions;
 using AA = DataProcessor.AprioriAlgorithm;
+
 class Program
 {
     static void Main(string[] args)
@@ -22,23 +18,17 @@ class Program
 
         // Создание экземпляра AprioriAlgorithm
 
-        HashSet<int> itemset = new HashSet<int>();
-        itemset.Add(16);
-        itemset.Add(20);
+        HashSet<int> itemset = new HashSet<int> { 5, 11, 16, 20 };
 
-        List<RuleClass> rules = new List<RuleClass>();
-        //rules = AA.GenerateSingleRules(-1, 0.2, 2, dataEncryptor1);
+        // Генерация правил
+        //List<RuleClass> rules = AA.GenerateSingleRules(2, 0, 0, dataEncryptor1);
 
-        //rules = AA.GenerateSpecificRules(2, itemset, dataEncryptor1);
+        List<RuleClass> rules = AA.GenerateAllRules(1, 0, 2, 6, dataEncryptor1);
 
-        rules = AA.GenerateAllRules(-1, 0.3, 2, 6, dataEncryptor1);
+        // Вывод правил в консоль
         foreach (RuleClass rule in rules)
         {
             Console.WriteLine(rule.ToString());
         }
-
     }
-
-
-    
 }

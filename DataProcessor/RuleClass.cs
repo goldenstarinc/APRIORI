@@ -14,6 +14,7 @@ namespace DataProcessor
         public double f_all { get; private set; }
         public double confidence { get; private set; }
         public double lift { get; private set; }
+        public double correlation { get; private set; }
         public double quality { get; private set; }
         public int target { get; private set; }
         public HashSet<int> itemset { get; private set; }
@@ -36,7 +37,8 @@ namespace DataProcessor
             this.f_all = AA.GetFrequency(support, transactions.Count);
             this.confidence = AA.CalculateConfidence(itemset, _subsets[target], transactions, encryptedData._propertiesCount);
             this.lift = AA.CalculateLift(confidence, _subsets[target], transactions);
-            this.quality = AA.CalculateQuality(f_g, f_all, confidence, lift);
+            this.correlation = AA.CalculateCorrelation(lift, _subsets[target].Count, transactions.Count);
+            this.quality = AA.CalculateQuality(f_g, f_all, confidence, correlation);
         }
 
         public override string ToString()
@@ -59,7 +61,7 @@ namespace DataProcessor
                       $"F_g: {Math.Round(f_g, 3)}; " +
                       $"F_all: {Math.Round(f_all, 3)}; " +
                       $"Confidence: {Math.Round(confidence, 3)}; " +
-                      $"Lift: {Math.Round(lift, 3)}; " +
+                      $"Correlation: {Math.Round(correlation, 3)}; " +
                       $"Quality: {Math.Round(quality, 3)}\n";
 
             return result;
