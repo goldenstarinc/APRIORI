@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Interface_Preprocessor_WPF
@@ -17,7 +18,7 @@ namespace Interface_Preprocessor_WPF
     /// <summary>
     /// Логика взаимодействия для InfoPage.xaml
     /// </summary>
-    public partial class InfoPage : Window
+    public partial class InfoPage : Page
     {
         public InfoPage()
         {

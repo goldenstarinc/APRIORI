@@ -1,0 +1,34 @@
+﻿<Page x:Class="Interface_Preprocessor_WPF.StartPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Interface_Preprocessor_WPF"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Title="StartPage">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="31*"/>
+            <RowDefinition Height="145*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="27*"/>
+            <ColumnDefinition Width="13*"/>
+        </Grid.ColumnDefinitions>
+        <Border BorderThickness="3" CornerRadius="30" Margin="21,12,21,43" Background="White" BorderBrush="#FF00ACFF" Grid.ColumnSpan="2" Grid.Row="1">
+            <TextBlock HorizontalAlignment="Left" Height="368" Margin="43,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="785" FontFamily="Segoe UI Variable Display" FontSize="100" FontWeight="Bold" ><Run Text="Препроцессор базы данных "/><Run Foreground="#FF00ACFF" Text="&gt;"/></TextBlock>
+        </Border>
+        <Border BorderThickness="1" CornerRadius="30" Height="59" Margin="21,28,21,0" VerticalAlignment="Top" Background="#FFF3F0F0" BorderBrush="#FFF3F0F0" Grid.ColumnSpan="2">
+            <Label Content="Golden Star Team" HorizontalAlignment="Left" Height="49" VerticalAlignment="Top" Width="282" Foreground="Black" FontFamily="Cascadia Code SemiBold" FontSize="24" Margin="17,9,0,0" FontWeight="Bold"/>
+        </Border>
+        <Border BorderThickness="1" CornerRadius="30" Margin="1,12,21,43" Background="#FF00ACFF" Grid.Column="1" Grid.Row="1">
+            <Image Margin="9,69,9,81" Source="/DB_Image_forButton.png"/>
+
+
+        </Border>
+        <TextBlock Margin="76,400,62,96" TextWrapping="Wrap" FontFamily="Segoe UI Variable Display" FontSize="34" Foreground="Black" Grid.Row="1" Text="Передвиньте мышь влево, чтобы продолжить"/>
+
+    </Grid>
+</Page>

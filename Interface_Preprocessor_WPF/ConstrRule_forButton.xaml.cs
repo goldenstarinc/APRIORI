@@ -1,4 +1,4 @@
-﻿using DataProcessor;
+﻿//using DataProcessor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,17 +21,17 @@ namespace Interface_Preprocessor_WPF
     public partial class ConstrRule_forButton : Window
     {
         private string[] parameters;
-        public ConstrRule_forButton(ExcelFile File)
-        {
-            InitializeComponent();
+        //public ConstrRule_forButton(ExcelFile File)
+        //{
+        //    InitializeComponent();
 
-            parameters = new string[File.PropertyNames.Count];
-            for (int i = 0; i < File.PropertyNames.Count; i++)
-            {
-                parameters[i] = File.PropertyNames[i];
-            }
-            CreateParameterTiles();
-        }
+        //    parameters = new string[File.PropertyNames.Count];
+        //    for (int i = 0; i < File.PropertyNames.Count; i++)
+        //    {
+        //        parameters[i] = File.PropertyNames[i];
+        //    }
+        //    CreateParameterTiles();
+        //}
 
         private List<Border> selectedTiles = new List<Border>();  // Хранит выбранные плитки
 
@@ -100,6 +100,9 @@ namespace Interface_Preprocessor_WPF
             }
         }
 
-
+        private void Do_Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

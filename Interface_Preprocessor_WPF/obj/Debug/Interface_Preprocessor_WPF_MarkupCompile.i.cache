@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Ruslan\Desktop\GitHub\APRIORI\Interface_Preprocessor_WPF\App.xaml
-8851404765
+9-1894003255
 
-131612147554
+141008581418
 17-406193700
-ConstrRule_forButton.xaml;ConstructionWindow.xaml;ConstructRule.xaml;CustomMessageBox.xaml;DecryptedDataWindow.xaml;InfoPage.xaml;MainWindow.xaml;Window1.xaml;
+ConstrRule_forButton.xaml;ConstructRule.xaml;CustomMessageBox.xaml;InfoPage.xaml;MainWindow.xaml;RuleConstructionPage.xaml;SelectPage.xaml;StartPage.xaml;ViewPage.xaml;
 
-True
+False
 

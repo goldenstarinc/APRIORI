@@ -14,56 +14,50 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DataProcessor;
+using System.Windows.Media.Animation;
 
 namespace Interface_Preprocessor_WPF
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
-        ExcelFile ExcelFile;
+        
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new StartPage());
         }
-
-        /// <summary>
-        /// Кнопка для открытия окна справки
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OpenInfo_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            InfoPage InfoPage = new InfoPage();
-            InfoPage.Show();
-        }
-
-        /// <summary>
-        /// Кнопка для выбора файла и прехода к странице построения правил
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OpenConstructionWindow_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Excel Files|*.xls;*.xlsx";
-
-            if (openFileDialog.ShowDialog() == true)
+            Button button = sender as Button;
+            string pageTag = button.Tag.ToString();
+            switch (pageTag)
             {
-                try
-                {
-                    ExcelFile = new ExcelFile(openFileDialog.FileName);
-                    ConstructionWindow constructionWindow = new ConstructionWindow(openFileDialog.FileName, ExcelFile);
-                    constructionWindow.Show();
-                    this.Close();
-                }
-                catch (Exception ex)
-                {
-                    CustomMessageBox customMessageBox = new CustomMessageBox($"Ошибка: {ex.Message}");
-                    customMessageBox.ShowDialog();
-                }
+                case "Page1":
+                    MainFrame.Navigate(new SelectPage());
+                    break;
+                case "Page2":
+                    MainFrame.Navigate(new ViewPage());
+                    break;
+                case "Page3":
+                    MainFrame.Navigate(new RuleConstructionPage());
+                    break;
+                case "Page4":
+                    MainFrame.Navigate(new InfoPage());
+                    break;
             }
+        }
+
+        private void MenuArea_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Storyboard showMenu = (Storyboard)this.FindResource("ShowMenu");
+            showMenu.Begin();
+        }
+
+        private void MenuBorder_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Storyboard hideMenu = (Storyboard)this.FindResource("HideMenu");
+            hideMenu.Begin();
         }
     }
 }

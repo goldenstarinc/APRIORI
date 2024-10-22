@@ -5,34 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Interface_Preprocessor_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1280" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="720" Width="1280" WindowStartupLocation="CenterScreen"
+        WindowState="Maximized">
+    <Window.Resources>
+        <Storyboard x:Key="ShowMenu">
+            <DoubleAnimation Storyboard.TargetName="MenuBorder"
+                             Storyboard.TargetProperty="(Canvas.Left)"
+                             To="0" Duration="0:0:0.3"/>
+            <ColorAnimation Storyboard.TargetName="MenuBorder"
+                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                            To="#FFF3F0F0" Duration="0:0:0.3"/>
+        </Storyboard>
+        <Storyboard x:Key="HideMenu">
+            <DoubleAnimation Storyboard.TargetName="MenuBorder"
+                             Storyboard.TargetProperty="(Canvas.Left)"
+                             To="-330" Duration="0:0:0.3"/>
+            <ColorAnimation Storyboard.TargetName="MenuBorder"
+                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                            To="Black" Duration="0:0:0.3"/>
+        </Storyboard>
+    </Window.Resources>
     <Grid Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="31*"/>
-            <RowDefinition Height="145*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="27*"/>
-            <ColumnDefinition Width="13*"/>
-        </Grid.ColumnDefinitions>
-        <Border BorderThickness="3" CornerRadius="30" Margin="21,12,21,43" Background="White" BorderBrush="#FF00ACFF" Grid.ColumnSpan="2" Grid.Row="1">
-            <TextBlock HorizontalAlignment="Left" Height="368" Margin="43,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="785" FontFamily="Segoe UI Variable Display" FontSize="100" FontWeight="Bold" ><Run Text="Препроцессор базы данных "/><Run Foreground="#FF00ACFF" Text="&gt;"/></TextBlock>
-        </Border>
-        <TextBlock Margin="76,0,76,133" TextWrapping="Wrap" FontFamily="Segoe UI Variable Display" FontSize="36" Foreground="Black" Text="Нажмите на значок, чтобы выбрать БД" Grid.Row="1" Height="60" VerticalAlignment="Bottom"/>
-        <Border BorderThickness="1" CornerRadius="30" Height="59" Margin="21,28,21,0" VerticalAlignment="Top" Background="#FFF3F0F0" BorderBrush="#FFF3F0F0" Grid.ColumnSpan="2">
-            <Label Content="Golden Star Team" HorizontalAlignment="Left" Height="49" VerticalAlignment="Top" Width="282" Foreground="Black" FontFamily="Cascadia Code SemiBold" FontSize="24" Margin="17,9,0,0" FontWeight="Bold"/>
-        </Border>
-        <Border BorderThickness="1" CornerRadius="30" Height="59" Margin="198,28,21,0" VerticalAlignment="Top" BorderBrush="Black" Background="White" Grid.Column="1">
-            <Button Name="OpenInfo" Content="Справка" HorizontalAlignment="Center" Height="44" VerticalAlignment="Top" Width="304" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="22" Margin="0,4,0,0" Click="OpenInfo_Click"/>
-        </Border>
-        <Border BorderThickness="1" CornerRadius="30" Margin="1,12,21,43" Background="#FF00ACFF" Grid.Column="1" Grid.Row="1">
-            <Button Name="OpenConstructionWindow" Content="Button" HorizontalAlignment="Center" Height="322" VerticalAlignment="Center" Width="330" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="OpenConstructionWindow_Click">
-                <Button.Background>
-                    <ImageBrush Stretch="Uniform" ImageSource="/DB_Image_forButton.png"/>
-                </Button.Background>
-            </Button>
+        <Frame Name="MainFrame" NavigationUIVisibility="Hidden"/>
+        <Border Background="Transparent" Width="79" HorizontalAlignment="Left" MouseEnter="MenuArea_MouseEnter"/>
+        <Canvas>
+            <Border x:Name="MenuBorder" CornerRadius="15" Background="#FFEBE7E7" Width="340" Height="345" Canvas.Left="-341" 
+                    MouseLeave="MenuBorder_MouseLeave" HorizontalAlignment="Center" Canvas.Top="203" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
 
-        </Border>
+                <Border.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="-0.182"/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-0.263"/>
+                    </TransformGroup>
+                </Border.RenderTransform>
+                <StackPanel HorizontalAlignment="Center" Width="318">
+                    <Button Content="Выбор базы данных" Click="Button_Click" Tag="Page1" HorizontalAlignment="Center" Width="289" BorderBrush="#FFCBCBCB" BorderThickness="0,0,0,1" Background="{x:Null}" FontFamily="Segoe UI Variable Display" FontSize="24" Height="86"/>
+                    <Button Content="Просмотр базы данных" Click="Button_Click" Tag="Page2" HorizontalAlignment="Center" Width="289" Height="86" BorderBrush="#FFCBCBCB" BorderThickness="0,0,0,1" Background="{x:Null}" FontFamily="Segoe UI Variable Display" FontSize="24"/>
+                    <Button Content="Построение правил" Click="Button_Click" Tag="Page3" HorizontalAlignment="Center" Width="289" Height="86" BorderBrush="#FFCBCBCB" BorderThickness="0,0,0,1" Background="{x:Null}" FontFamily="Segoe UI Variable Display" FontSize="24"/>
+                    <Button Content="Справка" Click="Button_Click" Tag="Page4" Height="86" Width="289" HorizontalAlignment="Center" BorderBrush="#FFCBCBCB" BorderThickness="0,0,0,0" Background="{x:Null}" FontFamily="Segoe UI Variable Display" FontSize="24"/>
+                </StackPanel>
+            </Border>
+        </Canvas>
 
     </Grid>
 </Window>

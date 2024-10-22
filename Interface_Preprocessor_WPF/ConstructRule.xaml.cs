@@ -35,8 +35,8 @@ namespace Interface_Preprocessor_WPF
         /// </summary>
         private void CreateRules_Button_Click(object sender, RoutedEventArgs e)
         {
-            ConstrRule_forButton ConstrRule_forButton = new ConstrRule_forButton(_encryptedData._metaFile);
-            ConstrRule_forButton.Show();
+            //ConstrRule_forButton ConstrRule_forButton = new ConstrRule_forButton(_encryptedData._metaFile);
+            //ConstrRule_forButton.Show();
         }
 
         private void HomePage_Button_Click(object sender, RoutedEventArgs e)

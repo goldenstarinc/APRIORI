@@ -66,29 +66,28 @@
     <Compile Include="ConstrRule_forButton.xaml.cs">
       <DependentUpon>ConstrRule_forButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ConstructionWindow.xaml.cs">
-      <DependentUpon>ConstructionWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ConstructRule.xaml.cs">
       <DependentUpon>ConstructRule.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomMessageBox.xaml.cs">
       <DependentUpon>CustomMessageBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DecryptedDataWindow.xaml.cs">
-      <DependentUpon>DecryptedDataWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="InfoPage.xaml.cs">
       <DependentUpon>InfoPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
+    <Compile Include="RuleConstructionPage.xaml.cs">
+      <DependentUpon>RuleConstructionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SelectPage.xaml.cs">
+      <DependentUpon>SelectPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StartPage.xaml.cs">
+      <DependentUpon>StartPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPage.xaml.cs">
+      <DependentUpon>ViewPage.xaml</DependentUpon>
     </Compile>
     <Page Include="ConstrRule_forButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ConstructionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -97,10 +96,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomMessageBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="DecryptedDataWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -120,7 +115,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Window1.xaml">
+    <Page Include="RuleConstructionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SelectPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -165,16 +172,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="vosklitsatelnyj_znak.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="InfoPageImg.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="InfoPageImg1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="DB_Image_New.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="DB_Image_forButton.png" />

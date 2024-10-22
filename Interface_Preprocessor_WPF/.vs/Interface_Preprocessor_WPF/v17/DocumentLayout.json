@@ -1,21 +1,25 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Ruslan\\Desktop\\GitHub\\PreprocessorDB\\Interface_Preprocessor_WPF\\",
+  "WorkspaceRootPath": "C:\\Users\\Ruslan\\Desktop\\Interface_Preprocessor_WPF\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8ED0BB6F-A9CC-4121-95E6-6CE7D36684CE}|Interface_Preprocessor_WPF.csproj|C:\\Users\\Ruslan\\Desktop\\GitHub\\PreprocessorDB\\Interface_Preprocessor_WPF\\window1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{8ED0BB6F-A9CC-4121-95E6-6CE7D36684CE}|Interface_Preprocessor_WPF.csproj|solutionrelative:window1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{8ED0BB6F-A9CC-4121-95E6-6CE7D36684CE}|Interface_Preprocessor_WPF.csproj|c:\\users\\ruslan\\desktop\\interface_preprocessor_wpf\\constrrule_forbutton.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8ED0BB6F-A9CC-4121-95E6-6CE7D36684CE}|Interface_Preprocessor_WPF.csproj|solutionrelative:constrrule_forbutton.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8ED0BB6F-A9CC-4121-95E6-6CE7D36684CE}|Interface_Preprocessor_WPF.csproj|c:\\users\\ruslan\\desktop\\github\\preprocessordb\\interface_preprocessor_wpf\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{8ED0BB6F-A9CC-4121-95E6-6CE7D36684CE}|Interface_Preprocessor_WPF.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{8ED0BB6F-A9CC-4121-95E6-6CE7D36684CE}|Interface_Preprocessor_WPF.csproj|c:\\users\\ruslan\\desktop\\interface_preprocessor_wpf\\constructrule.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8ED0BB6F-A9CC-4121-95E6-6CE7D36684CE}|Interface_Preprocessor_WPF.csproj|solutionrelative:constructrule.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8ED0BB6F-A9CC-4121-95E6-6CE7D36684CE}|Interface_Preprocessor_WPF.csproj|C:\\Users\\Ruslan\\Desktop\\GitHub\\PreprocessorDB\\Interface_Preprocessor_WPF\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8ED0BB6F-A9CC-4121-95E6-6CE7D36684CE}|Interface_Preprocessor_WPF.csproj|C:\\Users\\Ruslan\\Desktop\\Interface_Preprocessor_WPF\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8ED0BB6F-A9CC-4121-95E6-6CE7D36684CE}|Interface_Preprocessor_WPF.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8ED0BB6F-A9CC-4121-95E6-6CE7D36684CE}|Interface_Preprocessor_WPF.csproj|C:\\Users\\Ruslan\\Desktop\\GitHub\\PreprocessorDB\\Interface_Preprocessor_WPF\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{8ED0BB6F-A9CC-4121-95E6-6CE7D36684CE}|Interface_Preprocessor_WPF.csproj|C:\\Users\\Ruslan\\Desktop\\Interface_Preprocessor_WPF\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8ED0BB6F-A9CC-4121-95E6-6CE7D36684CE}|Interface_Preprocessor_WPF.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8ED0BB6F-A9CC-4121-95E6-6CE7D36684CE}|Interface_Preprocessor_WPF.csproj|C:\\Users\\Ruslan\\Desktop\\Interface_Preprocessor_WPF\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{8ED0BB6F-A9CC-4121-95E6-6CE7D36684CE}|Interface_Preprocessor_WPF.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
@@ -26,27 +30,41 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Window1.xaml",
-              "DocumentMoniker": "C:\\Users\\Ruslan\\Desktop\\GitHub\\PreprocessorDB\\Interface_Preprocessor_WPF\\Window1.xaml",
-              "RelativeDocumentMoniker": "Window1.xaml",
-              "ToolTip": "C:\\Users\\Ruslan\\Desktop\\GitHub\\PreprocessorDB\\Interface_Preprocessor_WPF\\Window1.xaml",
-              "RelativeToolTip": "Window1.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-09-11T21:06:02.95Z",
+              "DocumentIndex": 1,
+              "Title": "ConstructRule.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Ruslan\\Desktop\\Interface_Preprocessor_WPF\\ConstructRule.xaml.cs",
+              "RelativeDocumentMoniker": "ConstructRule.xaml.cs",
+              "ToolTip": "C:\\Users\\Ruslan\\Desktop\\Interface_Preprocessor_WPF\\ConstructRule.xaml.cs*",
+              "RelativeToolTip": "ConstructRule.xaml.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T17:49:56.738Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "ConstrRule_forButton.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Ruslan\\Desktop\\Interface_Preprocessor_WPF\\ConstrRule_forButton.xaml.cs",
+              "RelativeDocumentMoniker": "ConstrRule_forButton.xaml.cs",
+              "ToolTip": "C:\\Users\\Ruslan\\Desktop\\Interface_Preprocessor_WPF\\ConstrRule_forButton.xaml.cs*",
+              "RelativeToolTip": "ConstrRule_forButton.xaml.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T17:49:21.982Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "App.xaml",
-              "DocumentMoniker": "C:\\Users\\Ruslan\\Desktop\\GitHub\\PreprocessorDB\\Interface_Preprocessor_WPF\\App.xaml",
+              "DocumentMoniker": "C:\\Users\\Ruslan\\Desktop\\Interface_Preprocessor_WPF\\App.xaml",
               "RelativeDocumentMoniker": "App.xaml",
-              "ToolTip": "C:\\Users\\Ruslan\\Desktop\\GitHub\\PreprocessorDB\\Interface_Preprocessor_WPF\\App.xaml",
+              "ToolTip": "C:\\Users\\Ruslan\\Desktop\\Interface_Preprocessor_WPF\\App.xaml",
               "RelativeToolTip": "App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-09-11T20:34:51.574Z",
@@ -54,11 +72,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\Ruslan\\Desktop\\GitHub\\PreprocessorDB\\Interface_Preprocessor_WPF\\MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Ruslan\\Desktop\\Interface_Preprocessor_WPF\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "C:\\Users\\Ruslan\\Desktop\\GitHub\\PreprocessorDB\\Interface_Preprocessor_WPF\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\Ruslan\\Desktop\\Interface_Preprocessor_WPF\\MainWindow.xaml",
               "RelativeToolTip": "MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-09-11T20:10:49.395Z",
@@ -68,11 +86,11 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Ruslan\\Desktop\\GitHub\\PreprocessorDB\\Interface_Preprocessor_WPF\\MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Ruslan\\Desktop\\Interface_Preprocessor_WPF\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\Ruslan\\Desktop\\GitHub\\PreprocessorDB\\Interface_Preprocessor_WPF\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Ruslan\\Desktop\\Interface_Preprocessor_WPF\\MainWindow.xaml.cs",
               "RelativeToolTip": "MainWindow.xaml.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAArwB4AAABBAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-11T20:10:48.828Z",
               "EditorCaption": ""
