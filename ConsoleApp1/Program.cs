@@ -21,9 +21,12 @@ class Program
         HashSet<int> itemset = new HashSet<int> { 5, 11, 16, 20 };
 
         // Генерация правил
-        //List<RuleClass> rules = AA.GenerateSingleRules(2, 0, 0, dataEncryptor1);
+        //List<RuleClass> rules = AA.GenerateSingleRules(-1, 0, 0, dataEncryptor1);
 
-        List<RuleClass> rules = AA.GenerateAllRules(1, 0, 2, 6, dataEncryptor1);
+        //List<RuleClass> rules = AA.GenerateAllRules(1, 0, 2, 6, dataEncryptor1);
+
+
+        List<RuleClass> rules = AA.GenerateAllRules(1, 1, 1, 1, dataEncryptor1);
 
         // Вывод правил в консоль
         foreach (RuleClass rule in rules)

@@ -22,10 +22,10 @@
         <TextBlock HorizontalAlignment="Left" Margin="25,10,0,13" TextWrapping="Wrap" Width="521" FontFamily="Segoe UI Variable Display Semibold" FontSize="35" Grid.Row="1"><Run Language="ru-ru" Text="Какую базу данных показать?"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Height="69" Margin="25,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="1245" FontFamily="Segoe UI Variable Display" FontSize="45" FontWeight="Bold" Foreground="Black" Grid.ColumnSpan="3"><Run Foreground="#FF00ACFF" Text="&gt; "/><Run Language="ru-ru" Text="Просмотр базы"/><Run Text=" данных"/></TextBlock>
         <Border BorderBrush="#FF00ACFF" BorderThickness="3" CornerRadius="30" Margin="15,10,16,13" Grid.Column="1" Grid.Row="1">
-            <Button Name="ShowMetaDB_Button" Content="С метаданными" HorizontalAlignment="Center" Height="50" VerticalAlignment="Center" Width="217" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="25"/>
+            <Button Name="ShowMetaDB_Button" Content="С метаданными" HorizontalAlignment="Center" Height="50" VerticalAlignment="Center" Width="217" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="25" Click="ShowMetaDB_Button_Click"/>
         </Border>
         <Border BorderBrush="#FF00ACFF" BorderThickness="3" CornerRadius="30" Margin="20,10,40,13" Grid.Column="2" Grid.Row="1">
-            <Button Name="ShowDB_Button" Content="Основную" HorizontalAlignment="Center" Height="50" VerticalAlignment="Center" Width="217" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="25" />
+            <Button Name="ShowDB_Button" Content="Основную" HorizontalAlignment="Center" Height="50" VerticalAlignment="Center" Width="217" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="25" Click="ShowDB_Button_Click" />
         </Border>
         <DataGrid x:Name="dataGrid" Margin="25,10,25,23" d:ItemsSource="{d:SampleData ItemCount=5}" FontSize="18" FontFamily="Segoe UI Variable Display" Grid.Row="2" Grid.ColumnSpan="3" BorderBrush="{x:Null}"/>
 

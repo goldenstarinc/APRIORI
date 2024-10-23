@@ -24,15 +24,15 @@
         <TextBlock HorizontalAlignment="Left" Height="57" Margin="25,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="1091" FontFamily="Segoe UI Variable Display Semibold" FontSize="35" Grid.ColumnSpan="2"><Run Text="Выберите базу данных"/><Run Text=", "/><Run Language="ru-ru" Text="содержащую метаданные исходной"/><Run Text=":"/></TextBlock>
         <TextBox Name="MetaDBPath_TextBox" Height="60" Margin="9,0,81,15" TextWrapping="Wrap" VerticalAlignment="Bottom" Background="{x:Null}" BorderBrush="#FF00ACFF" SelectionBrush="#FF00ACFF" BorderThickness="0,0,0,1" FontSize="24" FontFamily="Cascadia Code SemiBold" Foreground="Black" Grid.Column="1" Grid.Row="1"/>
         <Border BorderBrush="#FF00ACFF" BorderThickness="3" CornerRadius="30" Margin="25,15,11,15" Grid.Row="1">
-            <Button Name="ChooseMetaDB_Button" Content="Выбрать" HorizontalAlignment="Center" Height="64" VerticalAlignment="Center" Width="217" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="25"/>
+            <Button Name="ChooseMetaDB_Button" Content="Выбрать" HorizontalAlignment="Center" Height="64" VerticalAlignment="Center" Width="217" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="25" Click="ChooseMetaDB_Button_Click"/>
         </Border>
         <TextBlock HorizontalAlignment="Left" Height="47" Margin="25,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="739" FontFamily="Segoe UI Variable Display Semibold" FontSize="35" Grid.ColumnSpan="2" Grid.Row="2"><Run Language="ru-ru" Text="Выберите исходную базу данных:"/></TextBlock>
         <TextBox Name="PathDB_TextBox" Margin="9,41,81,10" TextWrapping="Wrap" Background="{x:Null}" BorderBrush="#FF00ACFF" SelectionBrush="#FF00ACFF" BorderThickness="0,0,0,1" FontSize="24" FontFamily="Cascadia Code SemiBold" Foreground="Black" Grid.Column="1" Grid.Row="3"/>
         <Border BorderBrush="#FF191919" BorderThickness="3" CornerRadius="30" Margin="0,0,31,32" Grid.Column="1" Grid.Row="4" Height="69" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="266">
-            <Button Name="Save_Button" Content="Сохранить" HorizontalAlignment="Center" Height="58" VerticalAlignment="Center" Width="219" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="25" FontWeight="Bold"/>
+            <Button Name="Save_Button" Content="Сохранить" HorizontalAlignment="Center" Height="58" VerticalAlignment="Center" Width="219" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="25" FontWeight="Bold" Click="Save_Button_Click"/>
         </Border>
         <Border BorderBrush="#FF00ACFF" BorderThickness="3" CornerRadius="30" Margin="25,17,11,10" Grid.Row="3">
-            <Button Name="ChooseDB_Button" Content="Выбрать" HorizontalAlignment="Center" Height="64" VerticalAlignment="Center" Width="215" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="25"/>
+            <Button Name="ChooseDB_Button" Content="Выбрать" HorizontalAlignment="Center" Height="64" VerticalAlignment="Center" Width="215" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="25" Click="ChooseDB_Button_Click"/>
         </Border>
 
     </Grid>

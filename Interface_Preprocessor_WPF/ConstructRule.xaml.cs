@@ -2,6 +2,7 @@
 using DataProcessor;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -23,11 +24,38 @@ namespace Interface_Preprocessor_WPF
     /// </summary>
     public partial class ConstructRule : Window
     {
-        private DataEncryptor _encryptedData;
-        public ConstructRule(DataEncryptor encryptedData)
+        private DataEncryptor encryptedData;
+
+        private double quality;
+
+        private double confidence;
+
+        private int sendingLength;
+
+        private int ruleNumber;
+
+        public ConstructRule(double Quality, double Confidence, int SendingLength, int RuleNumber)
         {
             InitializeComponent();
-            _encryptedData = encryptedData;
+
+            try
+            {
+                OutputRules_TextBox.Text = string.Empty;
+                OutputRunningTime_TextBox.Text = string.Empty;
+                encryptedData = SharedData.Instance.EncryptedData;
+                
+                if (encryptedData == null || encryptedData._transactions.Count == 0) { throw new Exception("Зашифрованные записи не обнаружены"); }
+
+                quality = Quality;
+                confidence = Confidence;
+                sendingLength = SendingLength;
+                ruleNumber = RuleNumber;
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox customMessageBox = new CustomMessageBox($"Ошибка: {ex.Message}");
+                customMessageBox.ShowDialog();
+            }
         }
 
         /// <summary>
@@ -35,37 +63,77 @@ namespace Interface_Preprocessor_WPF
         /// </summary>
         private void CreateRules_Button_Click(object sender, RoutedEventArgs e)
         {
-            //ConstrRule_forButton ConstrRule_forButton = new ConstrRule_forButton(_encryptedData._metaFile);
-            //ConstrRule_forButton.Show();
+            ConstrRule_forButton ConstrRule_forButton = new ConstrRule_forButton(quality, confidence, sendingLength, ruleNumber);
+            ConstrRule_forButton.Show();
         }
 
         private void HomePage_Button_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
         }
 
         private void CreateSingleRules_Button_Click(object sender, RoutedEventArgs e)
         {
-            List<RuleClass> rules = new List<RuleClass>();
+            OutputRules_TextBox.Text = string.Empty;
 
-            rules = AA.GenerateSingleRules(2, 0.2, 2, _encryptedData);
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
 
+
+            List<RuleClass> rules = AA.GenerateSingleRules(ruleNumber, confidence, quality, encryptedData);
+
+            stopwatch.Stop();
+            TimeSpan elapsedTime = stopwatch.Elapsed;
+
+            // Вывод правил в консоль
             foreach (RuleClass rule in rules)
             {
                 OutputRules_TextBox.Text += rule.ToString();
             }
 
+
+            if (OutputRules_TextBox.Text.Trim() == string.Empty)
+            {
+                OutputRules_TextBox.Text = "По заданным характеристикам не было построено ни одного правила:\n" +
+                                                                              $"Качество: {quality}\n" +
+                                                                              $"Достаточная достоверность: {confidence}\n" +
+                                                                              $"Длина посылки: {sendingLength}\n" +
+                                                                              $"Номер правила: {ruleNumber}";
+            }
+
+            OutputRunningTime_TextBox.Text = elapsedTime.TotalSeconds.ToString() + " сек.";
         }
 
         private void CreateAllRules_Button_Click(object sender, RoutedEventArgs e)
         {
+            OutputRules_TextBox.Text = string.Empty;
+
             List<RuleClass> rules = new List<RuleClass>();
 
-            rules = AA.GenerateAllRules(2, 0.5, 3, 2, _encryptedData);
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
 
+            rules = AA.GenerateAllRules(ruleNumber, confidence, quality, sendingLength, encryptedData);
+
+            stopwatch.Stop();
+            TimeSpan elapsedTime = stopwatch.Elapsed;
+
+            // Вывод правил в консоль
             foreach (RuleClass rule in rules)
             {
                 OutputRules_TextBox.Text += rule.ToString();
             }
+
+            if (OutputRules_TextBox.Text == string.Empty)
+            {
+                OutputRules_TextBox.Text = "По заданным характеристикам не было построено ни одного правила:\n" +
+                                                                              $"Качество: {quality}\n" +
+                                                                              $"Достаточная достоверность: {confidence}\n" +
+                                                                              $"Длина посылки: {sendingLength}\n" +
+                                                                              $"Номер правила: {ruleNumber}";
+            }
+
+            OutputRunningTime_TextBox.Text = elapsedTime.TotalSeconds.ToString() + " сек.";
         }
     }
 }

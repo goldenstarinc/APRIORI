@@ -1,51 +1,12 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{8ED0BB6F-A9CC-4121-95E6-6CE7D36684CE}|..\\Interface_Preprocessor_WPF\\Interface_Preprocessor_WPF.csproj|c:\\users\\ruslan\\desktop\\github\\apriori\\interface_preprocessor_wpf\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8ED0BB6F-A9CC-4121-95E6-6CE7D36684CE}|..\\Interface_Preprocessor_WPF\\Interface_Preprocessor_WPF.csproj|c:\\users\\ruslan\\desktop\\github\\apriori\\interface_preprocessor_wpf\\constructrule.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\Interface_Preprocessor_WPF\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "..\\Interface_Preprocessor_WPF\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\Interface_Preprocessor_WPF\\MainWindow.xaml",
-              "RelativeToolTip": "..\\Interface_Preprocessor_WPF\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-10-22T20:03:27.19Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ConstructRule.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\Interface_Preprocessor_WPF\\ConstructRule.xaml.cs",
-              "RelativeDocumentMoniker": "..\\Interface_Preprocessor_WPF\\ConstructRule.xaml.cs",
-              "ToolTip": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\Interface_Preprocessor_WPF\\ConstructRule.xaml.cs",
-              "RelativeToolTip": "..\\Interface_Preprocessor_WPF\\ConstructRule.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T17:56:44.907Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }

@@ -40,7 +40,16 @@ namespace Interface_Preprocessor_WPF
                     MainFrame.Navigate(new ViewPage());
                     break;
                 case "Page3":
-                    MainFrame.Navigate(new RuleConstructionPage());
+                    if (SharedData.Instance.MetaFile != null)
+                    {
+                        MainFrame.Navigate(new RuleConstructionPage());
+                    }
+                    else
+                    {
+                        CustomMessageBox customMessageBox = new CustomMessageBox("Ошибка: Для работы с данным окном требуется загрузить все необходимые файлы.");
+                        customMessageBox.ShowDialog();
+                        MainFrame.Navigate(new SelectPage());
+                    }
                     break;
                 case "Page4":
                     MainFrame.Navigate(new InfoPage());

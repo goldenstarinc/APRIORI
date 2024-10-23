@@ -16,7 +16,7 @@ namespace DataProcessor
     public class ExcelFile
     {
         private Workbook _workbook;
-
+        public string metaFilePath { get; private set; }
         public int SubsetsCount { get; private set; }
         public List<string> PropertyNames { get; private set; }
         public List<string> ColumnTypes { get; private set; }
@@ -27,6 +27,7 @@ namespace DataProcessor
             try
             {
                 _workbook = new Workbook(filePath);
+                metaFilePath = filePath;
                 SubsetsCount = GetSubsetsCount();
                 PropertyNames = GetPropertyNames();
                 ColumnTypes = GetColumnTypes();

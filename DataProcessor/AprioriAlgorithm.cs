@@ -1,5 +1,4 @@
-﻿using Aspose.Cells.Pivot;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -29,7 +28,7 @@ namespace DataProcessor
 
                 // Расшифровываем запись
                 string binarySet = ToBinaryString(set, propertiesCount);
-                
+
                 // Проверяем наличие каждого свойства в itemset
                 foreach (int item in itemset)
                 {
@@ -78,7 +77,7 @@ namespace DataProcessor
         /// <returns>Вероятность существования посылки в определённом подмножестве</returns>
         public static double CalculateLift(double confidence, List<BigInteger> subset, List<BigInteger> transactions)
         {
-            return confidence * ( (double) transactions.Count / subset.Count);
+            return confidence * ((double)transactions.Count / subset.Count);
         }
 
         /// <summary>
@@ -91,7 +90,7 @@ namespace DataProcessor
         {
             double correlation = 0;
             double maxlift = (double)transactionsCount / subsetCount;
-            
+
             correlation = lift - 1;
 
             if ((lift >= 1) && (lift <= maxlift))
@@ -243,7 +242,7 @@ namespace DataProcessor
                     {
                         itemset.Add(i);
                         RuleClass rule = new RuleClass(new HashSet<int>(itemset), j, encryptedData);
-                        if (rule.confidence >= needConfidence & rule.quality >= needQuality)
+                        if (rule.confidence >= needConfidence & rule.quality >= needQuality & itemset.Count > 0)
                         {
                             rules.Add(rule);
                         }
@@ -281,7 +280,7 @@ namespace DataProcessor
                 for (int i = excelFile1.SubsetsCount; i < excelFile1.PropertyNames.Count; i++)
                 {
                     RuleClass rule = new RuleClass(new HashSet<int>(itemset), target, encryptedData);
-                    if (rule.confidence >= needConfidence & rule.quality >= needQuality & rule.itemset.Count <= sendingLength)
+                    if (rule.confidence >= needConfidence & rule.quality >= needQuality & rule.itemset.Count <= sendingLength & itemset.Count > 0)
                     {
                         rules.Add(rule);
                     }
@@ -338,8 +337,8 @@ namespace DataProcessor
             if (length == 0)
             {
                 // Проходим по всем подмножествам
-                if (target == -1) 
-                { 
+                if (target == -1)
+                {
                     for (int i = 0; i < excelFile1.SubsetsCount; ++i)
                     {
                         // Высчитываем корреляцию данной посылки в каждом подмножестве
