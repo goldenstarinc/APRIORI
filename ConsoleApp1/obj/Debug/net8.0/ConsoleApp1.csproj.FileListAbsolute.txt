@@ -194,9 +194,7 @@ C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\ConsoleApp1\bin\Debug\net8.0\runt
 C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\ConsoleApp1\bin\Debug\net8.0\runtimes\win-x86\native\libSkiaSharp.dll
 C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\ConsoleApp1\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\ConsoleApp1\bin\Debug\net8.0\DataProcessor.dll
-C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\ConsoleApp1\bin\Debug\net8.0\HeroesLibrary.dll
 C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\ConsoleApp1\bin\Debug\net8.0\DataProcessor.pdb
-C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\ConsoleApp1\bin\Debug\net8.0\HeroesLibrary.pdb
 C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\ConsoleApp1\obj\Debug\net8.0\ConsoleA.CB28C8CC.Up2Date
 C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.genruntimeconfig.cache
 C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\ConsoleApp1\obj\Debug\net8.0\ref\ConsoleApp1.dll

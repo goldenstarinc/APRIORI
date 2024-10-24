@@ -1871,9 +1871,6 @@
       },
       "DataProcessor/1.0.0": {
         "type": "project",
-        "dependencies": {
-          "HeroesLibrary": "1.0.0"
-        },
         "compile": {
           "bin/placeholder/DataProcessor.dll": {}
         },

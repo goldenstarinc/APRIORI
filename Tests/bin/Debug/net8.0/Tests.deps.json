@@ -1118,9 +1118,6 @@
         }
       },
       "DataProcessor/1.0.0": {
-        "dependencies": {
-          "HeroesLibrary": "1.0.0"
-        },
         "runtime": {
           "DataProcessor.dll": {
             "assemblyVersion": "1.0.0",

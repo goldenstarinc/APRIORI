@@ -158,23 +158,11 @@
       },
       "DataProcessor/1.0.0": {
         "type": "project",
-        "dependencies": {
-          "HeroesLibrary": "1.0.0"
-        },
         "compile": {
           "bin/placeholder/DataProcessor.dll": {}
         },
         "runtime": {
           "bin/placeholder/DataProcessor.dll": {}
-        }
-      },
-      "HeroesLibrary/1.0.0": {
-        "type": "project",
-        "compile": {
-          "bin/placeholder/HeroesLibrary.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/HeroesLibrary.dll": {}
         }
       }
     }
@@ -503,11 +491,6 @@
       "type": "project",
       "path": "../DataProcessor/DataProcessor.csproj",
       "msbuildProject": "../DataProcessor/DataProcessor.csproj"
-    },
-    "HeroesLibrary/1.0.0": {
-      "type": "project",
-      "path": "../HeroesLibrary/HeroesLibrary.csproj",
-      "msbuildProject": "../HeroesLibrary/HeroesLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {

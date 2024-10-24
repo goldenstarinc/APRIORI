@@ -97,19 +97,8 @@
         }
       },
       "DataProcessor/1.0.0": {
-        "dependencies": {
-          "HeroesLibrary": "1.0.0"
-        },
         "runtime": {
           "DataProcessor.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "HeroesLibrary/1.0.0": {
-        "runtime": {
-          "HeroesLibrary.dll": {
             "assemblyVersion": "1.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -187,11 +176,6 @@
       "hashPath": "system.text.encoding.codepages.4.7.0.nupkg.sha512"
     },
     "DataProcessor/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "HeroesLibrary/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

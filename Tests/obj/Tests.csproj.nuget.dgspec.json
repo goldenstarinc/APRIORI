@@ -90,11 +90,7 @@
         "projectPath": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataProcessor.csproj",
         "frameworks": {
           "net48": {
-            "projectReferences": {
-              "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj": {
-                "projectPath": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         }
       },

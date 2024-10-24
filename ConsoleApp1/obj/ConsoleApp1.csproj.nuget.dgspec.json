@@ -90,25 +90,6 @@
         "projectPath": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataProcessor.csproj",
         "frameworks": {
           "net48": {
-            "projectReferences": {
-              "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj": {
-                "projectPath": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj"
-              }
-            }
-          }
-        }
-      },
-      "frameworks": {
-        "net48": {}
-      }
-    },
-    "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj": {
-      "restore": {
-        "projectUniqueName": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj",
-        "projectName": "HeroesLibrary",
-        "projectPath": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj",
-        "frameworks": {
-          "net48": {
             "projectReferences": {}
           }
         }
