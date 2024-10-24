@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\Tests\\Tests.csproj": {}
+    "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\Tests\\Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\ConsoleApp1\\ConsoleApp1.csproj": {
+    "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\ConsoleApp1\\ConsoleApp1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\ConsoleApp1\\ConsoleApp1.csproj",
+        "projectUniqueName": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\ConsoleApp1\\ConsoleApp1.csproj",
         "projectName": "ConsoleApp1",
-        "projectPath": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\ConsoleApp1\\ConsoleApp1.csproj",
-        "packagesPath": "C:\\Users\\notso\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\ConsoleApp1\\obj\\",
+        "projectPath": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\ConsoleApp1\\ConsoleApp1.csproj",
+        "packagesPath": "C:\\Users\\Ruslan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\ConsoleApp1\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\notso\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Ruslan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,15 +22,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataProcessor.csproj": {
-                "projectPath": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataProcessor.csproj"
+              "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataProcessor.csproj": {
+                "projectPath": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataProcessor.csproj"
               }
             }
           }
@@ -79,15 +74,15 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataProcessor.csproj": {
+    "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataProcessor.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataProcessor.csproj",
+        "projectUniqueName": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataProcessor.csproj",
         "projectName": "DataProcessor",
-        "projectPath": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataProcessor.csproj",
+        "projectPath": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataProcessor.csproj",
         "frameworks": {
           "net48": {
             "projectReferences": {}
@@ -98,36 +93,17 @@
         "net48": {}
       }
     },
-    "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj": {
-      "restore": {
-        "projectUniqueName": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj",
-        "projectName": "HeroesLibrary",
-        "projectPath": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj",
-        "frameworks": {
-          "net48": {
-            "projectReferences": {}
-          }
-        }
-      },
-      "frameworks": {
-        "net48": {}
-      }
-    },
-    "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\Tests\\Tests.csproj": {
+    "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\Tests\\Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\Tests\\Tests.csproj",
+        "projectUniqueName": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\Tests\\Tests.csproj",
         "projectName": "Tests",
-        "projectPath": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\Tests\\Tests.csproj",
-        "packagesPath": "C:\\Users\\notso\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\Tests\\obj\\",
+        "projectPath": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\Tests\\Tests.csproj",
+        "packagesPath": "C:\\Users\\Ruslan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\Tests\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\notso\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Ruslan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -135,21 +111,20 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\ConsoleApp1\\ConsoleApp1.csproj": {
-                "projectPath": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\ConsoleApp1\\ConsoleApp1.csproj"
+              "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\ConsoleApp1\\ConsoleApp1.csproj": {
+                "projectPath": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\ConsoleApp1\\ConsoleApp1.csproj"
               },
-              "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataProcessor.csproj": {
-                "projectPath": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataProcessor.csproj"
+              "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataProcessor.csproj": {
+                "projectPath": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataProcessor.csproj"
               },
-              "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj": {
-                "projectPath": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj"
+              "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj": {
+                "projectPath": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj"
               }
             }
           }
@@ -210,7 +185,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

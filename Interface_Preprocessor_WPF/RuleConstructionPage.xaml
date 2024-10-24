@@ -30,7 +30,7 @@
         <Border BorderThickness="4" CornerRadius="30" Margin="28,12,12,26" Background="#FFF3F0F0" BorderBrush="#FFF3F0F0" Grid.Row="2" Grid.ColumnSpan="2">
             <TextBlock HorizontalAlignment="Left" Height="45" TextWrapping="Wrap" Text="Пилик! Вам сообщение:" VerticalAlignment="Top" Width="535" FontFamily="Segoe UI Variable Display Semibold" FontSize="35" FontWeight="Bold" Foreground="Black" Margin="24,4,0,0"/>
         </Border>
-        <TextBox x:Name="OutputMessage_TextBox" Margin="56,69,29,37" TextWrapping="Wrap" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Display" FontSize="24" Grid.Row="2" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="OutputMessage_TextBox" Margin="56,69,29,37" TextWrapping="Wrap" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Display" FontSize="24" Grid.Row="2" Grid.ColumnSpan="2" IsReadOnly="True"/>
         <Border BorderThickness="4" CornerRadius="30" Margin="10,22,20,6" BorderBrush="#FF00ACFF" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
             <TextBlock HorizontalAlignment="Left" Height="53" TextWrapping="Wrap" VerticalAlignment="Top" Width="404" FontFamily="Segoe UI Variable Display Semibold" FontSize="35" FontWeight="Bold" Foreground="Black" Margin="29,20,0,0"><Run Language="ru-ru" Text="Список параметров &gt;"/></TextBlock>
         </Border>

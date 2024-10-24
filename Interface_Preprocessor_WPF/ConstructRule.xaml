@@ -34,11 +34,8 @@
         <Border BorderThickness="1" CornerRadius="30" Margin="17,2,69,22" Background="White" BorderBrush="#FF00ACFF" Grid.Row="2" Grid.Column="1">
             <Button Name="CreateAllRules_Button" Content="Построить все правила" HorizontalAlignment="Center" Height="44" VerticalAlignment="Center" Width="374" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18" Click="CreateAllRules_Button_Click"/>
         </Border>
-        <Border BorderThickness="3" CornerRadius="25" BorderBrush="#FFF3F0F0" Background="#FFF3F0F0" Grid.Column="3" Margin="8,0,7,0" Height="59" VerticalAlignment="Center">
-            <Button Name="HomePage_Button" Content="Главная" HorizontalAlignment="Center" Height="44" VerticalAlignment="Center" Width="148" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18" FontWeight="Bold" Click="HomePage_Button_Click"/>
-        </Border>
-        <TextBox Name="OutputRunningTime_TextBox" HorizontalAlignment="Left" Height="30" Margin="44,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" FontSize="18" Background="{x:Null}" BorderBrush="{x:Null}" Grid.Column="4"/>
-        <TextBox Name="OutputRules_TextBox" Margin="25,27,15,36" TextWrapping="Wrap" FontFamily="Segoe UI Variable Display" FontSize="18" BorderBrush="{x:Null}" Grid.ColumnSpan="5" Grid.Row="3"/>
+        <TextBox Name="OutputRunningTime_TextBox" HorizontalAlignment="Left" Height="30" Margin="44,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" FontSize="18" Background="{x:Null}" BorderBrush="{x:Null}" Grid.Column="4" IsReadOnly="True"/>
+        <TextBox Name="OutputRules_TextBox" Margin="25,27,15,36" TextWrapping="Wrap" FontFamily="Segoe UI Variable Display" FontSize="18" BorderBrush="{x:Null}" Grid.ColumnSpan="5" Grid.Row="3" IsReadOnly="True"/>
 
     </Grid>
 </Window>

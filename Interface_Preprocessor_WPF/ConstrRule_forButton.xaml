@@ -19,7 +19,7 @@
             <WrapPanel Name="parametersPanel" HorizontalAlignment="Left" VerticalAlignment="Top" />
         </ScrollViewer>
 
-        <TextBox Name="OutputAllRules_TextBox_AddPage" Margin="10,12,10,12" TextWrapping="Wrap" Text="Вывод правил" FontFamily="Segoe UI Variable Display" FontSize="18" Grid.Row="3"/>
+        <TextBox Name="OutputAllRules_TextBox_AddPage" Margin="10,12,10,12" TextWrapping="Wrap" Text="" FontFamily="Segoe UI Variable Display" FontSize="18" Grid.Row="3" IsReadOnly="True"/>
         <Border BorderBrush="#FF191919" BorderThickness="3" CornerRadius="30" HorizontalAlignment="Center" Height="60" VerticalAlignment="Center" Width="530" Grid.Row="2">
             <Button Name="Do_Button" Content="Задать посылку и получить правило" HorizontalAlignment="Center" Height="44" VerticalAlignment="Center" Width="510" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="Segoe UI Variable Text" FontSize="18" FontWeight="Bold" Click="Do_Button_Click"/>
         </Border>

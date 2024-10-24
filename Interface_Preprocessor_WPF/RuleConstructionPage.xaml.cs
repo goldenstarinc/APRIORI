@@ -27,13 +27,14 @@ namespace Interface_Preprocessor_WPF
 
         private bool areParametersSet;
 
-        private int quality;
-        private int confidence;
+        private double quality;
+        private double confidence;
         private int sendingLength;
         private int ruleNumber;
         public RuleConstructionPage()
         {
             InitializeComponent();
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             metaFile = SharedData.Instance.MetaFile;
             encryptedData = SharedData.Instance.EncryptedData;
             ParametrsList_ListBox.ItemsSource = metaFile.PropertyNames;
@@ -46,10 +47,12 @@ namespace Interface_Preprocessor_WPF
         {
             try
             {
-                quality = int.Parse(qualityTB.Text);
-                confidence = int.Parse(confidenceTB.Text);
-                sendingLength = int.Parse(sendingLengthTB.Text);
-                ruleNumber = int.Parse(ruleNumberTB.Text);
+                quality = double.Parse(qualityTB.Text);
+                confidence = double.Parse(confidenceTB.Text);
+
+                if (!int.TryParse(sendingLengthTB.Text, out sendingLength)) { throw new Exception("Длина посылки должна быть целым числом."); }
+                if (!int.TryParse(ruleNumberTB.Text, out ruleNumber)) { throw new Exception("Номер правила должен быть целым числом."); }
+
 
 
 

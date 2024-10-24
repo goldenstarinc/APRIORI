@@ -67,10 +67,7 @@ namespace Interface_Preprocessor_WPF
             ConstrRule_forButton.Show();
         }
 
-        private void HomePage_Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+        
 
         private void CreateSingleRules_Button_Click(object sender, RoutedEventArgs e)
         {

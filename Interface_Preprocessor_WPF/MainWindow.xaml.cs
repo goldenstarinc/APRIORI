@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DataProcessor;
 using System.Windows.Media.Animation;
+using System.Diagnostics;
 
 namespace Interface_Preprocessor_WPF
 {
@@ -52,7 +53,18 @@ namespace Interface_Preprocessor_WPF
                     }
                     break;
                 case "Page4":
-                    MainFrame.Navigate(new InfoPage());
+                    string pdfFilePath = @"Info.pdf";
+                    try
+                    {
+                        Process.Start(new ProcessStartInfo(pdfFilePath)
+                        {
+                            UseShellExecute = true
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Не удалось открыть PDF файл: " + ex.Message);
+                    }
                     break;
             }
         }
