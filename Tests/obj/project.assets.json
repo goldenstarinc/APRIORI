@@ -1877,6 +1877,15 @@
         "runtime": {
           "bin/placeholder/DataProcessor.dll": {}
         }
+      },
+      "HeroesLibrary/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/HeroesLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HeroesLibrary.dll": {}
+        }
       }
     }
   },
@@ -5980,14 +5989,19 @@
       "type": "project",
       "path": "../DataProcessor/DataProcessor.csproj",
       "msbuildProject": "../DataProcessor/DataProcessor.csproj"
+    },
+    "HeroesLibrary/1.0.0": {
+      "type": "project",
+      "path": "../HeroesLibrary/HeroesLibrary.csproj",
+      "msbuildProject": "../HeroesLibrary/HeroesLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "Aspose.Cells >= 24.9.0",
-      "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj",
       "ConsoleApp1 >= 1.0.0",
       "DataProcessor >= 1.0.0",
+      "HeroesLibrary >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 17.8.0",
       "System.Numerics.Vectors >= 4.5.0",
       "coverlet.collector >= 6.0.0",
@@ -5996,19 +6010,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ruslan\\.nuget\\packages\\": {}
+    "C:\\Users\\notso\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\Tests\\Tests.csproj",
+      "projectUniqueName": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\Tests\\Tests.csproj",
       "projectName": "Tests",
-      "projectPath": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\Tests\\Tests.csproj",
-      "packagesPath": "C:\\Users\\Ruslan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\Tests\\obj\\",
+      "projectPath": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\Tests\\Tests.csproj",
+      "packagesPath": "C:\\Users\\notso\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\Tests\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Ruslan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\notso\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6016,20 +6035,21 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\ConsoleApp1\\ConsoleApp1.csproj": {
-              "projectPath": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\ConsoleApp1\\ConsoleApp1.csproj"
+            "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\ConsoleApp1\\ConsoleApp1.csproj": {
+              "projectPath": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\ConsoleApp1\\ConsoleApp1.csproj"
             },
-            "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataProcessor.csproj": {
-              "projectPath": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataProcessor.csproj"
+            "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataProcessor.csproj": {
+              "projectPath": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataProcessor.csproj"
             },
-            "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj": {
-              "projectPath": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj"
+            "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj": {
+              "projectPath": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj"
             }
           }
         }
@@ -6090,19 +6110,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1105",
-      "level": "Error",
-      "message": "Не удалось найти сведения о проекте для \"C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj\". Если вы используете Visual Studio, причина может заключаться в том, что проект выгружен или не является частью текущего решения. В этом случае выполните восстановление из командной строки. В противном случае причина может быть связана с тем, что файл проекта является недопустимым или отсутствуют целевые объекты, необходимые для восстановления.",
-      "libraryId": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\HeroesLibrary.csproj",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  }
 }

@@ -54,9 +54,6 @@ namespace Interface_Preprocessor_WPF
                 if (!int.TryParse(ruleNumberTB.Text, out ruleNumber)) { throw new Exception("Номер правила должен быть целым числом."); }
 
 
-
-
-
                 OutputMessage_TextBox.Text = "Заданы следующие параметры: \n" +
                                              $"Качество = {quality}\n" +
                                              $"Достоверность = {confidence}\n" +
@@ -69,7 +66,7 @@ namespace Interface_Preprocessor_WPF
                 if (confidence > 1) throw new Exception("Достоверность не может быть больше единицы.");
 
                 if (sendingLength < 1) throw new Exception($"Длина посылки не может быть меньше единицы.");
-                if (sendingLength > metaFile.ColumnTypes.Count) throw new Exception($"Длина посылки не может быть больше количества стоблцов: [{metaFile.ColumnTypes.Count}] в выбранной базе данных.");
+                if (sendingLength > metaFile.ColumnTypes.Count - 1) throw new Exception($"Длина посылки не может быть больше количества стоблцов(целевой не учитывается): [{metaFile.ColumnTypes.Count - 1}].");
 
                 if (ruleNumber < -1) throw new Exception($"Номер правила не может быть меньше -1.");
                 if (ruleNumber > metaFile.SubsetsCount - 1) throw new Exception($"Максимальный разрешенный номер правила относительно выбранной базы данных: [{metaFile.SubsetsCount - 1}].");
@@ -106,6 +103,11 @@ namespace Interface_Preprocessor_WPF
                 CustomMessageBox customMessageBox = new CustomMessageBox($"Ошибка: {ex.Message}");
                 customMessageBox.ShowDialog();
             }
+        }
+
+        private void sendingLengthTB_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

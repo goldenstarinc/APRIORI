@@ -78,6 +78,9 @@
     <Compile Include="InfoPage.xaml.cs">
       <DependentUpon>InfoPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ParameterInput.xaml.cs">
+      <DependentUpon>ParameterInput.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RuleConstructionPage.xaml.cs">
       <DependentUpon>RuleConstructionPage.xaml</DependentUpon>
     </Compile>
@@ -123,6 +126,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ParameterInput.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="RuleConstructionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

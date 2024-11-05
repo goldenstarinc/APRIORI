@@ -1,7 +1,13 @@
-﻿using System;
+﻿using Aspose.Cells.Drawing;
+using Microsoft.Win32;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,18 +22,15 @@ namespace DataProcessor
         /// <param name="subset"> Подмножество</param>
         /// <param name="propertiesCount"> Количество бинарных свойств</param>
         /// <returns> Количество вхождений определенного набора бинарных свойств в подмножестве</returns>
-        public static int CountSupport(HashSet<int> itemset, List<BigInteger> subset, int propertiesCount)
+        public static int CountSupport(HashSet<int> itemset, List<string> subset, int propertiesCount)
         {
             // Счетчик 
             int count = 0;
 
             // Проходим по каждой записи в подмножестве
-            foreach (var set in subset)
+            foreach (var binarySet in subset)
             {
                 bool isAdequate = true;
-
-                // Расшифровываем запись
-                string binarySet = ToBinaryString(set, propertiesCount);
 
                 // Проверяем наличие каждого свойства в itemset
                 foreach (int item in itemset)
@@ -62,7 +65,7 @@ namespace DataProcessor
         /// <param name="itemset"> Набор определенных бинарных свойств</param>
         /// <param name="subset"> Подмножество</param>
         /// <returns> Достоверность правила</returns>
-        public static double CalculateConfidence(HashSet<int> itemset, List<BigInteger> subset, List<BigInteger> transactions, int propertiesCount)
+        public static double CalculateConfidence(HashSet<int> itemset, List<string> subset, List<string> transactions, int propertiesCount)
         {
             int subsetSupport = CountSupport(itemset, subset, propertiesCount);
             int setSupport = CountSupport(itemset, transactions, propertiesCount);
@@ -73,18 +76,20 @@ namespace DataProcessor
         /// Вычисляет вероятность существования посылки в определённом подмножестве
         /// </summary>
         /// <param name="confidence"> Достоверность правила</param>
-        /// <param name="subset"> Подмножество</param>
+        /// <param name="subsetCount"> Количество записей в подмножестве</param>
+        /// <param name="transactionsCount"> Количество записей множестве</param>
         /// <returns>Вероятность существования посылки в определённом подмножестве</returns>
-        public static double CalculateLift(double confidence, List<BigInteger> subset, List<BigInteger> transactions)
+        public static double CalculateLift(double confidence, int subsetCount, int transactionsCount)
         {
-            return confidence * ((double)transactions.Count / subset.Count);
+            return confidence * ((double)transactionsCount / subsetCount);
         }
 
         /// <summary>
         /// Вычисляет корреляцию между посылкой правила и его значением
         /// </summary>
         /// <param name="lift"> Лифт правила</param>
-        /// <param name="subset"> Подмножество</param>
+        /// <param name="subsetCount"> Количество записей в подмножестве</param>
+        /// <param name="transactionsCount"> Количество записей множестве</param>
         /// <returns> Корреляция между посылкой правила и его значением</returns>
         public static double CalculateCorrelation(double lift, int subsetCount, int transactionsCount)
         {
@@ -95,7 +100,7 @@ namespace DataProcessor
 
             if ((lift >= 1) && (lift <= maxlift))
             {
-                correlation = (lift - 1) / (maxlift - 1);
+                correlation = (double)(lift - 1) / (maxlift - 1);
             }
 
             return correlation;
@@ -156,61 +161,41 @@ namespace DataProcessor
         /// <param name="needConfidence">Достаточная уверенность</param>
         /// <param name="needQuality">Достаточное качество</param>
         /// <param name="encryptedData">Объект, хранящий информацию о зашифрованном файле</param>
-        public static List<RuleClass> GenerateSingleRules(int target, double needConfidence, double needQuality, DataEncryptor encryptedData)
+        public static List<RuleClass> GenerateSingleRules(int selcetedTarget, double needConfidence, double needQuality, DataEncryptor encryptedData)
         {
             List<RuleClass> rules = new List<RuleClass>();
 
-            List<HashSet<int>> largerItemsets = new List<HashSet<int>>();
+            int subsetsCount = encryptedData._subsets.Count; // Количество подмножеств
+            int propertiesCount = encryptedData._propertiesCount; // Количество бинарных свойств
 
-            ExcelFile excelFile1 = encryptedData._metaFile;
-
-            HashSet<int> itemset = new HashSet<int>();
-
-            // В случае, когда target = -1 работаем со всеми подмножествами
-            if (target == -1)
+            // В случае, когда target = -1 работаем со всем множеством
+            if (selcetedTarget == -1)
             {
-                // Проходим по каждому подмножеству
-                for (int j = 0; j < excelFile1.SubsetsCount; ++j)
+                for (int target = 0; target < subsetsCount; ++target)
                 {
-                    // Вычисляем необходимую корреляцию для каждого подмножества относительно введенной достоверной уверенности
-                    double lift = CalculateLift(needConfidence, encryptedData._subsets[j], encryptedData._transactions);
-                    double needCorrelation = CalculateCorrelation(lift, encryptedData._subsets[j].Count, encryptedData._transactions.Count);
-
-                    // Создаем все возможные посылки для j-ого подмножества
-                    largerItemsets.AddRange(GenerateLargerItemsets(excelFile1, 1, encryptedData._transactions, needCorrelation, target, encryptedData));
-
-                    foreach (var largeItemset in largerItemsets)
+                    // Проходим по каждому бинарному свойству исключая целовой столбец и строим правила
+                    for (int i = subsetsCount; i < propertiesCount; ++i)
                     {
-                        RuleClass rule = new RuleClass(new HashSet<int>(largeItemset), j, encryptedData);
-                        // Проверяем правило на соответствие заданным характеристикам
-                        if (rule.confidence >= needConfidence & rule.quality >= needQuality)
+                        RuleClass rule = new RuleClass(new HashSet<int> { i }, target, encryptedData);
+
+                        if (rule.quality >= needQuality)
                         {
                             rules.Add(rule);
                         }
                     }
-                    largerItemsets.Clear();
                 }
             }
+            // В ином случае, работаем с выбранным пожмножеством
             else
             {
-                // Вычисляем необходимую корреляцию для выбранного подмножества относительно введенной достоверной уверенности
-                double lift = CalculateLift(needConfidence, encryptedData._subsets[target], encryptedData._transactions);
-                double needCorrelation = CalculateCorrelation(lift, encryptedData._subsets[target].Count, encryptedData._transactions.Count);
-
-                // Создаем все возможные посылки для выбранного подмножества
-                largerItemsets.AddRange(GenerateLargerItemsets(excelFile1, 1, encryptedData._transactions, needCorrelation, target, encryptedData));
-
-                foreach (var largeItemset in largerItemsets)
+                // Проходим по каждому бинарному свойству исключая целовой столбец и строим правила
+                for (int i = subsetsCount; i < propertiesCount; ++i)
                 {
-                    RuleClass rule = new RuleClass(new HashSet<int>(largeItemset), target, encryptedData);
-                    // Проверяем правило на соответствие заданным характеристикам
-                    if (rule.confidence >= needConfidence & rule.quality >= needQuality)
-                    {
-                        rules.Add(rule);
-                    }
+                    RuleClass rule = new RuleClass(new HashSet<int> { i }, selcetedTarget, encryptedData);
+                    rules.Add(rule);
                 }
-                largerItemsets.Clear();
             }
+
             return rules;
         }
 
@@ -226,172 +211,120 @@ namespace DataProcessor
         {
             List<RuleClass> rules = new List<RuleClass>();
 
-            ExcelFile excelFile1 = encryptedData._metaFile;
+            
 
-            HashSet<int> itemset = new HashSet<int>();
-
-            List<HashSet<int>> largerItemsets = new List<HashSet<int>>();
-
-
-            // В случае, когда target = -1 работаем со всеми подмножествами
             if (target == -1)
             {
-                for (int j = 0; j < excelFile1.SubsetsCount; ++j)
+                for (int i = 0; i < encryptedData._subsets.Count; ++i)
                 {
-                    for (int i = excelFile1.SubsetsCount; i < excelFile1.PropertyNames.Count; i++)
+                    var sets = GenerateLargerItemsets(sendingLength, i, needConfidence, needQuality, encryptedData);
+
+                    foreach (var set in sets)
                     {
-                        itemset.Add(i);
-                        RuleClass rule = new RuleClass(new HashSet<int>(itemset), j, encryptedData);
-                        if (rule.confidence >= needConfidence & rule.quality >= needQuality & itemset.Count > 0)
+                        RuleClass rule = new RuleClass(set, i, encryptedData);
+
+                        if (rule.confidence >= needConfidence)
                         {
                             rules.Add(rule);
                         }
-                        itemset.Remove(i);
                     }
-                }
-                for (int length = 2; length <= sendingLength; length++)
-                {
-
-                    for (int j = 0; j < excelFile1.SubsetsCount; j++)
-                    {
-                        // Вычисляем необходимую корреляцию для каждого подмножества относительно введенной достоверной уверенности
-                        double lift = CalculateLift(needConfidence, encryptedData._subsets[j], encryptedData._transactions);
-                        double needCorrelation = CalculateCorrelation(lift, encryptedData._subsets[j].Count, encryptedData._transactions.Count);
-
-                        largerItemsets.AddRange(GenerateLargerItemsets(excelFile1, length, encryptedData._transactions, needCorrelation, target, encryptedData));
-                        foreach (HashSet<int> largerItemset in largerItemsets)
-                        {
-                            RuleClass rule = new RuleClass(new HashSet<int>(largerItemset), j, encryptedData);
-                            if (rule.confidence >= needConfidence & rule.quality >= needQuality)
-                            {
-                                rules.Add(rule);
-                            }
-                        }
-                    }
-                    largerItemsets.Clear();
                 }
             }
             else
             {
-                // Вычисляем необходимую корреляцию для определенного подмножества относительно введенной достоверной уверенности
-                double lift = CalculateLift(needConfidence, encryptedData._subsets[target], encryptedData._transactions);
-                double needCorrelation = CalculateCorrelation(lift, encryptedData._subsets[target].Count, encryptedData._transactions.Count);
+                var sets = GenerateLargerItemsets(sendingLength, target, needConfidence, needQuality, encryptedData);
+                
+                foreach (var set in sets)
+                {
+                    RuleClass rule = new RuleClass(set, target, encryptedData);
 
-                for (int i = excelFile1.SubsetsCount; i < excelFile1.PropertyNames.Count; i++)
-                {
-                    RuleClass rule = new RuleClass(new HashSet<int>(itemset), target, encryptedData);
-                    if (rule.confidence >= needConfidence & rule.quality >= needQuality & rule.itemset.Count <= sendingLength & itemset.Count > 0)
-                    {
-                        rules.Add(rule);
-                    }
-                }
-                for (int i = 1; i <= sendingLength; i++)
-                {
-                    largerItemsets.AddRange(GenerateLargerItemsets(excelFile1, i, encryptedData._transactions, needCorrelation, target, encryptedData));
-                }
-                foreach (HashSet<int> largerItemset in largerItemsets)
-                {
-                    RuleClass rule = new RuleClass(new HashSet<int>(largerItemset), target, encryptedData);
-                    if (rule.confidence >= needConfidence & rule.quality >= needQuality)
+                    if (rule.confidence >= needConfidence)
                     {
                         rules.Add(rule);
                     }
                 }
             }
+            
             return rules;
         }
 
-        /// <summary>
-        /// Функция создающая все возможные наборы бинарных свойств данной длины
-        /// </summary>
-        /// <param name="excelFile1">Данный файл</param>
-        /// <param name="length">Данная длина</param>
-        /// <param name="transactions">Список щашифрованных записей</param>
-        /// <param name="correlationThreshold">Минимально возможная корреляция посылки</param>
-        /// <param name="target">Номер подмножества</param>
-        /// <param name="de">Объект типа DataEncryptor, содержащий зашифрованные данные</param>
-        /// <returns>Все возможные наборы бинарных свойств данной длины</returns>
-        public static List<HashSet<int>> GenerateLargerItemsets(ExcelFile excelFile1, int length, List<BigInteger> transactions, double correlationThreshold, int target, DataEncryptor de)
+        public static List<HashSet<int>> GenerateLargerItemsets(int sendingLength, int target, double needConfidence, double needQuality, DataEncryptor ed)
         {
+            // Список, хранящий все возможные наборы, прошедшие через заданный фильтр
             List<HashSet<int>> largerItemsets = new List<HashSet<int>>();
-            HashSet<int> itemset = new HashSet<int>();
-            GenerateLargerItemset(excelFile1.SubsetsCount, excelFile1.PropertyNames.Count, length, itemset, largerItemsets, excelFile1, correlationThreshold, transactions, target, de);
+
+            // Список, на основе которого формируются новые комбинации наборов
+            List<HashSet<int>> largerItemset = new List<HashSet<int>>();
+            List<HashSet<int>> tempLargerItemset = new List<HashSet<int>>();
+
+            HashSet<int> singleSets = new HashSet<int>();
+
+            // Минимальная частота
+            double minF = 30;
+            double currentF;
+
+            for (int i = ed._subsets.Count; i < ed._propertiesCount; ++i)
+            {
+                HashSet<int> singleSet = new HashSet<int>() { i };
+
+                currentF = GetFrequency(CountSupport(singleSet, ed._subsets[target], ed._propertiesCount), ed._subsets[target].Count) * 100;
+
+                if (currentF > minF)
+                {
+                    singleSets.Add(i);
+                    largerItemsets.Add(singleSet);
+                }
+            }
+
+
+            // Генерируем наборы размера sendingLength
+            for (int y = 2; y <= sendingLength; ++y)
+            {
+                largerItemsets.AddRange(GenerateCombinations(singleSets, y, ed, target));
+            }
+
             return largerItemsets;
         }
 
-        /// <summary>
-        /// Генерирует все возможные наборы бинарных свойств от данного номера бинарного свойства и до последнего
-        /// </summary>
-        /// <param name="initialNumberProperties"> Номер начального свойства</param>
-        /// <param name="propertiesCount"> Количество бинарных свойств</param>
-        /// <param name="length"> Длина набора</param>
-        /// <param name="itemset"> Набор</param>
-        /// <param name="largerItemsets"> Список наборов</param>
-        /// <param name="excelFile1">Файл с метаданными</param>
-        /// <param name="correlationThreshold">Минимальная корреляция</param>
-        /// <param name="transactions">Зашифрованные записи</param>
-        /// <param name="target">Номер подмножества</param>
-        /// <param name="de">Объект типа DataEncryptor, содержащий зашифрованные данные</param>
-        public static void GenerateLargerItemset(int initialNumberProperties, int propertiesCount, int length, HashSet<int> itemset, List<HashSet<int>> largerItemsets, ExcelFile excelFile1, double correlationThreshold, List<BigInteger> transactions, int target, DataEncryptor de)
+
+        public static List<HashSet<int>> GenerateCombinations(HashSet<int> items, int combinationLength, DataEncryptor ed, int target)
         {
-            if (length == 0)
+            List<HashSet<int>> combinations = new List<HashSet<int>>();
+            List<int> currentCombination = new List<int>();
+
+            GenerateCombinationsRecursive(items.ToList(), combinationLength, 0, currentCombination, combinations, ed, target);
+            return combinations;
+        }
+
+        private static void GenerateCombinationsRecursive(List<int> items, int combinationLength, int start,
+                                                          List<int> currentCombination, List<HashSet<int>> combinations, DataEncryptor ed, int target)
+        {
+            if (currentCombination.Count == combinationLength)
             {
-                // Проходим по всем подмножествам
-                if (target == -1)
-                {
-                    for (int i = 0; i < excelFile1.SubsetsCount; ++i)
-                    {
-                        // Высчитываем корреляцию данной посылки в каждом подмножестве
-                        double confidence = CalculateConfidence(itemset, de._subsets[i], transactions, excelFile1.PropertyNames.Count);
-                        double lift = CalculateLift(confidence, de._subsets[i], transactions);
-                        double currentCorrelation = CalculateCorrelation(lift, de._subsets[i].Count, transactions.Count);
+                HashSet<int> combination = new HashSet<int>(currentCombination);
+                double minF = 30;
+                double currentF = GetFrequency(CountSupport(combination, ed._subsets[target], ed._propertiesCount), ed._subsets[target].Count) * 100;
 
-                        // Добавляем набор только если он проходит по корреляции
-                        if (currentCorrelation >= correlationThreshold)
-                        {
-                            largerItemsets.Add(new HashSet<int>(itemset));
-                            break;
-                        }
-                    }
-                }
-                // Проходим по выбранному подмножеству
-                else
+                if (currentF > minF)
                 {
-                    // Высчитываем корреляцию данной посылки в выбранном подмножестве
-                    double confidence = CalculateConfidence(itemset, de._subsets[target], transactions, excelFile1.PropertyNames.Count);
-                    double lift = CalculateLift(confidence, de._subsets[target], transactions);
-                    double currentCorrelation = CalculateCorrelation(lift, de._subsets[target].Count, transactions.Count);
-
-                    // Добавляем набор только если он проходит по корреляции
-                    if (currentCorrelation >= correlationThreshold)
-                    {
-                        largerItemsets.Add(new HashSet<int>(itemset));
-                    }
+                    combinations.Add(combination);
                 }
                 return;
             }
 
-            for (int i = initialNumberProperties; i < propertiesCount; i++)
+            for (int i = start; i < items.Count; i++)
             {
-                if (itemset.Count == 0 || i > itemset.Last())
-                {
-                    itemset.Add(i);
-                    GenerateLargerItemset(i + 1, propertiesCount, length - 1, itemset, largerItemsets, excelFile1, correlationThreshold, transactions, target, de);
-                    itemset.Remove(itemset.Last());
-                }
+                currentCombination.Add(items[i]);
+                GenerateCombinationsRecursive(items, combinationLength, i + 1, currentCombination, combinations, ed, target);
+                currentCombination.RemoveAt(currentCombination.Count - 1); // Backtrack
             }
         }
 
 
-        /// <summary>
-        /// Переводит зашифрованную запись в двоичный вид
-        /// </summary>
-        /// <param name="bigInteger">Зашифрованная запись</param>
-        /// <param name="propertyNamesCount">Количество бинарных свойств</param>
-        /// <returns>Зашифрованную запись в двочичном виде</returns>
-        public static string ToBinaryString(BigInteger bigInteger, int propertyNamesCount)
-        {
-            return Convert.ToString((long)bigInteger, 2).PadLeft(propertyNamesCount, '0'); // Дополняем нулями слева
-        }
     }
 }
+
+
+
+
+

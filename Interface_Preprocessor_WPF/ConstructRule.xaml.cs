@@ -94,7 +94,6 @@ namespace Interface_Preprocessor_WPF
                 OutputRules_TextBox.Text = "По заданным характеристикам не было построено ни одного правила:\n" +
                                                                               $"Качество: {quality}\n" +
                                                                               $"Достаточная достоверность: {confidence}\n" +
-                                                                              $"Длина посылки: {sendingLength}\n" +
                                                                               $"Номер правила: {ruleNumber}";
             }
 
@@ -114,6 +113,7 @@ namespace Interface_Preprocessor_WPF
 
             stopwatch.Stop();
             TimeSpan elapsedTime = stopwatch.Elapsed;
+
 
             // Вывод правил в консоль
             foreach (RuleClass rule in rules)

@@ -90,7 +90,14 @@ namespace Interface_Preprocessor_WPF
 
                     // Шифрование записей
                     this.filePath = filePath;
-                    this.encryptedData = new DataEncryptor(new Workbook(filePath), metaFile, 10);
+
+
+                    ParameterInput pi  = new ParameterInput();
+                    pi.ShowDialog();
+
+                    int mult = pi.value;
+
+                    this.encryptedData = new DataEncryptor(new Workbook(filePath), metaFile, mult);
 
                     PathDB_TextBox.Text = filePath;
                 }

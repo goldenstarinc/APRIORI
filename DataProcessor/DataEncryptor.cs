@@ -1,7 +1,9 @@
 ﻿using Aspose.Cells;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,8 +27,8 @@ namespace DataProcessor
         public Dictionary<string, string> _namesAndShortNames { get; private set; }
 
         // Зашифрованные записи
-        public List<BigInteger> _transactions { get; private set; }
-        public List<List<BigInteger>> _subsets { get; private set; }
+        public List<string> _transactions { get; private set; }
+        public List<List<string>> _subsets { get; private set; }
         public int _propertiesCount { get; private set; }
 
         private int mult;
@@ -40,15 +42,15 @@ namespace DataProcessor
             _namesAndShortNames = metaFile.NamesAndShortNames;
             _propertiesCount = _propertyNames.Count;
 
+            this.mult = mult;
+
             _transactions = GetEncryptedRecords();
 
-            List<BigInteger> _tempTransactions = new List<BigInteger>();
-            _tempTransactions.AddRange(_transactions);
+            _subsets = new List<List<string>>();
 
-            _subsets = new List<List<BigInteger>>();
             for (int i = 0; i < metaFile.SubsetsCount; i++)
             {
-                _subsets.Add(FormSubsets(i, _tempTransactions));
+                _subsets.Add(FormSubsets(i, new List<string>(_transactions)));
             }
         }
 
@@ -58,9 +60,9 @@ namespace DataProcessor
         /// </summary>
         /// <param name="wb">Файл Excel</param>
         /// <returns>Список зашифрованных записей типа BigInteger</returns>
-        public List<BigInteger> GetEncryptedRecords()
+        public List<string> GetEncryptedRecords()
         {
-            List<BigInteger> encryptedRecords = new List<BigInteger>();
+            List<string> encryptedRecords = new List<string>();
 
             Cells cells = _workbook.Worksheets[0].Cells;
 
@@ -87,12 +89,12 @@ namespace DataProcessor
                     }
                 }
                 // Добавляем запись в список записей типа 
-                for(int j = 0; j <= mult; ++j)
+                for(int j = 0; j < mult; ++j)
                 {
-                    encryptedRecords.Add(encryptedRecord);
+                    encryptedRecords.Add(ToBinaryString(encryptedRecord, _propertiesCount));
                 }
             }
-
+            
             return encryptedRecords;
         }
 
@@ -136,35 +138,50 @@ namespace DataProcessor
         /// <summary>
         /// Формирует подмножества на основе принадлежности записи к определенному бинарному свойству целевого столбца
         /// </summary>
-        /// <param name="index"> Индекс бинарного свойства целевого столбца</param>
+        /// <param name="transactions">Список записей</param>
         /// <returns> Подмножество</returns>
-        public List<BigInteger> FormSubsets(int index, List<BigInteger> _tempTransactions)
+        public List<string> FormSubsets(int index, List<string> transactions)
         {
-            // Хранение записи для добавления подмножества
-            List<BigInteger> temp = new List<BigInteger>();
-
-            // Проходимся по каждой записи
-            foreach (var transaction in _tempTransactions)
+            // Фильтруем записи по заданному индексу
+            var subset = transactions.Where(transaction =>
             {
-                string item = DataDecryptor.ToBinaryString(transaction);
-                if (item[item.Length - 1 - index] == '1')
+                return transaction[transaction.Length - 1 - index] == '1';
+            }).ToList();
+
+            // Возвращаем отфильтрованные записи
+            return subset;
+        }
+        /// <summary>
+        /// Переводит зашифрованную запись в двоичный вид
+        /// </summary>
+        /// <param name="bigInteger">Зашифрованная запись</param>
+        /// <param name="propertyNamesCount">Количество бинарных свойств</param>
+        /// <returns>Зашифрованную запись в двочичном виде</returns>
+        public static string ToBinaryString(BigInteger bigInteger, int propertyNamesCount)
+        {
+            if (bigInteger < 0)
+            {
+                bigInteger = BigInteger.Zero - bigInteger; // Convert to positive
+            }
+
+            StringBuilder binaryStringBuilder = new StringBuilder();
+
+            if (bigInteger == 0)
+            {
+                binaryStringBuilder.Append('0');
+            }
+            else
+            {
+                while (bigInteger > 0)
                 {
-                    temp.Add(transaction);
+                    binaryStringBuilder.Insert(0, (bigInteger % 2).ToString());
+                    bigInteger /= 2;
                 }
             }
 
-            // Удаляем записанные записи из основного списка
-            foreach (var delete in temp)
-            {
-                _tempTransactions.Remove(delete);
-            }
+            string binaryString = binaryStringBuilder.ToString();
 
-            return temp;
-        }
-
-        public static string ToBinaryString(BigInteger bigInteger, int propertyNamesCount)
-        {
-            return Convert.ToString((long)bigInteger, 2).PadLeft(propertyNamesCount, '0'); // Дополняем нулями слева
+            return binaryString.PadLeft(propertyNamesCount, '0');
         }
     }
 }
