@@ -9,14 +9,14 @@ using AA = DataProcessor.AprioriAlgorithm;
 class Program
 {
     static void Main(string[] args)
-    {
+    {   
+        
         // Чтение данных из Excel файла
         ExcelFile excelFile1 = new ExcelFile("MetaData.xlsx");
         Workbook workbook = new Workbook("BankDB.xlsx");
 
         // Шифрование данных
         DataEncryptor dataEncryptor1 = new DataEncryptor(workbook, excelFile1, 1000);
-
 
         HashSet<int> itemset = new HashSet<int> { 1, 0, 3, 2 };
 
@@ -25,9 +25,9 @@ class Program
         Stopwatch stopwatch = new Stopwatch();
         stopwatch.Start();
 
-        //List<RuleClass> rules = AA.GenerateSingleRules(-1, 0, 0, dataEncryptor1);
+        //List<RuleClass> rules = AA.GenerateSingleRulesUsingConfidenceAndFrequency(-1, 0.5, 0.6, dataEncryptor1, 0.6);
         //List<RuleClass> rules = AA.GenerateSpecificRules(-1, itemset, dataEncryptor1);
-        List<RuleClass> rules = AA.GenerateAllRules(-1, 0.9, 0.9, 5, dataEncryptor1);
+        List<RuleClass> rules = AA.GenerateAllRulesUsingConfidenceAndFrequency(-1, 0.6, 0.5, 4, dataEncryptor1);
         //43 s on 5
         stopwatch.Stop();
         TimeSpan elapsedTime = stopwatch.Elapsed;

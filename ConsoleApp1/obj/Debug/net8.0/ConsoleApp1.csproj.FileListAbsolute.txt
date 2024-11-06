@@ -156,9 +156,7 @@ C:\Users\otvyagis\Documents\GitHub\APRIORI\ConsoleApp1\bin\Debug\net8.0\runtimes
 C:\Users\otvyagis\Documents\GitHub\APRIORI\ConsoleApp1\bin\Debug\net8.0\runtimes\win-x86\native\libSkiaSharp.dll
 C:\Users\otvyagis\Documents\GitHub\APRIORI\ConsoleApp1\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\otvyagis\Documents\GitHub\APRIORI\ConsoleApp1\bin\Debug\net8.0\DataProcessor.dll
-C:\Users\otvyagis\Documents\GitHub\APRIORI\ConsoleApp1\bin\Debug\net8.0\HeroesLibrary.dll
 C:\Users\otvyagis\Documents\GitHub\APRIORI\ConsoleApp1\bin\Debug\net8.0\DataProcessor.pdb
-C:\Users\otvyagis\Documents\GitHub\APRIORI\ConsoleApp1\bin\Debug\net8.0\HeroesLibrary.pdb
 C:\Users\otvyagis\Documents\GitHub\APRIORI\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.csproj.AssemblyReference.cache
 C:\Users\otvyagis\Documents\GitHub\APRIORI\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\otvyagis\Documents\GitHub\APRIORI\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.AssemblyInfoInputs.cache

@@ -1,0 +1,3 @@
+Binary classes:
+target0 target1 age0 age1 age2 age3 age4 age5 age6 job0 job1 job2 job3 job4 job5 job6 job7 job8 job9 job10 marital0 marital1 marital2 marital3 education0 education1 education2 education3 default0 default1 balance0 balance1 balance2 balance3 balance4 balance5 balance6 balance7 balance8 balance9 balance10 balance11 balance12 housing0 housing1 loan0 loan1 contact0 contact1 contact2 month0 month1 month2 month3 month4 month5 month6 month7 month8 month9 month10 month11 poutcome0 poutcome1 poutcome2 
+Encrypted records list:

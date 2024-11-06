@@ -109,7 +109,7 @@ namespace Interface_Preprocessor_WPF
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            rules = AA.GenerateAllRules(ruleNumber, confidence, quality, sendingLength, encryptedData);
+            rules = AA.GenerateAllRules(ruleNumber, confidence, sendingLength, encryptedData);
 
             stopwatch.Stop();
             TimeSpan elapsedTime = stopwatch.Elapsed;

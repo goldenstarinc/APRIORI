@@ -16,7 +16,7 @@ namespace DataProcessor
         /// <param name="propertyNames">Список имен бинарных классов</param>
         /// <param name="encryptedRecords">Список зашифрованных записей</param>
         /// <param name="filePath">Путь к выходному файлу</param>
-        public static void WriteEncryptedDataToFile(List<string> propertyNames, List<BigInteger> encryptedRecords, string filePath)
+        public static void WriteEncryptedDataToFile(List<string> propertyNames, List<string> encryptedRecords, string filePath)
         {
             using (StreamWriter writer = new StreamWriter(filePath))
             {

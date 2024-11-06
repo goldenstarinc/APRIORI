@@ -28,12 +28,12 @@ namespace DataProcessor
             int count = 0;
 
             // Проходим по каждой записи в подмножестве
-            foreach (var binarySet in subset)
+            foreach (var binarySet in subset) //O(n)
             {
                 bool isAdequate = true;
 
                 // Проверяем наличие каждого свойства в itemset
-                foreach (int item in itemset)
+                foreach (int item in itemset)//O(m)
                 {
                     if (binarySet[binarySet.Length - 1 - item] != '1')
                     {
@@ -161,7 +161,7 @@ namespace DataProcessor
         /// <param name="needConfidence">Достаточная уверенность</param>
         /// <param name="needQuality">Достаточное качество</param>
         /// <param name="encryptedData">Объект, хранящий информацию о зашифрованном файле</param>
-        public static List<RuleClass> GenerateSingleRules(int selcetedTarget, double needConfidence, double needQuality, DataEncryptor encryptedData)
+        public static List<RuleClass> GenerateSingleRulesUsingQuality(int selcetedTarget, double needQuality, DataEncryptor encryptedData)
         {
             List<RuleClass> rules = new List<RuleClass>();
 
@@ -192,7 +192,110 @@ namespace DataProcessor
                 for (int i = subsetsCount; i < propertiesCount; ++i)
                 {
                     RuleClass rule = new RuleClass(new HashSet<int> { i }, selcetedTarget, encryptedData);
-                    rules.Add(rule);
+                    if (rule.quality >= needQuality)
+                    {
+                        rules.Add(rule);
+                    }
+                }
+            }
+
+            return rules;
+        }
+
+
+
+        /// <summary>
+        /// Генерация единичных правил согласно заданным параметрам
+        /// </summary>
+        /// <param name="target">Номер подмножества</param>
+        /// <param name="needConfidence">Достаточная уверенность</param>
+        /// <param name="needQuality">Достаточное качество</param>
+        /// <param name="encryptedData">Объект, хранящий информацию о зашифрованном файле</param>
+        public static List<RuleClass> GenerateSingleRulesUsingCorrelation(int selcetedTarget, double needCorrelation, DataEncryptor encryptedData)
+        {
+            List<RuleClass> rules = new List<RuleClass>();
+
+            int subsetsCount = encryptedData._subsets.Count; // Количество подмножеств
+            int propertiesCount = encryptedData._propertiesCount; // Количество бинарных свойств
+
+            // В случае, когда target = -1 работаем со всем множеством
+            if (selcetedTarget == -1)
+            {
+                for (int target = 0; target < subsetsCount; ++target)
+                {
+                    // Проходим по каждому бинарному свойству исключая целовой столбец и строим правила
+                    for (int i = subsetsCount; i < propertiesCount; ++i)
+                    {
+                        RuleClass rule = new RuleClass(new HashSet<int> { i }, target, encryptedData);
+
+                        if (rule.correlation >= needCorrelation)
+                        {
+                            rules.Add(rule);
+                        }
+                    }
+                }
+            }
+            // В ином случае, работаем с выбранным пожмножеством
+            else
+            {
+                // Проходим по каждому бинарному свойству исключая целовой столбец и строим правила
+                for (int i = subsetsCount; i < propertiesCount; ++i)
+                {
+                    RuleClass rule = new RuleClass(new HashSet<int> { i }, selcetedTarget, encryptedData);
+                    if (rule.correlation >= needCorrelation)
+                    {
+                        rules.Add(rule);
+                    }
+                }
+            }
+
+            return rules;
+        }
+
+
+
+        /// <summary>
+        /// Генерация единичных правил согласно заданным параметрам
+        /// </summary>
+        /// <param name="target">Номер подмножества</param>
+        /// <param name="needConfidence">Достаточная уверенность</param>
+        /// <param name="needQuality">Достаточное качество</param>
+        /// <param name="encryptedData">Объект, хранящий информацию о зашифрованном файле</param>
+        public static List<RuleClass> GenerateSingleRulesUsingConfidenceAndFrequency(int selcetedTarget, double needConfidenceMin, double needFrequency, DataEncryptor encryptedData, double needConfidenceMax = 1)
+        {
+            List<RuleClass> rules = new List<RuleClass>();
+
+            int subsetsCount = encryptedData._subsets.Count; // Количество подмножеств
+            int propertiesCount = encryptedData._propertiesCount; // Количество бинарных свойств
+
+            // В случае, когда target = -1 работаем со всем множеством
+            if (selcetedTarget == -1)
+            {
+                for (int target = 0; target < subsetsCount; ++target)
+                {
+                    // Проходим по каждому бинарному свойству исключая целовой столбец и строим правила
+                    for (int i = subsetsCount; i < propertiesCount; ++i)
+                    {
+                        RuleClass rule = new RuleClass(new HashSet<int> { i }, target, encryptedData);
+
+                        if (rule.f_g >= needFrequency && rule.confidence >= needConfidenceMin && rule.confidence <= needConfidenceMax)
+                        {
+                            rules.Add(rule);
+                        }
+                    }
+                }
+            }
+            // В ином случае, работаем с выбранным пожмножеством
+            else
+            {
+                // Проходим по каждому бинарному свойству исключая целовой столбец и строим правила
+                for (int i = subsetsCount; i < propertiesCount; ++i)
+                {
+                    RuleClass rule = new RuleClass(new HashSet<int> { i }, selcetedTarget, encryptedData);
+                    if (rule.f_g >= needFrequency && rule.confidence >= needConfidenceMin && rule.confidence <= needConfidenceMax)
+                    {
+                        rules.Add(rule);
+                    }
                 }
             }
 
@@ -207,23 +310,21 @@ namespace DataProcessor
         /// <param name="needQuality">Достаточное качество</param>
         /// <param name="sendingLength">Достаточная длина посылки</param>
         /// <param name="encryptedData">Объект, хранящий информацию о зашифрованном файле</param>
-        public static List<RuleClass> GenerateAllRules(int target, double needConfidence, double needQuality, int sendingLength, DataEncryptor encryptedData)
+        public static List<RuleClass> GenerateAllRulesUsingQuality(int target, double needQuality, int sendingLength, DataEncryptor encryptedData)
         {
             List<RuleClass> rules = new List<RuleClass>();
 
-            
-
             if (target == -1)
             {
-                for (int i = 0; i < encryptedData._subsets.Count; ++i)
+                for (int i = 0; i < encryptedData._subsets.Count; ++i) //O(n)
                 {
-                    var sets = GenerateLargerItemsets(sendingLength, i, needConfidence, needQuality, encryptedData);
+                    var sets = GenerateLargerItemsets(sendingLength, i, encryptedData); //O()
 
                     foreach (var set in sets)
                     {
                         RuleClass rule = new RuleClass(set, i, encryptedData);
 
-                        if (rule.confidence >= needConfidence)
+                        if (rule.quality >= needQuality)
                         {
                             rules.Add(rule);
                         }
@@ -232,13 +333,13 @@ namespace DataProcessor
             }
             else
             {
-                var sets = GenerateLargerItemsets(sendingLength, target, needConfidence, needQuality, encryptedData);
+                var sets = GenerateLargerItemsets(sendingLength, target, encryptedData);
                 
                 foreach (var set in sets)
                 {
                     RuleClass rule = new RuleClass(set, target, encryptedData);
 
-                    if (rule.confidence >= needConfidence)
+                    if (rule.quality >= needQuality)
                     {
                         rules.Add(rule);
                     }
@@ -248,14 +349,108 @@ namespace DataProcessor
             return rules;
         }
 
-        public static List<HashSet<int>> GenerateLargerItemsets(int sendingLength, int target, double needConfidence, double needQuality, DataEncryptor ed)
+
+
+        /// <summary>
+        /// Генерация всех правил согласно заданным параметрам
+        /// </summary>
+        /// <param name="target">Номер подмножества</param>
+        /// <param name="needConfidence">Достаточная уверенность</param>
+        /// <param name="needQuality">Достаточное качество</param>
+        /// <param name="sendingLength">Достаточная длина посылки</param>
+        /// <param name="encryptedData">Объект, хранящий информацию о зашифрованном файле</param>
+        public static List<RuleClass> GenerateAllRulesUsingCorrelation(int target, double needCorrelation, int sendingLength, DataEncryptor encryptedData)
+        {
+            List<RuleClass> rules = new List<RuleClass>();
+
+            if (target == -1)
+            {
+                for (int i = 0; i < encryptedData._subsets.Count; ++i) //O(n)
+                {
+                    var sets = GenerateLargerItemsets(sendingLength, i, encryptedData); //O()
+
+                    foreach (var set in sets)
+                    {
+                        RuleClass rule = new RuleClass(set, i, encryptedData);
+
+                        if (rule.correlation >= needCorrelation)
+                        {
+                            rules.Add(rule);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                var sets = GenerateLargerItemsets(sendingLength, target, encryptedData);
+
+                foreach (var set in sets)
+                {
+                    RuleClass rule = new RuleClass(set, target, encryptedData);
+
+                    if (rule.correlation >= needCorrelation)
+                    {
+                        rules.Add(rule);
+                    }
+                }
+            }
+
+            return rules;
+        }
+
+
+
+        /// <summary>
+        /// Генерация всех правил согласно заданным параметрам
+        /// </summary>
+        /// <param name="target">Номер подмножества</param>
+        /// <param name="needConfidence">Достаточная уверенность</param>
+        /// <param name="needQuality">Достаточное качество</param>
+        /// <param name="sendingLength">Достаточная длина посылки</param>
+        /// <param name="encryptedData">Объект, хранящий информацию о зашифрованном файле</param>
+        public static List<RuleClass> GenerateAllRulesUsingConfidenceAndFrequency(int target, double needConfidenceMin, double needFrequency, int sendingLength, DataEncryptor encryptedData, double needConfidenceMax = 1)
+        {
+            List<RuleClass> rules = new List<RuleClass>();
+
+            if (target == -1)
+            {
+                for (int i = 0; i < encryptedData._subsets.Count; ++i) //O(n)
+                {
+                    var sets = GenerateLargerItemsets(sendingLength, i, encryptedData); //O()
+
+                    foreach (var set in sets)
+                    {
+                        RuleClass rule = new RuleClass(set, i, encryptedData);
+
+                        if (rule.confidence >= needConfidenceMin && rule.confidence <= needConfidenceMax && rule.f_g >= needFrequency)
+                        {
+                            rules.Add(rule);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                var sets = GenerateLargerItemsets(sendingLength, target, encryptedData);
+
+                foreach (var set in sets)
+                {
+                    RuleClass rule = new RuleClass(set, target, encryptedData);
+
+                    if (rule.confidence >= needConfidenceMin && rule.confidence <= needConfidenceMax && rule.f_g >= needFrequency)
+                    {
+                        rules.Add(rule);
+                    }
+                }
+            }
+
+            return rules;
+        }
+
+        public static List<HashSet<int>> GenerateLargerItemsets(int sendingLength, int target, DataEncryptor ed)
         {
             // Список, хранящий все возможные наборы, прошедшие через заданный фильтр
             List<HashSet<int>> largerItemsets = new List<HashSet<int>>();
-
-            // Список, на основе которого формируются новые комбинации наборов
-            List<HashSet<int>> largerItemset = new List<HashSet<int>>();
-            List<HashSet<int>> tempLargerItemset = new List<HashSet<int>>();
 
             HashSet<int> singleSets = new HashSet<int>();
 
@@ -263,24 +458,29 @@ namespace DataProcessor
             double minF = 30;
             double currentF;
 
-            for (int i = ed._subsets.Count; i < ed._propertiesCount; ++i)
+            for (int i = ed._subsets.Count; i < ed._propertiesCount; ++i) //O(n)
             {
-                HashSet<int> singleSet = new HashSet<int>() { i };
 
-                currentF = GetFrequency(CountSupport(singleSet, ed._subsets[target], ed._propertiesCount), ed._subsets[target].Count) * 100;
+                currentF = GetFrequency(CountSupport(new HashSet<int>() { i }, ed._subsets[target], ed._propertiesCount), ed._subsets[target].Count) * 100;//O(m)
 
                 if (currentF > minF)
                 {
                     singleSets.Add(i);
-                    largerItemsets.Add(singleSet);
+                    largerItemsets.Add(new HashSet<int>() { i });
                 }
             }
 
+            int previousCount = 0;
 
             // Генерируем наборы размера sendingLength
-            for (int y = 2; y <= sendingLength; ++y)
+            for (int y = 2; y <= sendingLength; ++y)//O(n)
             {
                 largerItemsets.AddRange(GenerateCombinations(singleSets, y, ed, target));
+                if (largerItemsets.Count != previousCount)
+                {
+                    previousCount = largerItemsets.Count;
+                }
+                else { break; }
             }
 
             return largerItemsets;
@@ -297,7 +497,7 @@ namespace DataProcessor
         }
 
         private static void GenerateCombinationsRecursive(List<int> items, int combinationLength, int start,
-                                                          List<int> currentCombination, List<HashSet<int>> combinations, DataEncryptor ed, int target)
+                                                          List<int> currentCombination, List<HashSet<int>> combinations, DataEncryptor ed, int target)//O()
         {
             if (currentCombination.Count == combinationLength)
             {
@@ -312,15 +512,13 @@ namespace DataProcessor
                 return;
             }
 
-            for (int i = start; i < items.Count; i++)
+            for (int i = start; i < items.Count; i++)//O(n)
             {
                 currentCombination.Add(items[i]);
-                GenerateCombinationsRecursive(items, combinationLength, i + 1, currentCombination, combinations, ed, target);
+                GenerateCombinationsRecursive(items, combinationLength, i + 1, currentCombination, combinations, ed, target);//O()
                 currentCombination.RemoveAt(currentCombination.Count - 1); // Backtrack
             }
         }
-
-
     }
 }
 

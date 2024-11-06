@@ -1,18 +1,12 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\",
+  "WorkspaceRootPath": "C:\\Users\\otvyagis\\Documents\\GitHub\\APRIORI\\HeroesLibrary\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B1648BFC-91CC-4F75-9C1E-DF82615D8339}|..\\ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\notso\\onedrive\\desktop\\github\\apriori\\consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B1648BFC-91CC-4F75-9C1E-DF82615D8339}|..\\ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\otvyagis\\documents\\github\\apriori\\consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DEA716F-5C4A-41E1-99FA-B838B7E5D7C0}|..\\DataProcessor\\DataProcessor.csproj|c:\\users\\notso\\onedrive\\desktop\\github\\apriori\\dataprocessor\\apriorialgorithm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3DEA716F-5C4A-41E1-99FA-B838B7E5D7C0}|..\\DataProcessor\\DataProcessor.csproj|c:\\users\\notso\\onedrive\\desktop\\github\\apriori\\dataprocessor\\ruleclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3DEA716F-5C4A-41E1-99FA-B838B7E5D7C0}|..\\DataProcessor\\DataProcessor.csproj|c:\\users\\notso\\onedrive\\desktop\\github\\apriori\\dataprocessor\\dataencryptor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3DEA716F-5C4A-41E1-99FA-B838B7E5D7C0}|..\\DataProcessor\\DataProcessor.csproj|c:\\users\\otvyagis\\documents\\github\\apriori\\dataprocessor\\apriorialgorithm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,63 +16,33 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RuleClass.cs",
-              "DocumentMoniker": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\DataProcessor\\RuleClass.cs",
-              "RelativeDocumentMoniker": "..\\DataProcessor\\RuleClass.cs",
-              "ToolTip": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\DataProcessor\\RuleClass.cs",
-              "RelativeToolTip": "..\\DataProcessor\\RuleClass.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAkwAwAAAAaAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\otvyagis\\Documents\\GitHub\\APRIORI\\ConsoleApp1\\Program.cs",
+              "RelativeDocumentMoniker": "..\\ConsoleApp1\\Program.cs",
+              "ToolTip": "C:\\Users\\otvyagis\\Documents\\GitHub\\APRIORI\\ConsoleApp1\\Program.cs*",
+              "RelativeToolTip": "..\\ConsoleApp1\\Program.cs*",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB0AAABWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T18:11:03.959Z",
-              "IsPinned": true
+              "WhenOpened": "2024-11-05T16:03:47.515Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "AprioriAlgorithm.cs",
-              "DocumentMoniker": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\DataProcessor\\AprioriAlgorithm.cs",
+              "DocumentMoniker": "C:\\Users\\otvyagis\\Documents\\GitHub\\APRIORI\\DataProcessor\\AprioriAlgorithm.cs",
               "RelativeDocumentMoniker": "..\\DataProcessor\\AprioriAlgorithm.cs",
-              "ToolTip": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\DataProcessor\\AprioriAlgorithm.cs",
+              "ToolTip": "C:\\Users\\otvyagis\\Documents\\GitHub\\APRIORI\\DataProcessor\\AprioriAlgorithm.cs",
               "RelativeToolTip": "..\\DataProcessor\\AprioriAlgorithm.cs",
-              "ViewState": "AgIAABoBAAAAAAAAAAAuwEIBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAPkAAAAAAAAAAAAYwB0BAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-27T20:04:57.52Z",
-              "IsPinned": true,
+              "WhenOpened": "2024-11-05T16:03:51.77Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\ConsoleApp1\\Program.cs",
-              "RelativeDocumentMoniker": "..\\ConsoleApp1\\Program.cs",
-              "ToolTip": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\ConsoleApp1\\Program.cs",
-              "RelativeToolTip": "..\\ConsoleApp1\\Program.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAxwB0AAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-28T08:51:57.718Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DataEncryptor.cs",
-              "DocumentMoniker": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataEncryptor.cs",
-              "RelativeDocumentMoniker": "..\\DataProcessor\\DataEncryptor.cs",
-              "ToolTip": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\DataProcessor\\DataEncryptor.cs",
-              "RelativeToolTip": "..\\DataProcessor\\DataEncryptor.cs",
-              "ViewState": "AgIAAHgAAAAAAAAAAAAqwJ4AAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-27T19:17:40.211Z"
             }
           ]
         }

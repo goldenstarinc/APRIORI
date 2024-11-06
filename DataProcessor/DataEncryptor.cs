@@ -44,7 +44,8 @@ namespace DataProcessor
 
             this.mult = mult;
 
-            _transactions = GetEncryptedRecords();
+            if (_propertiesCount >= 60) { _transactions = GetEncryptedRecords(); }
+            else { _transactions = GetEncryptedRecordsLightVersion(); }
 
             _subsets = new List<List<string>>();
 
@@ -88,13 +89,60 @@ namespace DataProcessor
                         encryptedRecord += powerOfTwo;
                     }
                 }
+
                 // Добавляем запись в список записей типа 
+
                 for(int j = 0; j < mult; ++j)
                 {
                     encryptedRecords.Add(ToBinaryString(encryptedRecord, _propertiesCount));
                 }
             }
             
+            return encryptedRecords;
+        }
+
+        /// <summary>
+        /// Легковесная версия метода, зашифровывающего записи в файле
+        /// </summary>
+        /// <param name="wb">Файл Excel</param>
+        /// <returns>Список зашифрованных записей типа ulong</returns>
+        public List<string> GetEncryptedRecordsLightVersion()
+        {
+            List<string> encryptedRecords = new List<string>();
+
+            Cells cells = _workbook.Worksheets[0].Cells;
+
+            for (int i = 1; i <= cells.MaxDataRow; ++i)
+            {
+                ulong encryptedRecord = 0;
+
+                for (int j = 1; j <= cells.MaxDataColumn; ++j)
+                {
+
+                    int count = FindClassIndexForCellValue(cells[i, j].StringValue, j - 1);
+
+                    // Классовое имя параметра
+                    string className = _namesAndShortNames[cells[0, j].StringValue] + count.ToString();
+
+                    // Поиск индекса классового имени параметра в списке классавыхо имен
+                    int propertyIndex = _propertyNames.IndexOf(className);
+
+                    // В случае, если индекс найден - добавляем степень двойки
+                    if (propertyIndex != -1)
+                    {
+                        ulong powerOfTwo = (ulong)Math.Pow(2, propertyIndex);
+                        encryptedRecord += powerOfTwo;
+                    }
+                }
+
+                // Добавляем запись в список записей типа 
+
+                for (int j = 0; j < mult; ++j)
+                {
+                    encryptedRecords.Add(ToBinaryStringLightVersion(encryptedRecord, _propertiesCount));
+                }
+            }
+
             return encryptedRecords;
         }
 
@@ -161,7 +209,7 @@ namespace DataProcessor
         {
             if (bigInteger < 0)
             {
-                bigInteger = BigInteger.Zero - bigInteger; // Convert to positive
+                bigInteger = BigInteger.Zero - bigInteger;
             }
 
             StringBuilder binaryStringBuilder = new StringBuilder();
@@ -176,6 +224,39 @@ namespace DataProcessor
                 {
                     binaryStringBuilder.Insert(0, (bigInteger % 2).ToString());
                     bigInteger /= 2;
+                }
+            }
+
+            string binaryString = binaryStringBuilder.ToString();
+
+            return binaryString.PadLeft(propertyNamesCount, '0');
+        }
+
+        /// <summary>
+        /// Легковесная версия метода ToBinaryString, которая переводит зашифрованную запись в двоичный вид
+        /// </summary>
+        /// <param name="Number">Зашифрованная запись</param>
+        /// <param name="propertyNamesCount">Количество бинарных свойств</param>
+        /// <returns>Зашифрованную запись в двочичном виде</returns>
+        public static string ToBinaryStringLightVersion(ulong Number, int propertyNamesCount)
+        {
+            if (Number < 0)
+            {
+                Number = 0 - Number;
+            }
+
+            StringBuilder binaryStringBuilder = new StringBuilder();
+
+            if (Number == 0)
+            {
+                binaryStringBuilder.Append('0');
+            }
+            else
+            {
+                while (Number > 0)
+                {
+                    binaryStringBuilder.Insert(0, (Number % 2).ToString());
+                    Number /= 2;
                 }
             }
 
