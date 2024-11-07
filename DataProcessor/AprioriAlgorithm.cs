@@ -157,8 +157,7 @@ namespace DataProcessor
         /// <summary>
         /// Генерация единичных правил согласно заданным параметрам
         /// </summary>
-        /// <param name="target">Номер подмножества</param>
-        /// <param name="needConfidence">Достаточная уверенность</param>
+        /// <param name="selcetedTarget">Номер подмножества</param>
         /// <param name="needQuality">Достаточное качество</param>
         /// <param name="encryptedData">Объект, хранящий информацию о зашифрованном файле</param>
         public static List<RuleClass> GenerateSingleRulesUsingQuality(int selcetedTarget, double needQuality, DataEncryptor encryptedData)
@@ -207,9 +206,8 @@ namespace DataProcessor
         /// <summary>
         /// Генерация единичных правил согласно заданным параметрам
         /// </summary>
-        /// <param name="target">Номер подмножества</param>
-        /// <param name="needConfidence">Достаточная уверенность</param>
-        /// <param name="needQuality">Достаточное качество</param>
+        /// <param name="selcetedTarget">Номер подмножества</param>
+        /// <param name="needCorrelation">Достаточная корреляция</param>
         /// <param name="encryptedData">Объект, хранящий информацию о зашифрованном файле</param>
         public static List<RuleClass> GenerateSingleRulesUsingCorrelation(int selcetedTarget, double needCorrelation, DataEncryptor encryptedData)
         {
@@ -257,10 +255,11 @@ namespace DataProcessor
         /// <summary>
         /// Генерация единичных правил согласно заданным параметрам
         /// </summary>
-        /// <param name="target">Номер подмножества</param>
-        /// <param name="needConfidence">Достаточная уверенность</param>
-        /// <param name="needQuality">Достаточное качество</param>
+        /// <param name="selcetedTarget">Номер подмножества</param>
+        /// <param name="needConfidenceMin">Достаточная достоверность</param>
+        /// <param name="needFrequency">Достаточная частота</param>
         /// <param name="encryptedData">Объект, хранящий информацию о зашифрованном файле</param>
+        /// <param name="needConfidenceMax">Максимально допустимое значение достоверности</param>
         public static List<RuleClass> GenerateSingleRulesUsingConfidenceAndFrequency(int selcetedTarget, double needConfidenceMin, double needFrequency, DataEncryptor encryptedData, double needConfidenceMax = 1)
         {
             List<RuleClass> rules = new List<RuleClass>();
@@ -306,7 +305,6 @@ namespace DataProcessor
         /// Генерация всех правил согласно заданным параметрам
         /// </summary>
         /// <param name="target">Номер подмножества</param>
-        /// <param name="needConfidence">Достаточная уверенность</param>
         /// <param name="needQuality">Достаточное качество</param>
         /// <param name="sendingLength">Достаточная длина посылки</param>
         /// <param name="encryptedData">Объект, хранящий информацию о зашифрованном файле</param>
@@ -355,8 +353,7 @@ namespace DataProcessor
         /// Генерация всех правил согласно заданным параметрам
         /// </summary>
         /// <param name="target">Номер подмножества</param>
-        /// <param name="needConfidence">Достаточная уверенность</param>
-        /// <param name="needQuality">Достаточное качество</param>
+        /// <param name="needCorrelation">Достаточная корреляция</param>
         /// <param name="sendingLength">Достаточная длина посылки</param>
         /// <param name="encryptedData">Объект, хранящий информацию о зашифрованном файле</param>
         public static List<RuleClass> GenerateAllRulesUsingCorrelation(int target, double needCorrelation, int sendingLength, DataEncryptor encryptedData)
@@ -404,10 +401,11 @@ namespace DataProcessor
         /// Генерация всех правил согласно заданным параметрам
         /// </summary>
         /// <param name="target">Номер подмножества</param>
-        /// <param name="needConfidence">Достаточная уверенность</param>
-        /// <param name="needQuality">Достаточное качество</param>
+        /// <param name="needConfidenceMin">Минимальное значение достоверности</param>
+        /// <param name="needFrequency">Достаточная частота</param>
         /// <param name="sendingLength">Достаточная длина посылки</param>
         /// <param name="encryptedData">Объект, хранящий информацию о зашифрованном файле</param>
+        /// <param name="needConfidenceMax">Максимально допустимое значение достоверности</param>
         public static List<RuleClass> GenerateAllRulesUsingConfidenceAndFrequency(int target, double needConfidenceMin, double needFrequency, int sendingLength, DataEncryptor encryptedData, double needConfidenceMax = 1)
         {
             List<RuleClass> rules = new List<RuleClass>();
@@ -447,6 +445,13 @@ namespace DataProcessor
             return rules;
         }
 
+        /// <summary>
+        /// Генерирует наборы элементов большего размера
+        /// </summary>
+        /// <param name="sendingLength">Максимальная длина наборов</param>
+        /// <param name="target">Подмножество</param>
+        /// <param name="ed">Объект, хранящий информацию о зашифрованном файле</param>
+        /// <returns>Наборы элементов большего размера</returns>
         public static List<HashSet<int>> GenerateLargerItemsets(int sendingLength, int target, DataEncryptor ed)
         {
             // Список, хранящий все возможные наборы, прошедшие через заданный фильтр
@@ -486,7 +491,14 @@ namespace DataProcessor
             return largerItemsets;
         }
 
-
+        /// <summary>
+        /// Создает все возможные комбинации заданной длины из элементов, представленных в items
+        /// </summary>
+        /// <param name="items">Посылка</param>
+        /// <param name="combinationLength">Длина комбинации</param>
+        /// <param name="ed">Объект, хранящий информацию о зашифрованном файле</param>
+        /// <param name="target">Подмножество</param>
+        /// <returns>Все возможные комбинации заданной длины из элементов, представленных в items</returns>
         public static List<HashSet<int>> GenerateCombinations(HashSet<int> items, int combinationLength, DataEncryptor ed, int target)
         {
             List<HashSet<int>> combinations = new List<HashSet<int>>();
@@ -495,6 +507,17 @@ namespace DataProcessor
             GenerateCombinationsRecursive(items.ToList(), combinationLength, 0, currentCombination, combinations, ed, target);
             return combinations;
         }
+
+        /// <summary>
+        /// Рекурсивно формирует комбинации заданной длины
+        /// </summary>
+        /// <param name="items">Посылка</param>
+        /// <param name="combinationLength">Длина требуемой комбинации</param>
+        /// <param name="start">Индекс, с которого следует начинать поиск комбинаций</param>
+        /// <param name="currentCombination">Текущая комбинация элементов</param>
+        /// <param name="combinations">Список, в который добавляются корректные комбинации</param>
+        /// <param name="ed">Объект, хранящий информацию о зашифрованном файле</param>
+        /// <param name="target">Подмножество</param>
 
         private static void GenerateCombinationsRecursive(List<int> items, int combinationLength, int start,
                                                           List<int> currentCombination, List<HashSet<int>> combinations, DataEncryptor ed, int target)//O()

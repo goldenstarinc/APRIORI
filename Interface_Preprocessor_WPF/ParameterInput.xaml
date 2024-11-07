@@ -19,50 +19,47 @@
 
         <!-- Заголовок -->
         <TextBlock Margin="0,27,0,0" 
-               TextWrapping="Wrap" 
-               FontFamily="Segoe UI Variable Display" 
-               FontSize="28" 
-               FontWeight="Bold"
-               TextAlignment="Center" 
-               HorizontalAlignment="Center"
-               VerticalAlignment="Top"
-               Grid.Row="1" Width="514"><Run Foreground="#FF00ACFF" Text="&gt; "/><Run Text=" "/><Run Language="ru-ru" Text="Введите множитель клонирования"/></TextBlock>
+           TextWrapping="Wrap" 
+           FontFamily="Segoe UI Variable Display" 
+           FontSize="28" 
+           FontWeight="Bold"
+           TextAlignment="Center" 
+           HorizontalAlignment="Center"
+           VerticalAlignment="Top"
+           Grid.Row="1" Width="514"><Run Foreground="#FF00ACFF" Text="&gt; "/><Run Text=" "/><Run Language="ru-ru" Text="Введите множитель клонирования"/></TextBlock>
 
         <!-- Кнопка Окей -->
         <Border BorderThickness="1" 
-            HorizontalAlignment="Left" 
-            Width="96" 
-            CornerRadius="15" 
-            Background="#FFF3F0F0" 
-            Grid.Row="2"
-            Margin="212,80,0,-60">
+        HorizontalAlignment="Left" 
+        Width="96" 
+        CornerRadius="15" 
+        Background="#FFF3F0F0" 
+        Grid.Row="2"
+        Margin="212,80,0,-60">
             <Button Content="Готово" 
-                Width="95" 
-                Height="40" 
-                VerticalAlignment="Center" 
-                HorizontalAlignment="Center" 
-                Click="OkButton_Click" 
-                FontFamily="Segoe UI Variable Display" 
-                FontSize="20" 
-                BorderBrush="{x:Null}" 
-                BorderThickness="0,0,0,3" 
-                Background="{x:Null}"/>
+            Width="95" 
+            Height="40" 
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Center" 
+            Click="OkButton_Click" 
+            FontFamily="Segoe UI Variable Display" 
+            FontSize="20" 
+            BorderBrush="{x:Null}" 
+            BorderThickness="0,0,0,3" 
+            Background="{x:Null}"/>
         </Border>
 
         <TextBox
-            BorderBrush="#FF00ACFF"
-            BorderThickness="1"
-             x:Name="TB"
-             Text="Например: 1"
-             Foreground="Gray"
-             HorizontalAlignment="Center" 
-             Grid.Row="2" 
-             TextWrapping="Wrap" 
-             VerticalAlignment="Center"
-             FontSize="21"/>    
+        BorderBrush="#FF00ACFF"
+        BorderThickness="1"
+         x:Name="TB"
+         Text="Например: 1"
+         Foreground="Gray"
+         HorizontalAlignment="Center" 
+         Grid.Row="2" 
+         TextWrapping="Wrap" 
+         VerticalAlignment="Center"
+         FontSize="21"/>
 
     </Grid>
 </Window>
-
-    
-    

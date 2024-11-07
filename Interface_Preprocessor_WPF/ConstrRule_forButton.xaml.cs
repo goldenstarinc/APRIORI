@@ -29,10 +29,6 @@ namespace Interface_Preprocessor_WPF
 
         private DataEncryptor encryptedData;
 
-        private double quality;
-
-        private double confidence;
-
         private int sendingLength;
 
         private int ruleNumber;
@@ -40,7 +36,7 @@ namespace Interface_Preprocessor_WPF
         private ExcelFile metaFile;
 
         private List<controls.Border> selectedTiles = new List<controls.Border>();  // Хранит выбранные плитки
-        public ConstrRule_forButton(double Quality, double Confidence, int SendingLength, int RuleNumber)
+        public ConstrRule_forButton(int SendingLength, int RuleNumber)
         {
             InitializeComponent();
             try
@@ -49,11 +45,7 @@ namespace Interface_Preprocessor_WPF
                 encryptedData = SharedData.Instance.EncryptedData;
                 metaFile = SharedData.Instance.MetaFile;
 
-                quality = Quality;
-                confidence = Confidence;
                 sendingLength = SendingLength;
-                ruleNumber = RuleNumber;
-
                 ruleNumber = RuleNumber;
 
                 parameters = new string[metaFile.PropertyNames.Count];
@@ -199,7 +191,7 @@ namespace Interface_Preprocessor_WPF
             try
             {
                 OutputAllRules_TextBox_AddPage.Text = string.Empty;
-                
+
                 List<RuleClass> rules = AA.GenerateSpecificRules(ruleNumber, selectedIndexes.ToHashSet(), encryptedData);
 
                 // Вывод правил в консоль
@@ -211,11 +203,7 @@ namespace Interface_Preprocessor_WPF
 
                 if (OutputAllRules_TextBox_AddPage.Text == string.Empty)
                 {
-                    OutputAllRules_TextBox_AddPage.Text = "По заданным характеристикам не было построено ни одного правила:\n" +
-                                                                                  $"Качество: {quality}\n" +
-                                                                                  $"Достаточная достоверность: {confidence}\n" +
-                                                                                  $"Длина посылки: {sendingLength}\n" +
-                                                                                  $"Номер правила: {ruleNumber}";
+                    OutputAllRules_TextBox_AddPage.Text = "По заданным характеристикам не было построено ни одного правила.";
                 }
 
             }

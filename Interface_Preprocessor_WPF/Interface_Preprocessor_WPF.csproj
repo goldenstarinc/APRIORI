@@ -39,12 +39,15 @@
     <Reference Include="Aspose.Cells, Version=24.9.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <HintPath>..\GitHub\PreprocessorDB\HeroesLibrary\packages\Aspose.Cells.24.9.0\lib\net40\Aspose.Cells.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\GitHub\PreprocessorDB\HeroesLibrary\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -197,6 +200,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="DB_Image_forButton2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="checked_btn.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="unchecked_btn_circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="New_Icon_Btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="unchecked_btn.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="circle-outline %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

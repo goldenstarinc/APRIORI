@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\otvyagis\Documents\GitHub\APRIORI\Interface_Preprocessor_WPF\obj\Debug\
+C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\Interface_Preprocessor_WPF\obj\Debug\
 Interface_Preprocessor_WPF
 none
 false
 DEBUG;TRACE
-C:\Users\otvyagis\Documents\GitHub\APRIORI\Interface_Preprocessor_WPF\App.xaml
+C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\Interface_Preprocessor_WPF\App.xaml
 111760237151
 
 161883535894
-171495729836
+201598872548
 ConstrRule_forButton.xaml;ConstructRule.xaml;CustomMessageBox.xaml;DonePage.xaml;InfoPage.xaml;MainWindow.xaml;ParameterInput.xaml;RuleConstructionPage.xaml;SelectPage.xaml;StartPage.xaml;ViewPage.xaml;
 
-True
+False
 

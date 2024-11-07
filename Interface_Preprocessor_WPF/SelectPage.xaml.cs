@@ -88,15 +88,14 @@ namespace Interface_Preprocessor_WPF
                         throw new Exception("Ваша база данных не соответствует файлу с метаданными.");
                     }
 
-                    // Шифрование записей
-                    this.filePath = filePath;
 
-
-                    ParameterInput pi  = new ParameterInput();
+                    ParameterInput pi = new ParameterInput();
                     pi.ShowDialog();
 
                     int mult = pi.value;
 
+                    // Шифрование записей
+                    this.filePath = filePath;
                     this.encryptedData = new DataEncryptor(new Workbook(filePath), metaFile, mult);
 
                     PathDB_TextBox.Text = filePath;

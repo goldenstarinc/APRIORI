@@ -28,13 +28,20 @@ namespace Interface_Preprocessor_WPF
 
         private double quality;
 
-        private double confidence;
-
         private int sendingLength;
 
         private int ruleNumber;
 
-        public ConstructRule(double Quality, double Confidence, int SendingLength, int RuleNumber)
+        private double minConfidence;
+
+        private double maxConfidence;
+
+        private double correlation;
+
+        private double frequency;
+
+        private string mode;
+        public ConstructRule(double Quality, double MinConfidence, double MaxConfidence, double Correlation, double Frequency, int SendingLength, int RuleNumber, string Mode)
         {
             InitializeComponent();
 
@@ -47,9 +54,14 @@ namespace Interface_Preprocessor_WPF
                 if (encryptedData == null || encryptedData._transactions.Count == 0) { throw new Exception("Зашифрованные записи не обнаружены"); }
 
                 quality = Quality;
-                confidence = Confidence;
+                minConfidence = MinConfidence;
+                maxConfidence = MaxConfidence;
+                correlation = Correlation;
+                frequency = Frequency;
                 sendingLength = SendingLength;
                 ruleNumber = RuleNumber;
+
+                mode = Mode;
             }
             catch (Exception ex)
             {
@@ -63,7 +75,7 @@ namespace Interface_Preprocessor_WPF
         /// </summary>
         private void CreateRules_Button_Click(object sender, RoutedEventArgs e)
         {
-            ConstrRule_forButton ConstrRule_forButton = new ConstrRule_forButton(quality, confidence, sendingLength, ruleNumber);
+            ConstrRule_forButton ConstrRule_forButton = new ConstrRule_forButton(sendingLength, ruleNumber);
             ConstrRule_forButton.Show();
         }
 
@@ -75,9 +87,13 @@ namespace Interface_Preprocessor_WPF
 
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
+            
+            List<RuleClass> rules = new List<RuleClass>();
 
-
-            List<RuleClass> rules = AA.GenerateSingleRules(ruleNumber, confidence, quality, encryptedData);
+            if (mode == "Качество") { rules = AA.GenerateSingleRulesUsingQuality(ruleNumber, quality, encryptedData); }
+            else if (mode == "Корреляция") { rules = AA.GenerateSingleRulesUsingCorrelation(ruleNumber, correlation, encryptedData); }
+            else if (mode == "Достоверность и частота") { rules = AA.GenerateSingleRulesUsingConfidenceAndFrequency(ruleNumber, minConfidence, frequency, encryptedData); }
+            else if (mode == "Достоверность и частота(диапазон)") { rules = AA.GenerateSingleRulesUsingConfidenceAndFrequency(ruleNumber, minConfidence, frequency, encryptedData, maxConfidence); }
 
             stopwatch.Stop();
             TimeSpan elapsedTime = stopwatch.Elapsed;
@@ -91,10 +107,7 @@ namespace Interface_Preprocessor_WPF
 
             if (OutputRules_TextBox.Text.Trim() == string.Empty)
             {
-                OutputRules_TextBox.Text = "По заданным характеристикам не было построено ни одного правила:\n" +
-                                                                              $"Качество: {quality}\n" +
-                                                                              $"Достаточная достоверность: {confidence}\n" +
-                                                                              $"Номер правила: {ruleNumber}";
+                OutputRules_TextBox.Text = "По заданным характеристикам не было построено ни одного правила.";
             }
 
             OutputRunningTime_TextBox.Text = elapsedTime.TotalSeconds.ToString() + " сек.";
@@ -109,11 +122,13 @@ namespace Interface_Preprocessor_WPF
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            rules = AA.GenerateAllRules(ruleNumber, confidence, sendingLength, encryptedData);
+            if (mode == "Качество") { rules = AA.GenerateAllRulesUsingQuality(ruleNumber, quality, sendingLength, encryptedData); }
+            else if (mode == "Корреляция") { rules = AA.GenerateAllRulesUsingCorrelation(ruleNumber, correlation, sendingLength, encryptedData); }
+            else if (mode == "Достоверность и частота") { rules = AA.GenerateAllRulesUsingConfidenceAndFrequency(ruleNumber, minConfidence, frequency, sendingLength, encryptedData); }
+            else if (mode == "Достоверность и частота(диапазон)") { rules = AA.GenerateAllRulesUsingConfidenceAndFrequency(ruleNumber, minConfidence, frequency, sendingLength, encryptedData, maxConfidence); }
 
             stopwatch.Stop();
             TimeSpan elapsedTime = stopwatch.Elapsed;
-
 
             // Вывод правил в консоль
             foreach (RuleClass rule in rules)
@@ -123,11 +138,7 @@ namespace Interface_Preprocessor_WPF
 
             if (OutputRules_TextBox.Text == string.Empty)
             {
-                OutputRules_TextBox.Text = "По заданным характеристикам не было построено ни одного правила:\n" +
-                                                                              $"Качество: {quality}\n" +
-                                                                              $"Достаточная достоверность: {confidence}\n" +
-                                                                              $"Длина посылки: {sendingLength}\n" +
-                                                                              $"Номер правила: {ruleNumber}";
+                OutputRules_TextBox.Text = "По заданным характеристикам не было построено ни одного правила.";
             }
 
             OutputRunningTime_TextBox.Text = elapsedTime.TotalSeconds.ToString() + " сек.";
