@@ -45,5 +45,23 @@ namespace Interface_Preprocessor_WPF
                 customMessageBox.ShowDialog();
             }
         }
+
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (TB.Text == "Например: 1")
+            {
+                TB.Text = "";
+                TB.Foreground = Brushes.Black;
+            }
+        }
+
+        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TB.Text))
+            {
+                TB.Text = "Например: 1";
+                TB.Foreground = Brushes.Gray;
+            }
+        }
     }
 }
