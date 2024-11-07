@@ -128,6 +128,8 @@ namespace Interface_Preprocessor_WPF
                         if (minConfidence < 0 || maxConfidence < 0) throw new Exception("Достоверность не может быть меньше нуля.");
                         if (minConfidence > 1 || maxConfidence > 1) throw new Exception("Достоверность не может быть больше единицы.");
 
+                        if (minConfidence > maxConfidence) throw new Exception("Минимальное значение достоверности не может быть максимального.");
+
                         if (frequency < 0) throw new Exception("Частота не может быть меньше нуля.");
                         if (frequency > 1) throw new Exception("Частота не может быть больше единицы.");
 

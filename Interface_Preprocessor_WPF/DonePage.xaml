@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <!-- Заголовок -->
-        <TextBlock Margin="0,85,0,0" 
+        <TextBlock Margin="0,77,0,0" 
                    TextWrapping="Wrap" 
                    FontFamily="Segoe UI Variable Display" 
                    FontSize="28" 
@@ -26,7 +26,7 @@
                    TextAlignment="Center" 
                    HorizontalAlignment="Center"
                    VerticalAlignment="Top"
-                   Grid.Row="1" Width="380" Grid.RowSpan="2">
+                   Grid.Row="1" Width="380" Grid.RowSpan="2" Height="69">
             <Run Foreground="ForestGreen" Text="&gt; "/>
             <Run x:Name="textBlock" Text="Успешно!"/>
         </TextBlock>
@@ -38,7 +38,7 @@
                 CornerRadius="15" 
                 Background="#FFF3F0F0" 
                 Grid.Row="2"
-                Margin="162,33,0,-13">
+                Margin="162,43,0,-23">
             <Button Content="Окей :)" 
                     Width="95" 
                     Height="40" 

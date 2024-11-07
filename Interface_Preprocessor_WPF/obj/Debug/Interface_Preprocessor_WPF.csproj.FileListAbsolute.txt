@@ -76,3 +76,5 @@ C:\Users\Ruslan\Desktop\GitHub\APRIORI\Interface_Preprocessor_WPF\obj\Debug\Inte
 C:\Users\Ruslan\Desktop\GitHub\APRIORI\Interface_Preprocessor_WPF\obj\Debug\Interface_Preprocessor_WPF.pdb
 C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\Interface_Preprocessor_WPF\obj\Debug\ParameterInput.g.cs
 C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\Interface_Preprocessor_WPF\obj\Debug\ParameterInput.baml
+C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\Interface_Preprocessor_WPF\obj\Debug\Window1.g.cs
+C:\Users\notso\OneDrive\Desktop\GitHub\APRIORI\Interface_Preprocessor_WPF\obj\Debug\Window1.baml

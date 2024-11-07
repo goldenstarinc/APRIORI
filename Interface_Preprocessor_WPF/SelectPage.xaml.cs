@@ -168,7 +168,7 @@ namespace Interface_Preprocessor_WPF
                 SharedData.Instance.FilePath = filePath;
                 SharedData.Instance.EncryptedData = encryptedData;
 
-                DonePage dp = new DonePage("Файлы сохранены!");
+                DonePage dp = new DonePage($"Файлы сохранены!\n{encryptedData._transactions.Count} записей.");
                 dp.Show();
 
             }
