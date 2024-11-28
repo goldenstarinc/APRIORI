@@ -7,6 +7,7 @@ namespace DataProcessor
 {
     public class RuleClass
     {
+        public int support { get; private set; }
         public double f_g { get; private set; }
         public double f_all { get; private set; }
         public double confidence { get; private set; }
@@ -27,11 +28,12 @@ namespace DataProcessor
             List<List<string>> _subsets = encryptedData._subsets;
             List<string> transactions = encryptedData._transactions;
 
-            int support = AA.CountSupport(itemset, _subsets[target], encryptedData._propertiesCount);
-
+            int support = AA.CountSupport(itemset, _subsets[target], target, encryptedData._propertiesCount);
+            
+            this.support = support;
             this.f_g = AA.GetFrequency(support, _subsets[target].Count);
             this.f_all = AA.GetFrequency(support, transactions.Count);
-            this.confidence = AA.CalculateConfidence(itemset, _subsets[target], transactions, encryptedData._propertiesCount);
+            this.confidence = AA.CalculateConfidence(itemset, _subsets[target], transactions, encryptedData._propertiesCount, target);
             this.lift = AA.CalculateLift(confidence, _subsets[target].Count, transactions.Count);
             this.correlation = AA.CalculateCorrelation(lift, _subsets[target].Count, transactions.Count);
             this.quality = AA.CalculateQuality(f_g, f_all, confidence, correlation);    

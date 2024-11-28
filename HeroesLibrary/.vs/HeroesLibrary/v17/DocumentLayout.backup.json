@@ -1,21 +1,12 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\",
+  "WorkspaceRootPath": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\HeroesLibrary\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8ED0BB6F-A9CC-4121-95E6-6CE7D36684CE}|..\\Interface_Preprocessor_WPF\\Interface_Preprocessor_WPF.csproj|c:\\users\\ruslan\\desktop\\github\\apriori\\interface_preprocessor_wpf\\ruleconstructionpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{3DEA716F-5C4A-41E1-99FA-B838B7E5D7C0}|..\\DataProcessor\\DataProcessor.csproj|c:\\users\\notso\\onedrive\\desktop\\github\\apriori\\dataprocessor\\apriorialgorithm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8ED0BB6F-A9CC-4121-95E6-6CE7D36684CE}|..\\Interface_Preprocessor_WPF\\Interface_Preprocessor_WPF.csproj|c:\\users\\ruslan\\desktop\\github\\apriori\\interface_preprocessor_wpf\\parameterinput.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8ED0BB6F-A9CC-4121-95E6-6CE7D36684CE}|..\\Interface_Preprocessor_WPF\\Interface_Preprocessor_WPF.csproj|c:\\users\\ruslan\\desktop\\github\\apriori\\interface_preprocessor_wpf\\parameterinput.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8ED0BB6F-A9CC-4121-95E6-6CE7D36684CE}|..\\Interface_Preprocessor_WPF\\Interface_Preprocessor_WPF.csproj|c:\\users\\ruslan\\desktop\\github\\apriori\\interface_preprocessor_wpf\\constructrule.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8ED0BB6F-A9CC-4121-95E6-6CE7D36684CE}|..\\Interface_Preprocessor_WPF\\Interface_Preprocessor_WPF.csproj|c:\\users\\ruslan\\desktop\\github\\apriori\\interface_preprocessor_wpf\\constrrule_forbutton.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{B1648BFC-91CC-4F75-9C1E-DF82615D8339}|..\\ConsoleApp1\\ConsoleApp1.csproj|c:\\users\\notso\\onedrive\\desktop\\github\\apriori\\consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -28,64 +19,33 @@
           "SelectedChildIndex": 2,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ParameterInput.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\Interface_Preprocessor_WPF\\ParameterInput.xaml.cs",
-              "RelativeDocumentMoniker": "..\\Interface_Preprocessor_WPF\\ParameterInput.xaml.cs",
-              "ToolTip": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\Interface_Preprocessor_WPF\\ParameterInput.xaml.cs",
-              "RelativeToolTip": "..\\Interface_Preprocessor_WPF\\ParameterInput.xaml.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAiwDIAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T21:00:38.167Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ParameterInput.xaml",
-              "DocumentMoniker": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\Interface_Preprocessor_WPF\\ParameterInput.xaml",
-              "RelativeDocumentMoniker": "..\\Interface_Preprocessor_WPF\\ParameterInput.xaml",
-              "ToolTip": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\Interface_Preprocessor_WPF\\ParameterInput.xaml",
-              "RelativeToolTip": "..\\Interface_Preprocessor_WPF\\ParameterInput.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-07T20:42:51.095Z",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\ConsoleApp1\\Program.cs",
+              "RelativeDocumentMoniker": "..\\ConsoleApp1\\Program.cs",
+              "ToolTip": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\ConsoleApp1\\Program.cs",
+              "RelativeToolTip": "..\\ConsoleApp1\\Program.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T22:17:21.698Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "RuleConstructionPage.xaml",
-              "DocumentMoniker": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\Interface_Preprocessor_WPF\\RuleConstructionPage.xaml",
-              "RelativeDocumentMoniker": "..\\Interface_Preprocessor_WPF\\RuleConstructionPage.xaml",
-              "ToolTip": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\Interface_Preprocessor_WPF\\RuleConstructionPage.xaml",
-              "RelativeToolTip": "..\\Interface_Preprocessor_WPF\\RuleConstructionPage.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-07T20:01:27.736Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ConstructRule.xaml",
-              "DocumentMoniker": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\Interface_Preprocessor_WPF\\ConstructRule.xaml",
-              "RelativeDocumentMoniker": "..\\Interface_Preprocessor_WPF\\ConstructRule.xaml",
-              "ToolTip": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\Interface_Preprocessor_WPF\\ConstructRule.xaml",
-              "RelativeToolTip": "..\\Interface_Preprocessor_WPF\\ConstructRule.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-07T20:00:08.584Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ConstrRule_forButton.xaml",
-              "DocumentMoniker": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\Interface_Preprocessor_WPF\\ConstrRule_forButton.xaml",
-              "RelativeDocumentMoniker": "..\\Interface_Preprocessor_WPF\\ConstrRule_forButton.xaml",
-              "ToolTip": "C:\\Users\\Ruslan\\Desktop\\GitHub\\APRIORI\\Interface_Preprocessor_WPF\\ConstrRule_forButton.xaml",
-              "RelativeToolTip": "..\\Interface_Preprocessor_WPF\\ConstrRule_forButton.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-07T20:00:01.141Z",
+              "Title": "AprioriAlgorithm.cs",
+              "DocumentMoniker": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\DataProcessor\\AprioriAlgorithm.cs",
+              "RelativeDocumentMoniker": "..\\DataProcessor\\AprioriAlgorithm.cs",
+              "ToolTip": "C:\\Users\\notso\\OneDrive\\Desktop\\GitHub\\APRIORI\\DataProcessor\\AprioriAlgorithm.cs",
+              "RelativeToolTip": "..\\DataProcessor\\AprioriAlgorithm.cs",
+              "ViewState": "AgIAACkCAAAAAAAAAAASwDACAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T17:42:06.543Z",
               "EditorCaption": ""
             }
           ]

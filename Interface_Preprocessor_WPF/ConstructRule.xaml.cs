@@ -2,6 +2,7 @@
 using DataProcessor;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
@@ -24,31 +25,33 @@ namespace Interface_Preprocessor_WPF
     /// </summary>
     public partial class ConstructRule : Window
     {
-        private DataEncryptor encryptedData;
+        private DataEncryptor encryptedData; // Объект типа DataEncryptor
 
-        private double quality;
+        private double quality; // Качество
 
-        private int sendingLength;
+        private int sendingLength; // Длина посылки
 
-        private int ruleNumber;
+        private int ruleNumber; // Номер правила
 
-        private double minConfidence;
+        private double minConfidence; // Минимальная граница достаточной достоверности
 
-        private double maxConfidence;
+        private double maxConfidence; // Максимальная граница достаточной достоверности
 
-        private double correlation;
+        private double correlation; // Корреляция
 
-        private double frequency;
+        private double frequency; // Частота
 
-        private string mode;
+        private string mode; // Режим работы программы, зависящий от введенных параметров
         public ConstructRule(double Quality, double MinConfidence, double MaxConfidence, double Correlation, double Frequency, int SendingLength, int RuleNumber, string Mode)
         {
             InitializeComponent();
 
             try
             {
+                // Очищаем текстбоксы
                 OutputRules_TextBox.Text = string.Empty;
                 OutputRunningTime_TextBox.Text = string.Empty;
+
                 encryptedData = SharedData.Instance.EncryptedData;
                 
                 if (encryptedData == null || encryptedData._transactions.Count == 0) { throw new Exception("Зашифрованные записи не обнаружены"); }
@@ -80,55 +83,55 @@ namespace Interface_Preprocessor_WPF
         }
 
         
-
+        /// <summary>
+        /// Генерирует единичные правила
+        /// </summary>
         private void CreateSingleRules_Button_Click(object sender, RoutedEventArgs e)
         {
-            OutputRules_TextBox.Text = string.Empty;
-
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            
-            List<RuleClass> rules = new List<RuleClass>();
 
-            if (mode == "Качество") { rules = AA.GenerateSingleRulesUsingQuality(ruleNumber, quality, encryptedData); }
-            else if (mode == "Корреляция") { rules = AA.GenerateSingleRulesUsingCorrelation(ruleNumber, correlation, encryptedData); }
-            else if (mode == "Достоверность и частота") { rules = AA.GenerateSingleRulesUsingConfidenceAndFrequency(ruleNumber, minConfidence, frequency, encryptedData); }
-            else if (mode == "Достоверность и частота(диапазон)") { rules = AA.GenerateSingleRulesUsingConfidenceAndFrequency(ruleNumber, minConfidence, frequency, encryptedData, maxConfidence); }
+            List<RuleClass> SingleRules = AA.GenerateSingleRules(ruleNumber, encryptedData);
+            ShowRules(SingleRules);
 
             stopwatch.Stop();
             TimeSpan elapsedTime = stopwatch.Elapsed;
-
-            // Вывод правил в консоль
-            foreach (RuleClass rule in rules)
-            {
-                OutputRules_TextBox.Text += rule.ToString();
-            }
-
-
-            if (OutputRules_TextBox.Text.Trim() == string.Empty)
-            {
-                OutputRules_TextBox.Text = "По заданным характеристикам не было построено ни одного правила.";
-            }
 
             OutputRunningTime_TextBox.Text = elapsedTime.TotalSeconds.ToString() + " сек.";
         }
 
+        /// <summary>
+        /// Генерирует все правила
+        /// </summary>
         private void CreateAllRules_Button_Click(object sender, RoutedEventArgs e)
         {
-            OutputRules_TextBox.Text = string.Empty;
-
-            List<RuleClass> rules = new List<RuleClass>();
-
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            if (mode == "Качество") { rules = AA.GenerateAllRulesUsingQuality(ruleNumber, quality, sendingLength, encryptedData); }
-            else if (mode == "Корреляция") { rules = AA.GenerateAllRulesUsingCorrelation(ruleNumber, correlation, sendingLength, encryptedData); }
-            else if (mode == "Достоверность и частота") { rules = AA.GenerateAllRulesUsingConfidenceAndFrequency(ruleNumber, minConfidence, frequency, sendingLength, encryptedData); }
-            else if (mode == "Достоверность и частота(диапазон)") { rules = AA.GenerateAllRulesUsingConfidenceAndFrequency(ruleNumber, minConfidence, frequency, sendingLength, encryptedData, maxConfidence); }
+            List<RuleClass> rules = AA.GenerateAllRules(ruleNumber, sendingLength, encryptedData, mode, quality, correlation, frequency, minConfidence, maxConfidence);
+            ShowRules(rules);
 
             stopwatch.Stop();
             TimeSpan elapsedTime = stopwatch.Elapsed;
+
+            OutputRunningTime_TextBox.Text = elapsedTime.TotalSeconds.ToString() + " сек.";
+        }
+
+        /// <summary>
+        /// Отображает правила в текстбоксе
+        /// </summary>
+        /// <param name="rules">Список правил</param>
+        public void ShowRules(List<RuleClass> rules)
+        {
+            OutputRules_TextBox.Text = string.Empty;
+            OutputRunningTime_TextBox.Text = string.Empty;
+
+
+            if (mode == "Качество") { rules = AA.FilterRulesByQuality(rules, quality); }
+            else if (mode == "Корреляция") { rules = AA.FilterRulesByCorrelation(rules, correlation); }
+            else if (mode == "Достоверность и частота") { rules = AA.FilterRulesByFrequencyAndConfidence(rules, frequency, minConfidence); }
+            else if (mode == "Достоверность и частота(диапазон)") { rules = AA.FilterRulesByFrequencyAndConfidence(rules, frequency, minConfidence, maxConfidence); }
+
 
             // Вывод правил в консоль
             foreach (RuleClass rule in rules)
@@ -140,8 +143,6 @@ namespace Interface_Preprocessor_WPF
             {
                 OutputRules_TextBox.Text = "По заданным характеристикам не было построено ни одного правила.";
             }
-
-            OutputRunningTime_TextBox.Text = elapsedTime.TotalSeconds.ToString() + " сек.";
         }
     }
 }

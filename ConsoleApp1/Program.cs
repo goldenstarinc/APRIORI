@@ -9,11 +9,11 @@ using AA = DataProcessor.AprioriAlgorithm;
 class Program
 {
     static void Main(string[] args)
-    {   
-        
+    {
+
         // Чтение данных из Excel файла
-        ExcelFile excelFile1 = new ExcelFile("MetaData.xlsx");
-        Workbook workbook = new Workbook("BankDB.xlsx");
+        ExcelFile excelFile1 = new ExcelFile("C:\\Users\\notso\\OneDrive\\Desktop\\Meta.xlsx");
+        Workbook workbook = new Workbook("C:\\Users\\notso\\OneDrive\\Desktop\\Diabetes.xlsx");
 
         // Шифрование данных
         DataEncryptor dataEncryptor1 = new DataEncryptor(workbook, excelFile1, 1000);
@@ -27,7 +27,9 @@ class Program
 
         //List<RuleClass> rules = AA.GenerateSingleRulesUsingConfidenceAndFrequency(-1, 0.5, 0.6, dataEncryptor1, 0.6);
         //List<RuleClass> rules = AA.GenerateSpecificRules(-1, itemset, dataEncryptor1);
-        List<RuleClass> rules = AA.GenerateAllRulesUsingConfidenceAndFrequency(-1, 0.6, 0.5, 4, dataEncryptor1);
+        List<RuleClass> rules = AA.GenerateAllRules(-1, 3, dataEncryptor1, "Достоверность и частота", null, null, 0.1, 0.1, null);
+        rules = AA.FilterRulesByFrequencyAndConfidence(rules, 0.1, 0.1);
+
         //43 s on 5
         stopwatch.Stop();
         TimeSpan elapsedTime = stopwatch.Elapsed;
@@ -43,18 +45,6 @@ class Program
         {
             Console.WriteLine(rule.ToString());
         }
-
-
-        //var sets = GenerateCombinations(itemset, 2);
-        //foreach (var set in sets)
-        //{
-        //    foreach (var num in set)
-        //    {
-        //        Console.Write(num + " ");
-        //    }
-        //    Console.WriteLine();
-        //}
-
     }
 }
 

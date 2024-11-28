@@ -23,17 +23,17 @@ namespace Interface_Preprocessor_WPF
     /// </summary>
     public partial class ConstrRule_forButton : Window
     {
-        private string[] parameters;
-        
+        private string[] parameters; // Бинарные свойства
+
         private SortedSet<int> selectedIndexes; // Хранит индексы выбранных плиток
 
-        private DataEncryptor encryptedData;
+        private DataEncryptor encryptedData; // Объект DataEncryptor
 
-        private int sendingLength;
+        private int sendingLength; // Длина посылки
 
-        private int ruleNumber;
+        private int ruleNumber; // Номер правила
 
-        private ExcelFile metaFile;
+        private ExcelFile metaFile; // Файл с метаданными
 
         private List<controls.Border> selectedTiles = new List<controls.Border>();  // Хранит выбранные плитки
         public ConstrRule_forButton(int SendingLength, int RuleNumber)
@@ -49,6 +49,8 @@ namespace Interface_Preprocessor_WPF
                 ruleNumber = RuleNumber;
 
                 parameters = new string[metaFile.PropertyNames.Count];
+
+                // Заполняем массив бинарными свойствами
                 for (int i = 0; i < metaFile.PropertyNames.Count; i++)
                 {
                     parameters[i] = metaFile.PropertyNames[i];
@@ -186,10 +188,14 @@ namespace Interface_Preprocessor_WPF
             return false;
         }
 
+        /// <summary>
+        /// Построение правила с указанной посылкой
+        /// </summary>
         private void Do_Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                // Очищение текстбокса
                 OutputAllRules_TextBox_AddPage.Text = string.Empty;
 
                 List<RuleClass> rules = AA.GenerateSpecificRules(ruleNumber, selectedIndexes.ToHashSet(), encryptedData);
@@ -201,6 +207,7 @@ namespace Interface_Preprocessor_WPF
                 }
 
 
+                // Если ни одно правило не было построено
                 if (OutputAllRules_TextBox_AddPage.Text == string.Empty)
                 {
                     OutputAllRules_TextBox_AddPage.Text = "По заданным характеристикам не было построено ни одного правила.";
